@@ -1,17 +1,17 @@
 // src/app/[locale]/admin/layout.tsx
 import { ReactNode } from "react";
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import Link from "next/link";
 // import AdminSidebar from "@/components/admin/AdminSidebar";
 
-export default async function AdminLayout({
-  children,
-  params: { locale },
-}: {
-  children: React.ReactNode;
+// Match the exact pattern used in the working layout.tsx file
+type Props = {
+  children: ReactNode;
   params: { locale: string };
-}) {
+};
+
+export default async function AdminLayout({ children, params: { locale } }: Props) {
   const session = await auth();
 
   // Protect all routes in the admin group
