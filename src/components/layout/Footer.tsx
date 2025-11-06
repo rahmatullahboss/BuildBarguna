@@ -1,39 +1,107 @@
-// src/components/layout/Footer.tsx
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+
   return (
-    <footer className="bg-stone-100 border-t border-stone-200">
-      <div className="container mx-auto py-12 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold text-stone-800">Build Barguna Co-op</h3>
-            <p className="mt-2 text-stone-600 text-sm">Train. Co-invest. Build Barguna.</p>
+    <footer className="bg-gradient-to-br from-gray-900 via-blue-900 to-green-900 text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {/* Company Info */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center space-x-2 mb-6">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-green-400 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-lg">BB</span>
+              </div>
+              <span className="text-xl font-bold">Build Barguna</span>
+            </div>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              {t("description")}
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors">
+                <Instagram className="h-5 w-5" />
+              </a>
+            </div>
           </div>
+
+          {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-stone-700">Quick Links</h4>
-            <ul className="mt-2 space-y-2 text-sm">
-              <li><Link href="/about" className="text-stone-600 hover:text-stone-900">About Us</Link></li>
-              <li><Link href="/programs" className="text-stone-600 hover:text-stone-900">Programs</Link></li>
-              <li><Link href="/members" className="text-stone-600 hover:text-stone-900">Become a Member</Link></li>
-              <li><Link href="/contact" className="text-stone-600 hover:text-stone-900">Contact</Link></li>
+            <h4 className="text-lg font-semibold mb-6">{t("quickLinks")}</h4>
+            <ul className="space-y-3">
+              <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors">{t("about")}</Link></li>
+              <li><Link href="/programs" className="text-gray-300 hover:text-white transition-colors">{t("programs")}</Link></li>
+              <li><Link href="/brands" className="text-gray-300 hover:text-white transition-colors">{t("brands")}</Link></li>
+              <li><Link href="/stories" className="text-gray-300 hover:text-white transition-colors">{t("stories")}</Link></li>
+              <li><Link href="/governance" className="text-gray-300 hover:text-white transition-colors">{t("governance")}</Link></li>
             </ul>
           </div>
-          <div className="md:col-span-2">
-            <h4 className="font-semibold text-stone-700">Legal Compliance</h4>
-            <p className="mt-2 text-xs text-stone-500">
-              Build Barguna Co-operative is a Primary, non-credit co-operative. We do not accept public deposits or provide microcredit. All venture investments are member-only and governed by approved by-laws and term sheets.
-            </p>
-            <p className="mt-2 text-xs text-stone-500">
-              Domestic donations are voluntary, non-refundable, and create no financial return or membership rights. Foreign donations are not accepted by the Co-operative.
-            </p>
-            <p className="mt-2 text-xs text-stone-500">
-              Each featured brand is owned by the co-operative or its assigned unit; invoices and receipts show the legal entity: Build Barguna Co-operative.
-            </p>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-lg font-semibold mb-6">{t("services")}</h4>
+            <ul className="space-y-3">
+              <li><Link href="/members" className="text-gray-300 hover:text-white transition-colors">{t("membership")}</Link></li>
+              <li><Link href="/programs" className="text-gray-300 hover:text-white transition-colors">{t("training")}</Link></li>
+              <li><Link href="/partners" className="text-gray-300 hover:text-white transition-colors">{t("partnerships")}</Link></li>
+              <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">{t("contact")}</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-semibold mb-6">{t("contactInfo")}</h4>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-blue-400 mt-1 flex-shrink-0" />
+                <span className="text-gray-300 text-sm">
+                  {t("address")}
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 text-green-400 flex-shrink-0" />
+                <span className="text-gray-300 text-sm">
+                  {t("phone")}
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="h-5 w-5 text-purple-400 flex-shrink-0" />
+                <span className="text-gray-300 text-sm">
+                  {t("email")}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-stone-200 text-center text-xs text-stone-500">
-          <p>&copy; {new Date().getFullYear()} Build Barguna Co-operative. All Rights Reserved.</p>
+
+        {/* Legal Compliance Section */}
+        <div className="mt-12 pt-8 border-t border-gray-700">
+          <div className="mb-8">
+            <h4 className="text-lg font-semibold mb-4 text-yellow-400">{t("legalTitle")}</h4>
+            <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-400">
+              <p className="leading-relaxed">
+                {t("legal1")}
+              </p>
+              <p className="leading-relaxed">
+                {t("legal2")}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="pt-8 border-t border-gray-700 text-center">
+          <p className="text-gray-400 text-sm">
+            &copy; {new Date().getFullYear()} {t("copyright")}
+          </p>
         </div>
       </div>
     </footer>

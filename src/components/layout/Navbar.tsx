@@ -1,76 +1,133 @@
-// src/components/layout/Navbar.tsx
 "use client";
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
-import { Menu } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
-// import LanguageSwitcher from "../LanguageSwitcher";
+import LanguageToggle from "../LanguageToggle";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
-  const navItems = ["home", "about", "programs", "brands", "members", "governance", "stories", "partners", "contact"];
-  const [isSheetOpen, setSheetOpen] = useState(false);
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const navItems = [
+    { key: "home", href: "/" },
+    { key: "about", href: "/about" },
+    { key: "programs", href: "/programs" },
+    { key: "brands", href: "/brands" },
+    { key: "members", href: "/members" },
+    { key: "governance", href: "/governance" },
+    { key: "stories", href: "/stories" },
+    { key: "partners", href: "/partners" },
+    { key: "contact", href: "/contact" }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/" || pathname === "/en" || pathname === "/bn";
+    }
+    return pathname.includes(href);
+  };
 
   return (
-    <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200">
-      <nav className="container flex items-center justify-between py-4 mx-auto">
-        <Link href="/" className="text-2xl font-bold text-stone-800" onClick={() => setSheetOpen(false)}>
-          Build Barguna
-        </Link>
+    <header 
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-200" 
+          : "bg-white/80 backdrop-blur-md"
+      }`}
+    >
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link 
+            href="/" 
+            className="flex items-center space-x-2 group"
+            onClick={() => setIsOpen(false)}
+          >
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-xl flex items-center justify-center transform group-hover:scale-105 transition-transform">
+              <span className="text-white font-bold text-lg">BB</span>
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+              Build Barguna
+            </span>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center space-x-6">
-          {navItems.map((item) => (
-            <li key={item}>
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-1">
+            {navItems.map((item) => (
               <Link
-                href={`/${item === "home" ? "" : item}`}
-                className="text-stone-600 hover:text-stone-900 transition-colors"
+                key={item.key}
+                href={item.href}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-blue-50 hover:text-blue-600 ${
+                  isActive(item.href)
+                    ? "bg-blue-100 text-blue-600 shadow-sm"
+                    : "text-gray-700"
+                }`}
               >
-                {t(item)}
+                {t(item.key)}
               </Link>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
 
-        {/* <LanguageSwitcher /> */}
+          {/* Right side - Language Toggle + Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            <LanguageToggle />
+            
+            {/* Mobile menu button */}
+            <div className="lg:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2"
+              >
+                {isOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </Button>
+            </div>
+          </div>
+        </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden">
-          <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Open Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent>
-              <SheetHeader>
-                <SheetTitle>Navigation</SheetTitle>
-              </SheetHeader>
-              <ul className="mt-8 space-y-4">
-                {navItems.map((item) => (
-                  <li key={item}>
-                    <Link
-                      href={`/${item === "home" ? "" : item}`}
-                      className="text-lg text-stone-700 hover:text-stone-900 transition-colors"
-                      onClick={() => setSheetOpen(false)} // Close sheet on link click
-                    >
-                      {t(item)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </SheetContent>
-          </Sheet>
+        <div 
+          className={`lg:hidden transition-all duration-300 ease-in-out ${
+            isOpen 
+              ? "max-h-96 opacity-100 pb-6" 
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+        >
+          <div className="pt-4 pb-2 space-y-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.key}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                  isActive(item.href)
+                    ? "bg-blue-100 text-blue-600"
+                    : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                }`}
+              >
+                {t(item.key)}
+              </Link>
+            ))}
+          </div>
         </div>
       </nav>
     </header>
