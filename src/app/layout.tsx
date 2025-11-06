@@ -50,14 +50,12 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }> | { locale: string };
 }) {
-  // Handle both Promise and resolved params
-  const resolvedParams = await Promise.resolve(params);
-  const { locale } = resolvedParams;
+  // The root layout doesn't have locale params - that's handled by [locale]/layout.tsx
+  // We'll use a default locale for the HTML lang attribute
+  const locale = 'en';
   
   // Providing all messages to the client
   const messages = await getMessages();

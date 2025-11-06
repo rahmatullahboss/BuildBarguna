@@ -8,10 +8,13 @@ import Link from "next/link";
 // Match the exact pattern used in the working layout.tsx file
 type Props = {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }> | { locale: string };
 };
 
-export default async function AdminLayout({ children, params: { locale } }: Props) {
+export default async function AdminLayout({ children, params }: Props) {
+  // Handle both Promise and resolved params
+  const resolvedParams = await Promise.resolve(params);
+  const { locale } = resolvedParams;
   const session = await auth();
 
   // Protect all routes in the admin group

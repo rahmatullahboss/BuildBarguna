@@ -1,22 +1,38 @@
 // src/app/[locale]/page.tsx
 import { useTranslations } from "next-intl";
+import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { AnimatedDiv } from "@/components/AnimatedDiv";
 // A simple component to render the KPI counters - we'll create this next
 // import KpiCounters from "@/components/KpiCounters";
 
-// Mock KPI data for now
-const mockKpis = [
-  { id: "1", metric: "members_joined", value: 150, labelEn: "Members Joined", labelBn: "সদস্য যোগদান করেছেন" },
-  { id: "2", metric: "ventures_funded", value: 8, labelEn: "Ventures Funded", labelBn: "উদ্যোগ অর্থায়ন করা হয়েছে" },
-  { id: "3", metric: "training_hours", value: 2400, labelEn: "Training Hours", labelBn: "প্রশিক্shaন ঘন্টা" },
-];
+const prisma = new PrismaClient();
 
-export default function Home() {
+async function getKpis() {
+  try {
+    const kpis = await prisma.kPI.findMany();
+    return kpis;
+  } catch (error) {
+    // Fallback to mock data if database is not available
+    return [
+      { id: "1", metric: "members_joined", value: 150, labelEn: "Members Joined", labelBn: "সদস্য যোগদান করেছেন" },
+      { id: "2", metric: "ventures_funded", value: 8, labelEn: "Ventures Funded", labelBn: "উদ্যোগ অর্থায়ন করা হয়েছে" },
+      { id: "3", metric: "training_hours", value: 2400, labelEn: "Training Hours", labelBn: "প্রশিক্shaন ঘন্টা" },
+    ];
+  }
+}
+
+export default async function Home() {
+  // We need to fetch data first, then render the component
+  const kpis = await getKpis();
+  
+  // We'll pass the data to a client component for rendering
+  return <HomeContent kpis={kpis} />;
+}
+
+function HomeContent({ kpis }: { kpis: any[] }) {
   const t = useTranslations("HomePage");
-  // Use mock data instead of database calls for now
-  const kpis = mockKpis;
 
   return (
     <div>

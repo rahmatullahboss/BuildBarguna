@@ -17,7 +17,7 @@ async function main() {
   await prisma.brand.deleteMany({});
   await prisma.document.deleteMany({});
   await prisma.testimonial.deleteMany({});
-  await prisma.kpi.deleteMany({});
+  await prisma.kPI.deleteMany({});
 
   // 1. Seed Users
   const adminUser = await prisma.user.create({
@@ -341,7 +341,7 @@ async function main() {
   console.log("Seeded 6 testimonials.");
 
   // 8. Seed KPIs
-  await prisma.kpi.createMany({
+  await prisma.kPI.createMany({
     data: [
       { metric: "members_joined", value: 75, labelEn: "Active Members", labelBn: "সক্রিয় সদস্য" },
       { metric: "youth_trained", value: 120, labelEn: "Youth Trained", labelBn: "প্রশিক্ষিত যুবক" },

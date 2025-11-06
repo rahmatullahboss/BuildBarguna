@@ -113,7 +113,12 @@ export function ProposeVentureForm() {
             <FormItem>
               <FormLabel>Proposed Budget (BDT)</FormLabel>
               <FormControl>
-                <Input type="number" placeholder="e.g., 500000" {...field} />
+                <Input 
+                  type="number" 
+                  placeholder="e.g., 500000" 
+                  {...field}
+                  onChange={(e) => field.onChange(Number(e.target.value) || 0)}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

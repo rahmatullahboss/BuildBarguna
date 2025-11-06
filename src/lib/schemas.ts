@@ -33,9 +33,10 @@ export const proposeVentureSchema = z.object({
   budget: z.coerce.number().positive({ message: "Budget must be a positive number." }),
   leanCanvas: z
     .any()
-    .refine((file) => file?.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
+    .optional()
+    .refine((file) => !file || file?.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
     .refine(
-      (file) => ACCEPTED_FILE_TYPES.includes(file?.type),
+      (file) => !file || ACCEPTED_FILE_TYPES.includes(file?.type),
       ".pdf, .jpg, and .png files are accepted."
     ),
 });
