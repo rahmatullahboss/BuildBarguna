@@ -33,7 +33,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-green-50">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-50">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -44,7 +44,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <AnimatedDiv>
-            <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-8">
+            <div className="inline-flex items-center px-4 py-2 bg-teal-100 text-teal-800 rounded-full text-sm font-medium mb-8">
               <Star className="w-4 h-4 mr-2" />
               {t("badge")}
             </div>
@@ -53,7 +53,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
           <AnimatedDiv delay={0.1}>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
               <span className="block">{t("heroTitle")}</span>
-              <span className="block bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+              <span className="block text-teal-primary">
                 {t("heroHighlight")}
               </span>
             </h1>
@@ -66,13 +66,13 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
           </AnimatedDiv>
           
           <AnimatedDiv delay={0.3} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Button asChild size="lg" className="bg-coral-accent hover:bg-orange-600 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group">
               <Link href="/members" className="flex items-center">
                 {t("ctaJoin")}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-2 border-gray-300 text-gray-700 hover:border-blue-500 hover:text-blue-600 px-8 py-4 text-lg rounded-full transition-all duration-300">
+            <Button asChild size="lg" variant="outline" className="border-2 border-teal-primary text-teal-primary hover:bg-teal-primary hover:text-white px-8 py-4 text-lg rounded-full transition-all duration-300">
               <Link href="/programs">{t("ctaPrograms")}</Link>
             </Button>
           </AnimatedDiv>
@@ -82,7 +82,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
             {kpis.map((kpi, index) => (
               <Card key={kpi.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform">
+                  <div className="text-3xl font-bold text-teal-primary mb-2 group-hover:scale-110 transition-transform">
                     {kpi.value.toLocaleString()}
                   </div>
                   <div className="text-gray-600 font-medium">{kpi.labelEn}</div>
@@ -103,9 +103,9 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
           
           <div className="grid lg:grid-cols-3 gap-8">
             <AnimatedDiv delay={0.2}>
-              <Card className="h-full bg-gradient-to-br from-blue-50 to-blue-100 border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <Card className="h-full bg-white border border-teal-200 shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-16 h-16 bg-teal-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <Users className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">{t("pillar1Title")}</h3>
@@ -125,9 +125,9 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
             </AnimatedDiv>
 
             <AnimatedDiv delay={0.4}>
-              <Card className="h-full bg-gradient-to-br from-green-50 to-green-100 border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <Card className="h-full bg-white border border-orange-200 shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-16 h-16 bg-coral-accent rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <TrendingUp className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">{t("pillar2Title")}</h3>
@@ -147,9 +147,9 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
             </AnimatedDiv>
 
             <AnimatedDiv delay={0.6}>
-              <Card className="h-full bg-gradient-to-br from-purple-50 to-purple-100 border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <Card className="h-full bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-16 h-16 bg-teal-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <Award className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">{t("pillar3Title")}</h3>
@@ -172,12 +172,12 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-green-600">
+      <section className="py-20 bg-teal-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedDiv>
             <h2 className="text-4xl font-bold text-white mb-4">{t("ctaTitle")}</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">{t("ctaSubtitle")}</p>
-            <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+            <p className="text-xl text-teal-100 mb-8 max-w-2xl mx-auto">{t("ctaSubtitle")}</p>
+            <Button asChild size="lg" className="bg-coral-accent hover:bg-orange-600 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
               <Link href="/members" className="flex items-center">
                 {t("ctaButton")}
                 <ArrowRight className="ml-2 h-5 w-5" />

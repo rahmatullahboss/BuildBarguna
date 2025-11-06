@@ -6,13 +6,13 @@ export default function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-blue-900 to-green-900 text-white">
+    <footer className="bg-gray-800 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-green-400 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-teal-primary rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-lg">BB</span>
               </div>
               <span className="text-xl font-bold">Build Barguna</span>
@@ -21,13 +21,13 @@ export default function Footer() {
               {t("description")}
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+              <a href="#" className="w-10 h-10 bg-teal-primary rounded-full flex items-center justify-center hover:bg-teal-600 transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+              <a href="#" className="w-10 h-10 bg-coral-accent rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors">
+              <a href="#" className="w-10 h-10 bg-teal-primary rounded-full flex items-center justify-center hover:bg-teal-600 transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
