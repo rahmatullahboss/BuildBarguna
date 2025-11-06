@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -57,13 +58,16 @@ export default async function RootLayout({
   // Handle both Promise and resolved params
   const resolvedParams = await Promise.resolve(params);
   const { locale } = resolvedParams;
+  
+  // Providing all messages to the client
+  const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider locale={locale}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
         <Analytics />
