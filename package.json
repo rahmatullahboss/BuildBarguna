@@ -32,7 +32,7 @@
     "framer-motion": "latest",
     "lucide-react": "latest",
     "next": "^16.0.0",
-    "next-auth": "5.0.0-beta.21",
+    "next-auth": "5.0.0-beta.25",
     "next-intl": "latest",
     "nodemailer": "^6.9.0",
     "prisma": "latest",
