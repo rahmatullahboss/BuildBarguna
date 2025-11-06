@@ -31,7 +31,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
   const t = useTranslations("HomePage");
 
   return (
-    <div className="pt-16">
+    <div>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-green-50">
         {/* Background Pattern */}

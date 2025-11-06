@@ -2,8 +2,7 @@
 import { ReactNode } from "react";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-import Link from "next/link";
-// import AdminSidebar from "@/components/admin/AdminSidebar";
+import AdminSidebar from "@/components/admin/AdminSidebar";
 
 // Match the exact pattern used in the working layout.tsx file
 type Props = {
@@ -23,28 +22,12 @@ export default async function AdminLayout({ children, params }: Props) {
   }
 
   return (
-    <div className="flex h-screen bg-stone-100">
-      {/* <AdminSidebar /> */}
-      <aside className="w-64 bg-white border-r border-stone-200 p-4">
-        <h2 className="text-xl font-bold">Admin Panel</h2>
-        <nav className="mt-8">
-          <ul className="space-y-2">
-            <li>
-              <Link href={`/${locale}/admin`} className="block p-2 rounded-md hover:bg-stone-100">
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/admin/courses`} className="block p-2 rounded-md hover:bg-stone-100">
-                Courses
-              </Link>
-            </li>
-            {/* More links will be added here */}
-          </ul>
-        </nav>
-      </aside>
-      <main className="flex-1 p-8 overflow-y-auto">
-        {children}
+    <div className="flex h-screen bg-gray-50">
+      <AdminSidebar locale={locale} />
+      <main className="flex-1 overflow-y-auto">
+        <div className="p-8">
+          {children}
+        </div>
       </main>
     </div>
   );

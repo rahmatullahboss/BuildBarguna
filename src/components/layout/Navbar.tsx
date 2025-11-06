@@ -43,14 +43,14 @@ export default function Navbar() {
 
   return (
     <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
         isScrolled 
           ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-200" 
           : "bg-white/80 backdrop-blur-md"
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 md:h-20 relative">
           {/* Logo */}
           <Link 
             href="/" 
@@ -106,13 +106,13 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <div 
-          className={`lg:hidden transition-all duration-300 ease-in-out ${
+          className={`lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg transition-all duration-300 ease-in-out z-50 ${
             isOpen 
-              ? "max-h-96 opacity-100 pb-6" 
+              ? "max-h-screen opacity-100" 
               : "max-h-0 opacity-0 overflow-hidden"
           }`}
         >
-          <div className="pt-4 pb-2 space-y-2">
+          <div className="container mx-auto px-4 py-4 space-y-2">
             {navItems.map((item) => (
               <Link
                 key={item.key}

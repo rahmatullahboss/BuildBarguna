@@ -31,7 +31,7 @@ export default function LanguageToggle() {
         <Button 
           variant="ghost" 
           size="sm" 
-          className="flex items-center space-x-2 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+          className="flex items-center space-x-2 hover:bg-blue-50 hover:text-blue-600 transition-colors relative z-50"
         >
           <Globe className="h-4 w-4" />
           <span className="text-sm font-medium">
@@ -39,10 +39,10 @@ export default function LanguageToggle() {
           </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-40">
+      <DropdownMenuContent align="end" className="w-40 z-[60] bg-white border border-gray-200 shadow-lg">
         <DropdownMenuItem 
           onClick={() => switchLanguage('en')}
-          className={`cursor-pointer ${currentLocale === 'en' ? 'bg-blue-50 text-blue-600' : ''}`}
+          className={`cursor-pointer hover:bg-gray-100 ${currentLocale === 'en' ? 'bg-blue-50 text-blue-600' : ''}`}
         >
           <span className="flex items-center space-x-2">
             <span className="text-lg">🇺🇸</span>
@@ -51,7 +51,7 @@ export default function LanguageToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={() => switchLanguage('bn')}
-          className={`cursor-pointer ${currentLocale === 'bn' ? 'bg-blue-50 text-blue-600' : ''}`}
+          className={`cursor-pointer hover:bg-gray-100 ${currentLocale === 'bn' ? 'bg-blue-50 text-blue-600' : ''}`}
         >
           <span className="flex items-center space-x-2">
             <span className="text-lg">🇧🇩</span>
