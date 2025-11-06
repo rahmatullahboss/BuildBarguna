@@ -1,0 +1,60 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "brands": "Brands",
+    "members": "Members",
+    "governance": "Governance",
+    "stories": "Stories",
+    "partners": "Partners",
+    "contact": "Contact"
+  },
+  "HomePage": {
+    "heroTitle": "Train. Co-invest. Build Barguna.",
+    "heroSubtitle": "Uniting Barguna’s youth to create self-employment via skills training and member-pooled Joint Investment Projects (JIPs).",
+    "ctaJoin": "Join as Member",
+    "ctaPrograms": "View Our Programs",
+    "pillarsTitle": "Our Three Pillars",
+    "pillar1Title": "Training",
+    "pillar1Desc": "Providing in-demand skills to empower the next generation of entrepreneurs.",
+    "pillar2Title": "Co-investment",
+    "pillar2Desc": "Pooling member capital to fund and launch innovative local ventures.",
+    "pillar3Title": "Impact",
+    "pillar3Desc": "Creating sustainable employment and fostering economic growth in our community."
+  },
+  "AboutPage": {
+    "title": "Our Story",
+    "paragraph1": "Build Barguna Co-operative was founded by a group of passionate young individuals from Barguna who wanted to create a sustainable future for their community. Faced with a lack of local employment opportunities, they decided to unite and build a platform for skill development and self-employment through co-operative principles.",
+    "paragraph2": "As a Primary, non-credit co-operative, our model is simple: we pool our members' skills and capital to create and invest in Joint Investment Projects (JIPs). We believe in the power of collaboration to foster economic growth and create lasting social impact right here in Barguna."
+  },
+  "MembersPage": {
+    "title": "Become a Member",
+    "intro": "Join a community of forward-thinking individuals dedicated to building a prosperous future for Barguna.",
+    "benefitsTitle": "Membership Benefits",
+    "benefit1": "Access to exclusive skills training and incubation programs.",
+    "benefit2": "Opportunity to co-invest in member-only Joint Investment Projects (JIPs).",
+    "benefit3": "Democratic participation (1 member, 1 vote) and a share in the co-operative's profits.",
+    "howItWorksTitle": "How It Works",
+    "howItWorksDesc": "As a member, you are a co-owner of the co-operative. You can propose ventures, vote on key decisions, and contribute to our collective growth. Membership requires the purchase of a nominal share and adherence to our code of conduct.",
+    "formTitle": "Apply for Membership"
+  },
+  "ProgramsPage": {
+    "title": "Our Programs",
+    "trainingTitle": "Training & Incubation",
+    "trainingDescription": "We offer a wide range of courses designed to equip Barguna's youth with in-demand skills for the modern economy.",
+    "jipTitle": "Joint Investment Projects (JIPs)",
+    "jipDescription": "Members can pool their capital to invest in promising local ventures across various sectors, from agro-food to digital services.",
+    "formTitle": "Apply for Training",
+    "proposeVentureTitle": "Propose a New Venture"
+  },
+  "BrandsPage": {
+    "title": "Our Brands",
+    "subtitle": "Discover the ventures and brands owned and operated by the members of Build Barguna Co-operative."
+  },
+  "PartnersPage": {
+    "title": "Partner With Us",
+    "subtitle": "We are always looking for mentors, suppliers, venues, and institutional partners to collaborate with. If you are interested in supporting our mission, please get in touch.",
+    "formTitle": "Partnership Inquiry"
+  }
+}
