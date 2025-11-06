@@ -7,10 +7,14 @@ import Footer from "@/components/layout/Footer";
 
 type Props = {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }> | { locale: string };
 };
 
-export default function LocaleLayout({ children, params: { locale } }: Props) {
+export default async function LocaleLayout({ children, params }: Props) {
+  // Handle both Promise and resolved params
+  const resolvedParams = await Promise.resolve(params);
+  const { locale } = resolvedParams;
+  
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale)) notFound();
 
