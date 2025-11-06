@@ -13,7 +13,7 @@ async function getKpis() {
   try {
     const kpis = await prisma.kPI.findMany();
     return kpis;
-  } catch (error) {
+  } catch {
     // Fallback to mock data if database is not available
     return [
       { id: "1", metric: "members_joined", value: 150, labelEn: "Members Joined", labelBn: "সদস্য যোগদান করেছেন" },
@@ -31,7 +31,7 @@ export default async function Home() {
   return <HomeContent kpis={kpis} />;
 }
 
-function HomeContent({ kpis }: { kpis: any[] }) {
+function HomeContent({ kpis: _kpis }: { kpis: Array<{ id: string; metric: string; value: number; labelEn: string; labelBn: string }> }) {
   const t = useTranslations("HomePage");
 
   return (

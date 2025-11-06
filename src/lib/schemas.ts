@@ -30,7 +30,7 @@ export const proposeVentureSchema = z.object({
   titleBn: z.string().min(5, { message: "Bengali title must be at least 5 characters long." }),
   descriptionEn: z.string().min(20, { message: "English description must be at least 20 characters long." }),
   descriptionBn: z.string().min(20, { message: "Bengali description must be at least 20 characters long." }),
-  budget: z.coerce.number().positive({ message: "Budget must be a positive number." }),
+  budget: z.number().positive({ message: "Budget must be a positive number." }),
   leanCanvas: z
     .any()
     .optional()

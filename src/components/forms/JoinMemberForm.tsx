@@ -10,7 +10,6 @@ import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
@@ -138,7 +137,7 @@ export function JoinMemberForm() {
                   I agree to the terms and conditions
                 </FormLabel>
                 <FormDescription>
-                  You agree to abide by the co-operative's by-laws.
+                  You agree to abide by the co-operative&apos;s by-laws.
                 </FormDescription>
               </div>
             </FormItem>

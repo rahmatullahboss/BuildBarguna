@@ -116,7 +116,7 @@ export function ProposeVentureForm() {
                 <Input 
                   type="number" 
                   placeholder="e.g., 500000" 
-                  {...field}
+                  value={field.value || ''}
                   onChange={(e) => field.onChange(Number(e.target.value) || 0)}
                 />
               </FormControl>

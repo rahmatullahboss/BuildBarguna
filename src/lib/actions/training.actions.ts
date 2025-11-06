@@ -1,6 +1,5 @@
 "use server";
 
-import { z } from "zod";
 import { PrismaClient } from "@prisma/client";
 import { applyForTrainingSchema } from "@/lib/schemas";
 import { FormState } from "./member.actions"; // Re-using the same state type
@@ -31,7 +30,7 @@ export async function applyForTrainingAction(
     };
   }
 
-  const { name, email, phone, courseId } = validatedFields.data;
+  const { name, email, courseId } = validatedFields.data;
 
   try {
     // Find or create a user with the provided email

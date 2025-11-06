@@ -1,6 +1,5 @@
 "use server";
 
-import { z } from "zod";
 import { partnerInquirySchema } from "@/lib/schemas";
 import { FormState } from "./member.actions";
 
@@ -33,7 +32,7 @@ export async function partnerInquiryAction(
     };
   }
 
-  const { organizationName, contactPerson, email, phone, message } = validatedFields.data;
+  const validatedData = validatedFields.data;
 
   try {
     // Here you would typically:

@@ -1,5 +1,5 @@
 // src/app/[locale]/programs/page.tsx
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { PrismaClient, UserRole } from "@prisma/client";
 import { ApplyForTrainingForm } from "@/components/forms/ApplyForTrainingForm";
 import { ProposeVentureForm } from "@/components/forms/ProposeVentureForm";
@@ -15,7 +15,7 @@ async function getCourses() {
 }
 
 export default async function ProgramsPage({ params: { locale } }: { params: { locale: string } }) {
-  const t = useTranslations("ProgramsPage");
+  const t = await getTranslations("ProgramsPage");
   const courses = await getCourses();
 
   return (
