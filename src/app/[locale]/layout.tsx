@@ -2,6 +2,8 @@
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
@@ -23,6 +25,8 @@ export default async function LocaleLayout({ children, params }: Props) {
       <Navbar />
       <main className="flex-grow pt-20 md:pt-24">{children}</main>
       <Footer />
+      <SpeedInsights />
+      <Analytics />
     </div>
   );
 }
