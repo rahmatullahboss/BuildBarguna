@@ -4,11 +4,13 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Mail, ArrowRight, Loader2 } from "lucide-react";
+import { User, Lock, ArrowRight, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+// import { useRouter } from "next/navigation"; // Not needed with window.location
 
 export function SignInForm() {
-  const [email, setEmail] = useState("");
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
   const t = useTranslations("AuthPage");
@@ -19,16 +21,21 @@ export function SignInForm() {
     setMessage("");
 
     try {
-      const result = await signIn("email", {
-        email,
+      const result = await signIn("credentials", {
+        userId,
+        password,
         redirect: false,
       });
 
       if (result?.error) {
         console.error("Sign in error:", result.error);
-        setMessage(`${t("errorSendingEmail")} (${result.error})`);
-      } else {
-        setMessage(t("checkEmail"));
+        setMessage(t("invalidCredentials"));
+      } else if (result?.ok) {
+        setMessage(t("signInSuccess"));
+        // Wait a moment for session to be established
+        setTimeout(() => {
+          window.location.href = "/admin";
+        }, 500);
       }
     } catch (error) {
       console.error("Sign in exception:", error);
@@ -41,18 +48,37 @@ export function SignInForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-          {t("emailAddress")}
+        <label htmlFor="userId" className="block text-sm font-medium text-gray-700 mb-2">
+          {t("userId")}
         </label>
         <div className="relative">
-          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+          <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
           <Input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder={t("enterEmail")}
-            className="pl-10 border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            id="userId"
+            type="text"
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
+            placeholder={t("enterUserId")}
+            className="pl-10 border-gray-300 focus:ring-black focus:border-black"
+            required
+            disabled={isLoading}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+          {t("password")}
+        </label>
+        <div className="relative">
+          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+          <Input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder={t("enterPassword")}
+            className="pl-10 border-gray-300 focus:ring-black focus:border-black"
             required
             disabled={isLoading}
           />
@@ -72,26 +98,20 @@ export function SignInForm() {
       <Button
         type="submit"
         disabled={isLoading}
-        className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+        className="w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
       >
         {isLoading ? (
           <>
             <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-            {t("sending")}
+            {t("signingIn")}
           </>
         ) : (
           <>
-            {t("sendMagicLink")}
+            {t("signIn")}
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </>
         )}
       </Button>
-
-      <div className="text-center">
-        <p className="text-xs text-gray-500">
-          {t("magicLinkDescription")}
-        </p>
-      </div>
     </form>
   );
 }

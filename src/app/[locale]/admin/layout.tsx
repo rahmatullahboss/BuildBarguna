@@ -16,8 +16,14 @@ export default async function AdminLayout({ children, params }: Props) {
   const { locale } = resolvedParams;
   const session = await auth();
 
-  // Protect all routes in the admin group
-  if (!session || (session.user?.role !== "ADMIN" && session.user?.role !== "EDITOR")) {
+  // Protect all routes in the admin group  
+  if (!session || !session.user) {
+    redirect(`/${locale}/auth/signin`); // Redirect to signin if not authenticated
+  }
+  
+  // Check if user has admin role (case insensitive)
+  const userRole = session.user?.role?.toLowerCase();
+  if (userRole !== "admin" && userRole !== "editor") {
     redirect(`/${locale}/`); // Redirect to homepage if not authorized
   }
 

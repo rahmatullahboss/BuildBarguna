@@ -18,8 +18,9 @@ export default function LanguageToggle() {
     // Extract the current path without the locale
     const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, '') || '/';
     
-    // Navigate to the new locale path
-    router.push(`/${newLocale}${pathWithoutLocale}`);
+    // Navigate to the new locale path and force refresh
+    const newPath = `/${newLocale}${pathWithoutLocale}`;
+    window.location.href = newPath;
   };
 
   // Get current locale from pathname

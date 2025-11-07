@@ -1,8 +1,11 @@
 import { getTranslations } from "next-intl/server";
 import { auth } from "@/auth";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, BookOpen, Building, TrendingUp, FileText, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Users, BookOpen, Building, TrendingUp, FileText, Award, UserCheck, Clock } from "lucide-react";
 import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
+import MemberApplicationsTable from "@/components/admin/MemberApplicationsTable";
 
 const prisma = new PrismaClient();
 
@@ -48,6 +51,10 @@ export default async function AdminDashboardPage() {
   const session = await auth();
   const t = await getTranslations("AdminPage");
   const stats = await getDashboardStats();
+  
+  // Import admin actions
+  const { getMemberApplications } = await import("@/lib/actions/admin.actions");
+  const memberApplications = await getMemberApplications();
 
   return (
     <div className="space-y-8">

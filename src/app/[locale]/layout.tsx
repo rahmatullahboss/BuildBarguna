@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import SessionProvider from "@/components/providers/SessionProvider";
 
 type Props = {
   children: ReactNode;
@@ -21,12 +22,14 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!locales.includes(locale)) notFound();
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow pt-20 md:pt-24">{children}</main>
-      <Footer />
-      <SpeedInsights />
-      <Analytics />
-    </div>
+    <SessionProvider>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow pt-20 md:pt-24">{children}</main>
+        <Footer />
+        <SpeedInsights />
+        <Analytics />
+      </div>
+    </SessionProvider>
   );
 }

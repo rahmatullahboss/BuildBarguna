@@ -3,27 +3,40 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Settings } from "lucide-react";
 import { Button } from "../ui/button";
 import LanguageToggle from "../LanguageToggle";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function Navbar() {
   const t = useTranslations("Navbar");
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { data: session } = useSession();
+  
+  // Get current locale
+  const currentLocale = pathname.split('/')[1] || 'en';
+  
+  // Debug session in development
+  useEffect(() => {
+    if (process.env.NODE_ENV === "development") {
+      console.log("Navbar session:", session);
+      console.log("User role:", session?.user?.role);
+    }
+  }, [session]);
 
   const navItems = [
-    { key: "home", href: "/" },
-    { key: "about", href: "/about" },
-    { key: "programs", href: "/programs" },
-    { key: "brands", href: "/brands" },
-    { key: "members", href: "/members" },
-    { key: "governance", href: "/governance" },
-    { key: "stories", href: "/stories" },
-    { key: "partners", href: "/partners" },
-    { key: "contact", href: "/contact" }
+    { key: "home", href: `/${currentLocale}` },
+    { key: "about", href: `/${currentLocale}/about` },
+    { key: "programs", href: `/${currentLocale}/programs` },
+    { key: "brands", href: `/${currentLocale}/brands` },
+    { key: "members", href: `/${currentLocale}/join-member` },
+    { key: "governance", href: `/${currentLocale}/governance` },
+    { key: "stories", href: `/${currentLocale}/stories` },
+    { key: "partners", href: `/${currentLocale}/partners` },
+    { key: "contact", href: `/${currentLocale}/contact` }
   ];
 
   useEffect(() => {
@@ -53,7 +66,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20 relative">
           {/* Logo */}
           <Link 
-            href="/" 
+            href={`/${pathname.split('/')[1] || 'en'}`}
             className="flex items-center space-x-2 group"
             onClick={() => setIsOpen(false)}
           >
@@ -82,8 +95,25 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right side - Language Toggle + Mobile Menu */}
+          {/* Right side - Admin Link + Language Toggle + Mobile Menu */}
           <div className="flex items-center space-x-4">
+            {/* Admin Link - Desktop */}
+            <Link
+              href={`/${currentLocale}/admin`}
+              className="hidden lg:flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 text-gray-700 hover:text-black"
+              title="Admin Panel"
+            >
+              <Settings className="h-4 w-4" />
+              <span>Admin</span>
+            </Link>
+            
+            {/* Debug info - Remove in production */}
+            {process.env.NODE_ENV === "development" && session && (
+              <div className="hidden lg:block text-xs text-red-500">
+                {session.user?.email}:{session.user?.role}
+              </div>
+            )}
+            
             <LanguageToggle />
             
             {/* Mobile menu button */}
@@ -127,6 +157,23 @@ export default function Navbar() {
                 {t(item.key)}
               </Link>
             ))}
+            
+            {/* Admin Link - Mobile */}
+            <Link
+              href={`/${currentLocale}/admin`}
+              onClick={() => setIsOpen(false)}
+              className="flex items-center space-x-2 px-4 py-3 rounded-lg text-base font-medium transition-colors text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-t border-gray-200 mt-2 pt-4"
+            >
+              <Settings className="h-5 w-5" />
+              <span>Admin Panel</span>
+            </Link>
+            
+            {/* Debug info for mobile */}
+            {process.env.NODE_ENV === "development" && session && (
+              <div className="px-4 py-2 text-xs text-red-500">
+                Session: {session.user?.email}:{session.user?.role}
+              </div>
+            )}
           </div>
         </div>
       </nav>

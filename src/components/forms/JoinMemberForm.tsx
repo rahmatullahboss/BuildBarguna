@@ -50,9 +50,20 @@ export function JoinMemberForm() {
     },
   });
 
+  const handleSubmit = (data: z.infer<typeof joinMemberSchema>) => {
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("nationalId", data.nationalId);
+    formData.append("phone", data.phone);
+    formData.append("email", data.email);
+    formData.append("address", data.address);
+    formData.append("policyConsent", data.policyConsent.toString());
+    formAction(formData);
+  };
+
   return (
     <Form {...form}>
-      <form action={formAction} className="space-y-6">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
         {/* Honeypot field for basic spam protection */}
         <input type="hidden" name="honeypot" value="" />
 
@@ -137,9 +148,14 @@ export function JoinMemberForm() {
                   I agree to the terms and conditions
                 </FormLabel>
                 <FormDescription>
-                  You agree to abide by the co-operative&apos;s by-laws.
+                  You agree to abide by the co-operative&apos;s constitution/policies.
                 </FormDescription>
               </div>
+              {form.formState.errors.policyConsent && (
+                <p className="text-sm text-red-600 mt-1">
+                  {form.formState.errors.policyConsent.message}
+                </p>
+              )}
             </FormItem>
           )}
         />
@@ -147,9 +163,21 @@ export function JoinMemberForm() {
         <SubmitButton />
 
         {state.message && (
-          <p className={`mt-4 text-sm ${state.success ? 'text-green-600' : 'text-red-600'}`}>
-            {state.message}
-          </p>
+          <div className={`mt-4 p-4 rounded-md ${state.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+            <p className="text-sm font-medium">{state.message}</p>
+            {state.errors && (
+              <div className="mt-2">
+                <p className="text-xs font-medium">Please fix the following errors:</p>
+                <ul className="text-xs mt-1 list-disc list-inside">
+                  {Object.entries(state.errors).map(([field, errors]) => (
+                    <li key={field}>
+                      <strong>{field}:</strong> {errors.join(", ")}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         )}
       </form>
     </Form>
