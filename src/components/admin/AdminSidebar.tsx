@@ -73,7 +73,7 @@ export default function AdminSidebar({ locale }: AdminSidebarProps) {
   };
 
   return (
-    <aside className="w-64 bg-white border-r border-gray-200 shadow-lg">
+    <aside className="w-64 bg-background border-r border-border shadow-lg">
       {/* Header */}
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center space-x-3">
@@ -81,8 +81,8 @@ export default function AdminSidebar({ locale }: AdminSidebarProps) {
             <span className="text-white font-bold text-lg">BB</span>
           </div>
           <div>
-            <h2 className="text-lg font-bold text-gray-900">Admin Panel</h2>
-            <p className="text-xs text-gray-500">Management Dashboard</p>
+            <h2 className="text-lg font-bold text-foreground">Admin Panel</h2>
+            <p className="text-xs text-muted-foreground">Management Dashboard</p>
           </div>
         </div>
       </div>
@@ -100,8 +100,8 @@ export default function AdminSidebar({ locale }: AdminSidebarProps) {
                 href={item.href}
                 className={`flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group ${
                   active
-                    ? "bg-black text-white shadow-sm"
-                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                 }`}
               >
                 <Icon className={`h-5 w-5 ${active ? "text-white" : "text-gray-400 group-hover:text-gray-600"}`} />

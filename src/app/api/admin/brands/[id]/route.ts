@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
     const contentType = req.headers.get("content-type") || "";
     let body: any = {};
@@ -18,7 +19,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     const { nameEn, nameBn, descriptionEn, descriptionBn, logoUrl } = body;
 
     const brand = await prisma.brand.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         ...(nameEn !== undefined ? { nameEn: String(nameEn) } : {}),
         ...(nameBn !== undefined ? { nameBn: String(nameBn) } : {}),
@@ -36,9 +37,10 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
-    await prisma.brand.delete({ where: { id: params.id } });
+    await prisma.brand.delete({ where: { id } });
     revalidatePath("/admin/brands");
     return NextResponse.json({ success: true });
   } catch (e) {

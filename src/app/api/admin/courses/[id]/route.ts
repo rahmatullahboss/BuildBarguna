@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
     const contentType = req.headers.get("content-type") || "";
     let body: any = {};
@@ -18,7 +19,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     const { titleEn, titleBn, descriptionEn, descriptionBn, fee, startDate, endDate } = body;
 
     const course = await prisma.course.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         ...(titleEn !== undefined ? { titleEn: String(titleEn) } : {}),
         ...(titleBn !== undefined ? { titleBn: String(titleBn) } : {}),
@@ -38,9 +39,10 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
-    await prisma.course.delete({ where: { id: params.id } });
+    await prisma.course.delete({ where: { id } });
     revalidatePath("/admin/courses");
     return NextResponse.json({ success: true });
   } catch (e) {

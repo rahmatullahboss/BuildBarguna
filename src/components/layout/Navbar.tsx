@@ -74,7 +74,7 @@ export default function Navbar() {
             <div className="w-10 h-10 bg-black-primary rounded-xl flex items-center justify-center transform group-hover:scale-105 transition-transform">
               <span className="text-white font-bold text-lg">BB</span>
             </div>
-            <span className="text-xl font-bold text-black-primary">
+            <span className="text-xl font-bold text-foreground">
               Build Barguna
             </span>
           </Link>
@@ -85,10 +85,10 @@ export default function Navbar() {
               <Link
                 key={item.key}
                 href={item.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 hover:text-black ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-secondary hover:text-foreground ${
                   isActive(item.href)
-                    ? "bg-black text-white shadow-sm"
-                    : "text-gray-700"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground"
                 }`}
               >
                 {t(item.key)}
@@ -138,7 +138,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <div 
-          className={`lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg transition-all duration-300 ease-in-out z-50 ${
+          className={`lg:hidden absolute top-full left-0 right-0 bg-background border-t border-border shadow-lg transition-all duration-300 ease-in-out z-50 ${
             isOpen 
               ? "max-h-screen opacity-100" 
               : "max-h-0 opacity-0 overflow-hidden"
@@ -152,8 +152,8 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                   isActive(item.href)
-                    ? "bg-blue-100 text-blue-600"
-                    : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                 }`}
               >
                 {t(item.key)}

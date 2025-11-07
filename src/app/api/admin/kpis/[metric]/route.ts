@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
-export async function PATCH(req: NextRequest, { params }: { params: { metric: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ metric: string }> }) {
+  const { metric } = await params;
   try {
     const contentType = req.headers.get("content-type") || "";
     let body: any = {};
@@ -18,12 +19,12 @@ export async function PATCH(req: NextRequest, { params }: { params: { metric: st
     const { value, labelEn, labelBn } = body as any;
 
     const kpi = await prisma.kPI.upsert({
-      where: { metric: params.metric },
+      where: { metric },
       create: {
-        metric: params.metric,
+        metric,
         value: value !== undefined ? parseFloat(String(value)) : 0,
-        labelEn: labelEn ?? params.metric,
-        labelBn: labelBn ?? params.metric,
+        labelEn: labelEn ?? metric,
+        labelBn: labelBn ?? metric,
       },
       update: {
         ...(value !== undefined ? { value: parseFloat(String(value)) } : {}),

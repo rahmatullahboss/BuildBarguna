@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   // Support both JSON and form submissions
   let body: any = {};
   const contentType = req.headers.get("content-type") || "";
@@ -24,7 +25,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     }
 
     await prisma.venture.update({
-      where: { id: params.id },
+      where: { id },
       data: { status: normalized },
     });
 

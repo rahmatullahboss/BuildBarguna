@@ -18,10 +18,6 @@ export default function DarkModeToggle() {
     
     setIsDark(initialDark);
     document.documentElement.classList.toggle("dark", initialDark);
-    
-    // Force styles update
-    document.body.style.backgroundColor = initialDark ? 'var(--background)' : 'white';
-    document.body.style.color = initialDark ? 'var(--foreground)' : 'black';
   }, []);
 
   const toggle = () => {
@@ -32,13 +28,9 @@ export default function DarkModeToggle() {
     
     if (next) {
       document.documentElement.classList.add("dark");
-      document.body.style.backgroundColor = '#1a1a1a';
-      document.body.style.color = '#ffffff';
       localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
-      document.body.style.backgroundColor = '#ffffff';
-      document.body.style.color = '#000000';
       localStorage.setItem("theme", "light");
     }
     

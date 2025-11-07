@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
     const contentType = req.headers.get("content-type") || "";
     let body: any = {};
@@ -18,7 +19,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     const { titleEn, titleBn, bodyEn, bodyBn, published } = body as any;
 
     const story = await prisma.story.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         ...(titleEn !== undefined ? { titleEn: String(titleEn) } : {}),
         ...(titleBn !== undefined ? { titleBn: String(titleBn) } : {}),
@@ -36,9 +37,10 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
-    await prisma.story.delete({ where: { id: params.id } });
+    await prisma.story.delete({ where: { id } });
     revalidatePath("/admin/stories");
     return NextResponse.json({ success: true });
   } catch (e) {

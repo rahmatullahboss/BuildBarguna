@@ -32,7 +32,7 @@ export default function LanguageToggle() {
         <Button 
           variant="ghost" 
           size="sm" 
-          className="flex items-center space-x-2 hover:bg-gray-100 hover:text-black transition-colors relative z-50"
+          className="flex items-center space-x-2 hover:bg-secondary hover:text-foreground transition-colors relative z-50"
         >
           <Globe className="h-4 w-4" />
           <span className="text-sm font-medium">
@@ -40,10 +40,10 @@ export default function LanguageToggle() {
           </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-40 z-[60] bg-white border border-gray-200 shadow-lg">
+      <DropdownMenuContent align="end" className="w-40 z-[60] bg-background border border-border shadow-lg">
         <DropdownMenuItem 
           onClick={() => switchLanguage('en')}
-          className={`cursor-pointer hover:bg-gray-100 ${currentLocale === 'en' ? 'bg-black text-white' : ''}`}
+          className={`cursor-pointer hover:bg-secondary ${currentLocale === 'en' ? 'bg-primary text-primary-foreground' : ''}`}
         >
           <span className="flex items-center space-x-2">
             <span className="text-lg">🇺🇸</span>
@@ -52,7 +52,7 @@ export default function LanguageToggle() {
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={() => switchLanguage('bn')}
-          className={`cursor-pointer hover:bg-gray-100 ${currentLocale === 'bn' ? 'bg-black text-white' : ''}`}
+          className={`cursor-pointer hover:bg-secondary ${currentLocale === 'bn' ? 'bg-primary text-primary-foreground' : ''}`}
         >
           <span className="flex items-center space-x-2">
             <span className="text-lg">🇧🇩</span>
