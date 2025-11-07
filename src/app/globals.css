@@ -5,39 +5,39 @@
 :root {
   --radius: 0.625rem;
   
-  /* Community Warmth Theme - Teal & Coral */
-  --background: oklch(0.98 0.005 180); /* #F9FBFB */
-  --foreground: oklch(0.15 0.02 240); /* #0F172A */
-  --card: oklch(1 0 0); /* #FFFFFF */
-  --card-foreground: oklch(0.15 0.02 240); /* #0F172A */
-  --popover: oklch(1 0 0); /* #FFFFFF */
-  --popover-foreground: oklch(0.15 0.02 240); /* #0F172A */
-  --primary: oklch(0.65 0.15 180); /* #0EA5A5 - Teal */
+  /* Black and White Elegant Theme */
+  --background: oklch(1 0 0); /* Pure White */
+  --foreground: oklch(0.09 0 0); /* Pure Black */
+  --card: oklch(1 0 0); /* White */
+  --card-foreground: oklch(0.09 0 0); /* Black */
+  --popover: oklch(1 0 0); /* White */
+  --popover-foreground: oklch(0.09 0 0); /* Black */
+  --primary: oklch(0.09 0 0); /* Black */
   --primary-foreground: oklch(1 0 0); /* White */
-  --secondary: oklch(0.96 0.005 180); /* Light background */
-  --secondary-foreground: oklch(0.15 0.02 240); /* #0F172A */
-  --muted: oklch(0.94 0.005 180); /* Muted background */
-  --muted-foreground: oklch(0.47 0.01 240); /* Muted text */
-  --accent: oklch(0.70 0.18 35); /* #FF7A59 - Coral */
+  --secondary: oklch(0.95 0 0); /* Light Gray */
+  --secondary-foreground: oklch(0.09 0 0); /* Black */
+  --muted: oklch(0.96 0 0); /* Very Light Gray */
+  --muted-foreground: oklch(0.45 0 0); /* Medium Gray */
+  --accent: oklch(0.20 0 0); /* Dark Gray */
   --accent-foreground: oklch(1 0 0); /* White */
-  --destructive: oklch(0.60 0.25 27); /* Error red */
+  --destructive: oklch(0.50 0.20 30); /* Dark Red */
   --destructive-foreground: oklch(1 0 0); /* White */
-  --border: oklch(0.91 0.005 180); /* Light border */
-  --input: oklch(0.91 0.005 180); /* Input border */
-  --ring: oklch(0.65 0.15 180); /* Focus ring - Teal */
-  --chart-1: oklch(0.65 0.15 180); /* Teal */
-  --chart-2: oklch(0.70 0.18 35); /* Coral */
-  --chart-3: oklch(0.75 0.12 180); /* Light Teal */
-  --chart-4: oklch(0.80 0.14 35); /* Light Coral */
-  --chart-5: oklch(0.60 0.10 200); /* Blue-Teal */
+  --border: oklch(0.89 0 0); /* Light Gray Border */
+  --input: oklch(0.89 0 0); /* Light Gray Input */
+  --ring: oklch(0.09 0 0); /* Black Focus Ring */
+  --chart-1: oklch(0.09 0 0); /* Black */
+  --chart-2: oklch(0.30 0 0); /* Dark Gray */
+  --chart-3: oklch(0.50 0 0); /* Medium Gray */
+  --chart-4: oklch(0.70 0 0); /* Light Gray */
+  --chart-5: oklch(0.85 0 0); /* Very Light Gray */
   --sidebar: oklch(1 0 0); /* White sidebar */
-  --sidebar-foreground: oklch(0.15 0.02 240); /* Dark text */
-  --sidebar-primary: oklch(0.65 0.15 180); /* Teal */
+  --sidebar-foreground: oklch(0.09 0 0); /* Black text */
+  --sidebar-primary: oklch(0.09 0 0); /* Black */
   --sidebar-primary-foreground: oklch(1 0 0); /* White */
-  --sidebar-accent: oklch(0.96 0.005 180); /* Light accent */
-  --sidebar-accent-foreground: oklch(0.15 0.02 240); /* Dark text */
-  --sidebar-border: oklch(0.91 0.005 180); /* Light border */
-  --sidebar-ring: oklch(0.65 0.15 180); /* Teal ring */
+  --sidebar-accent: oklch(0.95 0 0); /* Light gray accent */
+  --sidebar-accent-foreground: oklch(0.09 0 0); /* Black text */
+  --sidebar-border: oklch(0.89 0 0); /* Light gray border */
+  --sidebar-ring: oklch(0.09 0 0); /* Black ring */
 }
 
 .dark {
@@ -85,38 +85,32 @@
   }
 }
 
-/* Custom Community Warmth Theme Classes */
+/* Custom Black and White Theme Classes */
 @layer utilities {
-  .bg-teal-primary {
-    background-color: #0EA5A5;
+  .bg-black-primary {
+    background-color: #000000;
   }
-  .bg-coral-accent {
-    background-color: #FF7A59;
+  .bg-gray-accent {
+    background-color: #374151;
   }
-  .text-teal-primary {
-    color: #0EA5A5;
+  .text-black-primary {
+    color: #000000;
   }
-  .text-coral-accent {
-    color: #FF7A59;
+  .text-gray-accent {
+    color: #374151;
   }
-  .border-teal-primary {
-    border-color: #0EA5A5;
+  .border-black-primary {
+    border-color: #000000;
   }
-  .border-coral-accent {
-    border-color: #FF7A59;
+  .border-gray-accent {
+    border-color: #374151;
   }
-  .gradient-teal-coral {
-    background: linear-gradient(135deg, #0EA5A5 0%, #FF7A59 100%);
-  }
-  .gradient-coral-teal {
-    background: linear-gradient(135deg, #FF7A59 0%, #0EA5A5 100%);
-  }
-  .hover-teal:hover {
-    background-color: #0EA5A5;
+  .hover-black:hover {
+    background-color: #000000;
     color: white;
   }
-  .hover-coral:hover {
-    background-color: #FF7A59;
+  .hover-gray:hover {
+    background-color: #374151;
     color: white;
   }
 }

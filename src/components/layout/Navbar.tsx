@@ -57,10 +57,10 @@ export default function Navbar() {
             className="flex items-center space-x-2 group"
             onClick={() => setIsOpen(false)}
           >
-            <div className="w-10 h-10 bg-teal-primary rounded-xl flex items-center justify-center transform group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 bg-black-primary rounded-xl flex items-center justify-center transform group-hover:scale-105 transition-transform">
               <span className="text-white font-bold text-lg">BB</span>
             </div>
-            <span className="text-xl font-bold text-teal-primary">
+            <span className="text-xl font-bold text-black-primary">
               Build Barguna
             </span>
           </Link>
@@ -71,9 +71,9 @@ export default function Navbar() {
               <Link
                 key={item.key}
                 href={item.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-teal-50 hover:text-teal-primary ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 hover:text-black ${
                   isActive(item.href)
-                    ? "bg-teal-100 text-teal-primary shadow-sm"
+                    ? "bg-black text-white shadow-sm"
                     : "text-gray-700"
                 }`}
               >
