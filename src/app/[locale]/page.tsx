@@ -33,7 +33,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-50">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -44,66 +44,66 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <AnimatedDiv>
-            <div className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium mb-8">
+            <div className="inline-flex items-center px-4 py-2 bg-secondary text-foreground rounded-full text-sm font-medium mb-8">
               <Star className="w-4 h-4 mr-2" />
               {t("badge")}
             </div>
           </AnimatedDiv>
           
           <AnimatedDiv delay={0.1}>
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
               <span className="block">{t("heroTitle")}</span>
-              <span className="block text-black">
+              <span className="block text-foreground">
                 {t("heroHighlight")}
               </span>
             </h1>
-            <p className="text-lg font-medium text-gray-700 mt-4 italic">
+            <p className="text-lg font-medium text-muted-foreground mt-4 italic">
               &ldquo;{t("tagline")}&rdquo;
             </p>
           </AnimatedDiv>
           
           <AnimatedDiv delay={0.2}>
-            <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed">
+            <p className="text-xl sm:text-2xl text-muted-foreground max-w-4xl mx-auto mb-12 leading-relaxed">
               {t("heroSubtitle")}
             </p>
           </AnimatedDiv>
           
           <AnimatedDiv delay={0.3} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <Button asChild size="lg" className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group">
               <Link href="/join-member" className="flex items-center">
                 {t("ctaJoin")}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-2 border-black text-black hover:bg-black hover:text-white px-8 py-4 text-lg rounded-full transition-all duration-300">
+            <Button asChild size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg rounded-full transition-all duration-300">
               <Link href="/programs">{t("ctaPrograms")}</Link>
             </Button>
           </AnimatedDiv>
 
           {/* Year-1 Focus Cards */}
           <AnimatedDiv delay={0.4} className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Card className="bg-card/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
               <CardContent className="p-6 text-center">
-                <div className="text-2xl font-bold text-black mb-2 group-hover:scale-110 transition-transform">
+                <div className="text-2xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform">
                   Foundation Building
                 </div>
-                <div className="text-gray-600 font-medium">Transparent Process</div>
+                <div className="text-muted-foreground font-medium">Transparent Process</div>
               </CardContent>
             </Card>
-            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Card className="bg-card/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
               <CardContent className="p-6 text-center">
-                <div className="text-2xl font-bold text-black mb-2 group-hover:scale-110 transition-transform">
+                <div className="text-2xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform">
                   Pilot Programs
                 </div>
-                <div className="text-gray-600 font-medium">Learn & Scale</div>
+                <div className="text-muted-foreground font-medium">Learn & Scale</div>
               </CardContent>
             </Card>
-            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <Card className="bg-card/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
               <CardContent className="p-6 text-center">
-                <div className="text-2xl font-bold text-black mb-2 group-hover:scale-110 transition-transform">
+                <div className="text-2xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform">
                   Community Focus
                 </div>
-                <div className="text-gray-600 font-medium">Member-Driven</div>
+                <div className="text-muted-foreground font-medium">Member-Driven</div>
               </CardContent>
             </Card>
           </AnimatedDiv>
@@ -111,29 +111,29 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
       </section>
 
       {/* Three Pillars Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedDiv className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">{t("pillarsTitle")}</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">{t("pillarsSubtitle")}</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">{t("pillarsTitle")}</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">{t("pillarsSubtitle")}</p>
           </AnimatedDiv>
           
           <div className="grid lg:grid-cols-3 gap-8">
             <AnimatedDiv delay={0.2}>
-              <Card className="h-full bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <Card className="h-full bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-black rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Users className="h-8 w-8 text-white" />
+                  <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Users className="h-8 w-8 text-primary-foreground" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{t("pillar1Title")}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{t("pillar1Desc")}</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">{t("pillar1Title")}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{t("pillar1Desc")}</p>
                   <ul className="space-y-2">
-                    <li className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="h-4 w-4 text-black mr-2 flex-shrink-0" />
+                    <li className="flex items-center text-sm text-muted-foreground">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                       {t("pillar1Feature1")}
                     </li>
-                    <li className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="h-4 w-4 text-black mr-2 flex-shrink-0" />
+                    <li className="flex items-center text-sm text-muted-foreground">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                       {t("pillar1Feature2")}
                     </li>
                   </ul>
@@ -142,12 +142,12 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
             </AnimatedDiv>
 
             <AnimatedDiv delay={0.4}>
-              <Card className="h-full bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <Card className="h-full bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-gray-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <TrendingUp className="h-8 w-8 text-white" />
+                  <div className="w-16 h-16 bg-accent rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <TrendingUp className="h-8 w-8 text-accent-foreground" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{t("pillar2Title")}</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">{t("pillar2Title")}</h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">{t("pillar2Desc")}</p>
                   <ul className="space-y-2">
                     <li className="flex items-center text-sm text-gray-600">
