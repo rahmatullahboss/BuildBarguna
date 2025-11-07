@@ -61,19 +61,19 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">{t("contactInfo")}</h4>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-blue-400 mt-1 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-white mt-1 flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
                   {t("address")}
                 </span>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-green-400 flex-shrink-0" />
+                <Phone className="h-5 w-5 text-white flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
                   {t("phone")}
                 </span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-purple-400 flex-shrink-0" />
+                <Mail className="h-5 w-5 text-white flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
                   {t("email")}
                 </span>
@@ -99,6 +99,18 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="pt-8 border-t border-gray-700 text-center">
+          <div className="mb-4">
+            <p className="text-gray-400 text-sm mb-2">
+              {t("techPartner")} <a 
+                href="https://www.digitalcare.site/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-teal-500 hover:text-teal-400 font-medium transition-colors"
+              >
+                {t("digitalcare")}
+              </a>
+            </p>
+          </div>
           <p className="text-gray-400 text-sm">
             &copy; {new Date().getFullYear()} {t("copyright")}
           </p>

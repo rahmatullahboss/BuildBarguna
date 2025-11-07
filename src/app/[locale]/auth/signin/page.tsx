@@ -1,8 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SignInForm } from "@/components/auth/SignInForm";
+import Link from "next/link";
 
-export default async function SignInPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function SignInPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations("AuthPage");
 
   return (
@@ -27,9 +29,9 @@ export default async function SignInPage({ params: { locale } }: { params: { loc
 
         <p className="text-center text-sm text-gray-600 mt-6">
           {t("noAccount")}{" "}
-          <a href="/contact" className="text-blue-600 hover:text-blue-800 font-medium">
+          <Link href={`/${locale}/contact`} className="text-blue-600 hover:text-blue-800 font-medium">
             {t("contactUs")}
-          </a>
+          </Link>
         </p>
       </div>
     </div>

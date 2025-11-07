@@ -4,7 +4,8 @@ import { Mail, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-export default async function VerifyRequestPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function VerifyRequestPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations("AuthPage");
 
   return (

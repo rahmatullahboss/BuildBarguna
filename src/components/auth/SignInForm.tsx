@@ -25,11 +25,13 @@ export function SignInForm() {
       });
 
       if (result?.error) {
-        setMessage(t("errorSendingEmail"));
+        console.error("Sign in error:", result.error);
+        setMessage(`${t("errorSendingEmail")} (${result.error})`);
       } else {
         setMessage(t("checkEmail"));
       }
     } catch (error) {
+      console.error("Sign in exception:", error);
       setMessage(t("somethingWentWrong"));
     } finally {
       setIsLoading(false);

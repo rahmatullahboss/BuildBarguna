@@ -1,8 +1,8 @@
 # Build Barguna Co-operative Website
 
-This is the official website for the **Build Barguna Co-operative (BBC)**, a primary, non-credit co-operative based in Barguna, Bangladesh. Our mission is to unite Barguna's youth to create self-employment via skills training and member-pooled Joint Investment Projects (JIPs).
+This is the official website for **Build Barguna**, a primary, non-credit co-operative. Our mission is to build transparent foundations for co-operative-based fair economy through community participation and pilot-first approach.
 
-**Tagline:** Train. Co-invest. Build Barguna.
+**Tagline:** Together Capital, Together Development
 
 ## Tech Stack
 
