@@ -134,12 +134,18 @@ export default async function AdminVenturesPage() {
                         </Button>
                         {venture.status.toLowerCase() === 'proposed' && (
                           <>
-                            <Button variant="outline" size="sm" className="text-green-600">
-                              <CheckCircle className="h-4 w-4" />
-                            </Button>
-                            <Button variant="outline" size="sm" className="text-red-600">
-                              <XCircle className="h-4 w-4" />
-                            </Button>
+                            <form action={`/api/admin/ventures/${venture.id}/status`} method="post">
+                              <input type="hidden" name="status" value="approved" />
+                              <Button type="submit" variant="outline" size="sm" className="text-green-600">
+                                <CheckCircle className="h-4 w-4" />
+                              </Button>
+                            </form>
+                            <form action={`/api/admin/ventures/${venture.id}/status`} method="post">
+                              <input type="hidden" name="status" value="rejected" />
+                              <Button type="submit" variant="outline" size="sm" className="text-red-600">
+                                <XCircle className="h-4 w-4" />
+                              </Button>
+                            </form>
                           </>
                         )}
                       </div>

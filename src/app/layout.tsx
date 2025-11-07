@@ -64,6 +64,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning={true}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}

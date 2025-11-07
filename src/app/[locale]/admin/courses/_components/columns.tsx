@@ -61,8 +61,30 @@ export const columns: ColumnDef<Course>[] = [
               Copy Course ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Edit Course</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-600">Delete Course</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                const titleEn = prompt("New English title", course.titleEn);
+                if (titleEn === null) return;
+                fetch(`/api/admin/courses/${course.id}`, {
+                  method: "PATCH",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ titleEn }),
+                }).then(() => window.location.reload());
+              }}
+            >
+              Edit Course
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="text-red-600"
+              onClick={() => {
+                if (!confirm("Delete this course?")) return;
+                fetch(`/api/admin/courses/${course.id}`, {
+                  method: "DELETE",
+                }).then(() => window.location.reload());
+              }}
+            >
+              Delete Course
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

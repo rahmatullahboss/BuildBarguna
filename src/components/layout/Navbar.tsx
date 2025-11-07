@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Settings } from "lucide-react";
 import { Button } from "../ui/button";
 import LanguageToggle from "../LanguageToggle";
+import DarkModeToggle from "@/components/DarkModeToggle";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -58,8 +59,8 @@ export default function Navbar() {
     <header 
       className={`fixed top-0 w-full z-40 transition-all duration-300 ${
         isScrolled 
-          ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-200" 
-          : "bg-white/80 backdrop-blur-md"
+          ? "bg-background/95 backdrop-blur-lg shadow-lg border-b border-border" 
+          : "bg-background/80 backdrop-blur-md"
       }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,7 +101,7 @@ export default function Navbar() {
             {/* Admin Link - Desktop */}
             <Link
               href={`/${currentLocale}/admin`}
-              className="hidden lg:flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100 text-gray-700 hover:text-black"
+              className="hidden lg:flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-secondary text-foreground hover:text-foreground"
               title="Admin Panel"
             >
               <Settings className="h-4 w-4" />
@@ -114,6 +115,7 @@ export default function Navbar() {
               </div>
             )}
             
+            <DarkModeToggle />
             <LanguageToggle />
             
             {/* Mobile menu button */}

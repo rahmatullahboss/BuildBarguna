@@ -18,6 +18,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import CourseDialog from "./course-dialog";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -38,7 +39,7 @@ export function CoursesDataTable<TData, TValue>({
   return (
     <div>
        <div className="flex items-center justify-end py-4">
-        <Button>Create Course</Button>
+        <CourseDialog onCreated={() => window.location.reload()} />
       </div>
       <div className="rounded-md border">
         <Table>
