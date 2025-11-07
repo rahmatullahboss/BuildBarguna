@@ -1,7 +1,8 @@
 // src/components/forms/JoinMemberForm.tsx
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
+import { useActionState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { joinMemberSchema } from "@/lib/schemas";
@@ -36,7 +37,7 @@ function SubmitButton() {
 }
 
 export function JoinMemberForm() {
-  const [state, formAction] = useFormState(joinMemberAction, initialState);
+  const [state, formAction] = useActionState(joinMemberAction, initialState);
 
   const form = useForm<z.infer<typeof joinMemberSchema>>({
     resolver: zodResolver(joinMemberSchema),

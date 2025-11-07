@@ -33,7 +33,7 @@ export default function Navbar() {
     { key: "programs", href: `/${currentLocale}/programs` },
     { key: "brands", href: `/${currentLocale}/brands` },
     { key: "members", href: `/${currentLocale}/join-member` },
-    { key: "governance", href: `/${currentLocale}/governance` },
+    { key: "governance", href: `/${currentLocale}/nitimala` },
     { key: "stories", href: `/${currentLocale}/stories` },
     { key: "partners", href: `/${currentLocale}/partners` },
     { key: "contact", href: `/${currentLocale}/contact` }

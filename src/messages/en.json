@@ -5,7 +5,7 @@
     "programs": "Programs",
     "brands": "Brands",
     "members": "Membership",
-    "governance": "Governance",
+    "governance": "Policy Manual",
     "stories": "News/Blog",
     "partners": "Partners",
     "contact": "Contact",
@@ -126,6 +126,20 @@
     "meetingCalendar": "Meeting Calendar & Minutes (Summary)",
     "procurement": "Procurement & Conflict of Interest—Draft Policy",
     "grievance": "Grievance/Appeal Process—Draft → Approval"
+  },
+  "GovernancePage": {
+    "title": "Co-operative Model & Governance",
+    "subtitle": "Learn about our co-operative principles and governance structure.",
+    "principlesTitle": "Co-operative Principles (Brief)",
+    "principlesDesc": "Voluntary and open membership, democratic control, member economic participation, autonomy, education and training, co-operation among co-operatives, concern for community.",
+    "governanceTitle": "Governance",
+    "governance1": "Annual General Meeting (AGM) & budget/annual report approval",
+    "governance2": "Quarterly board meetings",
+    "governance3": "Conflict-of-Interest policy",
+    "governance4": "Independent audit & published reports",
+    "governance5": "Grievance redress mechanism",
+    "rightsTitle": "Member Rights & Responsibilities",
+    "rightsDesc": "Voting rights, right to information, profit/risk sharing; adherence to constitution/policies, dues payment, participation."
   },
   "GovernancePage": {
     "title": "Governance",
@@ -260,5 +274,244 @@
     "settings": "Settings",
     "backToSite": "Back to Site",
     "signOut": "Sign Out"
+  },
+  "NitimalaPage": {
+    "title": "Policy (Policy Manual)",
+    "version": "Version: v0.9 (Draft)",
+    "effectiveDate": "Effective Date: [DD MMM YYYY]",
+    "approver": "Approving Body: Interim Executive Committee (Interim EC)",
+    "legalRef": "Legal References: Applicable laws and regulations (Bangladesh Co-operative Act and amendments, related rules/circulars).",
+    "disclaimer": "Disclaimer: This is a general draft policy for a start-up co-operative. Legal review by a lawyer/Registrar of Co-operatives is mandatory before finalization.",
+    "downloadPdf": "Download PDF",
+    "lastUpdated": "Last Updated",
+    "intro": "This policy document defines a professional framework for governance, financial transparency, risk control, and member service excellence. Below are the table of contents and detailed sections.",
+    "legalCardTitle": "Legal Information & Disclaimer",
+    "toc": { "title": "Table of Contents" },
+
+    "purpose": {
+      "cardTitle": "1) Purpose, Scope & Definitions",
+      "purposeTitle": "Purpose:",
+      "purposeText": "To define integrated rules for governance, financial management, programs, brand, information management, transparency, and risk control.",
+      "scopeTitle": "Scope:",
+      "scopeText": "All members, elected representatives, staff, volunteers, consultants, partners, vendors, and visitors (where applicable).",
+      "definitionsTitle": "Definitions (Brief):",
+      "definition1": "<strong>Member:</strong> An approved applicant whose membership is active.",
+      "definition2": "<strong>Share/Contribution:</strong> Money/equity provided according to constitution and policies.",
+      "definition3": "<strong>Community Capital Pool (CCP):</strong> A fund of members' collective capital, spent for approved purposes.",
+      "definition4": "<strong>Pilot:</strong> Small-scale experimental activity; collect learnings to scale up."
+    },
+
+    "governance": {
+      "cardTitle": "2) Governance",
+      "structureTitle": "2.1 Structure:",
+      "structure1": "General Member Meeting (AGM)",
+      "structure2": "Executive Committee (EC) — President, Vice President, General Secretary, Treasurer, Members",
+      "structure3": "Advisory Board (Honorary)",
+      "structure4": "Audit & Risk Committee",
+      "structure5": "Program Implementation Team (Volunteer/Part-time)",
+      "meetingsTitle": "2.2 Meetings & Quorum:",
+      "meetings1": "AGM: At least once a year; Quorum: [1/3] of total members or [as per constitution]",
+      "meetings2": "EC: Monthly/Quarterly; Quorum: [half+1] of members",
+      "meetings3": "Minutes summary to be uploaded on website within 7 working days.",
+      "electionTitle": "2.3 Election & Tenure:",
+      "election1": "EC Tenure: [2] years; Maximum [2] consecutive terms",
+      "election2": "Election Method: As per constitution/election rules, independent returning officer.",
+      "coiTitle": "2.4 Conflict-of-Interest (COI):",
+      "coi1": "COI declaration form mandatory; abstain from vote/decision",
+      "coi2": "If transacting with relatives/own entities, inform EC in writing in advance.",
+      "amendTitle": "2.5 Policy Amendment:",
+      "amendText": "EC proposal → Member consultation → Approval in AGM/special meeting; maintain version control."
+    },
+
+    "membership": {
+      "cardTitle": "3) Membership Policy",
+      "classTitle": "3.1 Classes:",
+      "classText": "Founder, General, Associate, Institutional.",
+      "eligibilityTitle": "3.2 Eligibility:",
+      "eligibilityText": "18+, [Upazila/Union] resident/entrepreneur, compliance with constitution/policies, NID/address proof.",
+      "processTitle": "3.3 Process:",
+      "processText": "Pre-registration → Verification → Orientation → Approval → Member ID.",
+      "feesTitle": "3.4 Fees/Contribution:",
+      "feesText": "Admission Fee: [৳X], Share Contribution: [৳Y]/unit; Annual Renewal: [৳Z]. (Final after approval)",
+      "rightsTitle": "3.5 Rights & Duties:",
+      "rightsText": "Voting rights (where applicable), right to information, compliance with policies, regularization of dues/contributions.",
+      "suspensionTitle": "3.6 Suspension/Cancellation:",
+      "suspensionText": "In case of non-payment, misconduct, COI violation—Show-cause → Hearing → Decision."
+    },
+
+    "finance": {
+      "cardTitle": "4) Financial Policy",
+      "bankingTitle": "4.1 Banking & Accounting:",
+      "banking1": "Named bank account; Joint signatory: Treasurer + President/General Secretary.",
+      "banking2": "Double-entry accounting, monthly close, annual audit.",
+      "banking3": "Digital vouchers/receipts; minimize cash handling.",
+      "budgetTitle": "4.2 Budget & Approval:",
+      "budget1": "Annual budget approved at AGM; quarterly review.",
+      "budget2": "Extra-budgetary expense > [৳50,000] requires special EC approval.",
+      "authorityTitle": "4.3 Financial Authority Matrix:",
+      "authority1": "Team Lead: ≤ [৳10,000]",
+      "authority2": "Treasurer: ≤ [৳25,000]",
+      "authority3": "General Secretary: ≤ [৳50,000]",
+      "authority4": "EC (Resolution): > [৳50,000]",
+      "pettyCashTitle": "4.4 Petty Cash:",
+      "pettyCashText": "Maximum float limit [৳20,000]; monthly reconciliation.",
+      "grantsTitle": "4.5 Grants/Donations:",
+      "grantsText": "Accept after legal setup is complete; until then, collect pledge forms—no money acceptance.",
+      "transparencyTitle": "4.6 Financial Reporting & Transparency:",
+      "transparencyText": "Quarterly expense summary, annual financial statements, independent audit summary on website."
+    },
+
+    "ccp": {
+      "cardTitle": "5) Community Capital Pool (CCP) Policy",
+      "purposeTitle": "5.1 Purpose:",
+      "purposeText": "Support for micro-entrepreneurs/equipment/raw materials/working capital; not a bank—limited and risk-controlled support under co-operative structure.",
+      "sourceTitle": "5.2 Sources of Fund:",
+      "sourceText": "Member contributions, approved donations/CSR (if legally permitted), part of surplus.",
+      "eligibilityTitle": "5.3 Eligibility & Limits:",
+      "eligibility1": "Active membership ≥ [3] months; participation/orientation completed",
+      "eligibility2": "Exposure per member: ≤ [৳X] or [Y%] of CCP, whichever is less",
+      "eligibility3": "Portfolio cap: ≤ [30%] in a single sector",
+      "approvalTitle": "5.4 Approval Process:",
+      "approvalText": "Application → Pre-screen → Credit/Risk Sub-committee → EC resolution.",
+      "disbursementTitle": "5.5 Disbursement:",
+      "disbursementText": "Installment/milestone-based; priority to pay directly to vendor/supplier.",
+      "securityTitle": "5.6 Security/Guarantee:",
+      "securityText": "Group guarantee/post-dated cheques/micro-collateral (where applicable).",
+      "monitoringTitle": "5.7 Monitoring:",
+      "monitoringText": "Monthly visit/report; if issues identified, reschedule/support.",
+      "defaultTitle": "5.8 Default & Provisioning:",
+      "defaultText": "30+ days overdue = special monitoring; 90+ days = non-performing; provisioning rate [X%]; recovery to be fair and humane."
+    },
+
+    "procurement": {
+      "cardTitle": "6) Procurement Policy",
+      "principlesTitle": "6.1 Principles:",
+      "principlesText": "Value-for-money, quality, timeliness, fair competition, COI control.",
+      "thresholdsTitle": "6.2 Thresholds & Methods:",
+      "thresholds1": "≤ [৳25,000]: Single quotation/market price",
+      "thresholds2": "[৳25,001–৳200,000]: Minimum 3 quotations (RFQ)",
+      "thresholds3": "> [৳200,000]: Short tender/open call (RFP)",
+      "vendorTitle": "6.3 Vendor Selection Criteria:",
+      "vendorText": "Quality with price, delivery record, warranty/support, locality/equity considerations.",
+      "docsTitle": "6.4 Documentation:",
+      "docsText": "Purchase requisition → Approval → PO/Contract → GRN/Invoice → Payment voucher.",
+      "emergencyTitle": "6.5 Emergency Procurement:",
+      "emergencyText": "In case of life/property risk, fast-track procurement with EC minimum quorum approval; regularize within 7 days."
+    },
+
+    "brand": {
+      "cardTitle": "7) Brand, IP & Communications Policy",
+      "ownershipTitle": "7.1 Ownership:",
+      "ownershipText": "Registered trademarks/brands of the co-operative are owned by the co-operative; for member/partner usage, license agreements apply.",
+      "qualityTitle": "7.2 Quality Control:",
+      "qualityText": "Quality, traceability, labelling/barcode/batching policies for brand usage.",
+      "commsTitle": "7.3 Communications:",
+      "commsText": "Only designated spokespersons will issue media statements; social media guidelines must be followed.",
+      "contentRightsTitle": "7.4 Content Rights:",
+      "contentRightsText": "Written consent for use of photos/videos; additional safeguards for children/vulnerable persons."
+    },
+
+    "privacy": {
+      "cardTitle": "8) Information & Data Protection (Privacy & Data)",
+      "collectTitle": "8.1 Collection:",
+      "collectText": "Minimum necessary data for membership/pilots/events; purpose limitation.",
+      "storeTitle": "8.2 Storage:",
+      "storeText": "Password-protected drives, access control, encrypted backups.",
+      "useTitle": "8.3 Use/Sharing:",
+      "useText": "No sale to third parties without law/consent/contract; anonymized data may be used for research.",
+      "retentionTitle": "8.4 Data Retention:",
+      "retentionText": "Member records [7] years, financial records [10] years, media consents [5] years; secure destruction after expiry.",
+      "incidentTitle": "8.5 Incident Reporting:",
+      "incidentText": "Report data breach to EC within 72 hours; notify as necessary."
+    },
+
+    "safeguarding": {
+      "cardTitle": "9) Safeguarding, Gender & Code of Conduct",
+      "childTitle": "9.1 Child/Women Safeguarding:",
+      "childText": "Safe environment, guidelines, background checks (where applicable), reporting channels.",
+      "harassmentTitle": "9.2 Anti-Harassment Policy:",
+      "harassmentText": "Zero tolerance; receive complaints confidentially, conduct impartial investigations.",
+      "inclusionTitle": "9.3 Inclusion:",
+      "inclusionText": "Equal opportunity regardless of gender, religion, ethnicity; accessible design for persons with disabilities.",
+      "codeTitle": "9.4 Code of Conduct:",
+      "codeText": "Anti-bribery/corruption/gifts policy, conflict of interest, respectful language, non-discrimination."
+    },
+
+    "grievance": {
+      "cardTitle": "10) Grievance Redress & Whistleblowing",
+      "channelsTitle": "10.1 Channels:",
+      "channelsText": "Web form/email/hotline/physical drop box.",
+      "slaTitle": "10.2 SLA:",
+      "slaText": "Acknowledgment within 7 days, initial review within 14 days, resolution target 30–45 days.",
+      "confidentialityTitle": "10.3 Confidentiality:",
+      "confidentialityText": "Identity of informant protected; retaliation prohibited.",
+      "appealTitle": "10.4 Appeal:",
+      "appealText": "If complainant is not satisfied, appeal to EC/Advisory Board."
+    },
+
+    "others": {
+      "cardTitle": "11–20) Other Important Policies",
+      "p11Title": "11) Program & Training Policy:",
+      "p11Text": "Course design: local needs-based, minimum 20–30 hour modules, pre- and post-assessments. Selection: priority—women/youth/low-income members; transparent criteria.",
+      "p12Title": "12) Environment, Health & Safety (EHS):",
+      "p12Text": "Environment: waste management, plastic reduction, energy saving, water management. Workplace safety: PPE, fire safety, first aid, incident log.",
+      "p13Title": "13) Monitoring, Evaluation & Learning (MEL):",
+      "p13Text": "Baseline: member profile, income, skills—collected before launch/start. KPI (Year-1): number of policy approvals, number/completion rate of pilots, partner MOUs, feedback sessions.",
+      "p14Title": "14) Transparency & Disclosure:",
+      "p14Text": "Registration status, policies, budget summary, EC minutes summary, audit summary—regularly updated on the website.",
+      "p15Title": "15) Partnerships:",
+      "p15Text": "Process: EOI → Due diligence → Define purpose/roles → MOU → Pilot → Evaluation.",
+      "p16Title": "16) Communications & Media Policy:",
+      "p16Text": "Spokespersons: President/General Secretary/Designated media lead. Social media: official handles; use 'own views' disclaimer for personal opinions.",
+      "p17Title": "17) Record Retention & Document Control:",
+      "p17Text": "Constitution/policies: permanent; AGM/EC minutes: permanent; financial receipts/invoices: 10 years; member register: 7 years; procurement docs: 7 years.",
+      "p18Title": "18) Risk Management:",
+      "p18Text": "Register: list of strategic/operational/financial/reputational risks; probability × impact score. Treatment: avoid, reduce, share, accept.",
+      "p19Title": "19) Policy Violations & Disciplinary Actions:",
+      "p19Text": "Stepwise: verbal warning → written warning → temporary suspension → permanent cancellation (AGM approval if necessary). Clear appeal process.",
+      "p20Title": "20) Effectiveness, Exceptions & Amendments:",
+      "p20Text": "Effectiveness: effective from approval date. Exceptions: case-to-case with EC written decision; document reasons and duration. Amendments: annual review; interim changes if necessary."
+    },
+
+    "annexes": {
+      "cardTitle": "Annexes",
+      "left1": "Annex-A: COI Declaration Form (fill-in-the-blank)",
+      "left2": "Annex-B: Financial Authority Matrix (customizable)",
+      "left3": "Annex-C: Procurement thresholds and RFQ/RFP templates",
+      "left4": "Annex-D: CCP application form and evaluation checklist",
+      "left5": "Annex-E: Grievance form and process flow",
+      "right1": "Annex-F: Data privacy consent form",
+      "right2": "Annex-G: Social media guideline (brief)",
+      "right3": "Annex-H: Record retention schedule (detailed)",
+      "right4": "Annex-I: Risk register template",
+      "right5": "Annex-J: Brand usage license draft"
+    },
+
+    "highlights": {
+      "cardTitle": "Key Highlights",
+      "membershipTitle": "Membership",
+      "membershipText": "From founder to institutional — policy for all classes",
+      "financeTitle": "Financial System",
+      "financeText": "Transparent budget, audit, and authority matrix",
+      "riskTitle": "Risk Control",
+      "riskText": "CCP, procurement, and safeguarding",
+      "transparencyTitle": "Transparency",
+      "transparencyText": "Data protection, reporting, and grievance redress"
+    },
+
+    "status": {
+      "cardTitle": "Status & Updates",
+      "current": "Current Status: Draft Stage",
+      "desc": "This policy is still in draft. It will be refined based on member and expert feedback. It will be presented for approval in the AGM/special meeting.",
+      "badge1": "Open for Comments",
+      "badge2": "Under Review",
+      "lastUpdatedPrefix": "Last Updated"
+    },
+
+    "cta": {
+      "feedback": "Send Feedback",
+      "becomeMember": "Become a Member",
+      "feedbackPrompt": "For comments and suggestions, contact us"
+    }
   }
 }

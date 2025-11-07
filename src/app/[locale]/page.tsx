@@ -70,7 +70,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
           
           <AnimatedDiv delay={0.3} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <Button asChild size="lg" className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <Link href="/members" className="flex items-center">
+              <Link href="/join-member" className="flex items-center">
                 {t("ctaJoin")}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -195,7 +195,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
             <h2 className="text-4xl font-bold text-white mb-4">{t("ctaTitle")}</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{t("ctaSubtitle")}</p>
             <Button asChild size="lg" className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-              <Link href="/members" className="flex items-center">
+              <Link href="/join-member" className="flex items-center">
                 {t("ctaButton")}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

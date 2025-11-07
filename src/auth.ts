@@ -3,6 +3,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaClient } from "@prisma/client";
+import type { UserRole } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
@@ -13,6 +14,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
+  pages: {
+    signIn: "/auth/signin",
+    verifyRequest: "/auth/verify-request",
+    error: "/auth/error",
+  },
+  debug: process.env.NODE_ENV === "development",
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -31,6 +38,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           });
 
           if (!user || !user.password) {
+            console.log("User not found or no password set");
             return null;
           }
 
@@ -40,9 +48,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           );
 
           if (!isPasswordValid) {
+            console.log("Invalid password for user:", credentials.userId);
             return null;
           }
 
+          console.log("User authenticated successfully:", user.email);
           return {
             id: user.id,
             email: user.email,
@@ -60,7 +70,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async session({ session, token }) {
       if (session?.user && token) {
         session.user.id = token.sub as string;
-        session.user.role = token.role as string;
+        if (token.role) {
+          session.user.role = token.role as UserRole;
+        }
       }
       // Debug logging
       if (process.env.NODE_ENV === "development") {
@@ -86,11 +98,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return baseUrl;
     },
   },
-  pages: {
-    signIn: "/auth/signin",
-    verifyRequest: "/auth/verify-request",
-    error: "/auth/error",
-  },
-  debug: process.env.NODE_ENV === "development",
   secret: process.env.NEXTAUTH_SECRET,
 });
