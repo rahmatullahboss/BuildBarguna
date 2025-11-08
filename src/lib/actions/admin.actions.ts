@@ -1,9 +1,7 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-
-const prisma = new PrismaClient();
 
 // Get all member applications
 export async function getMemberApplications() {
@@ -61,6 +59,42 @@ export async function rejectMemberApplication(userId: string) {
     console.error("Error rejecting member:", error);
     return { success: false, message: "Failed to reject member application." };
   }
+}
+
+// Remove an approved member (admin action)
+export async function removeApprovedMember(userId: string): Promise<void> {
+  try {
+    // Delete dependent records first to satisfy FK constraints
+    await prisma.memberProfile.deleteMany({ where: { userId } });
+
+    // Delete the user
+    await prisma.user.delete({ where: { id: userId } });
+
+    // Try to return user back to the same page (works in form actions)
+    try {
+      const { headers } = await import("next/headers");
+      const { redirect } = await import("next/navigation");
+      const referer = headers().get("referer");
+      if (referer) {
+        redirect(referer);
+      }
+    } catch (e) {
+      // Fall back to cache revalidation if redirect is not available
+      revalidatePath("/admin/members");
+      revalidatePath("/en/admin/members");
+      revalidatePath("/bn/admin/members");
+    }
+
+    return;
+  } catch (error) {
+    console.error("Error removing approved member:", error);
+  }
+}
+
+export async function removeApprovedMemberAction(formData: FormData): Promise<void> {
+  const userId = String(formData.get("userId") || "");
+  if (!userId) return;
+  await removeApprovedMember(userId);
 }
 
 // Get dashboard statistics

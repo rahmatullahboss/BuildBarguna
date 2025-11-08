@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,7 +13,7 @@ import {
   TableRow 
 } from "@/components/ui/table";
 import { CheckCircle, XCircle, Eye, Phone, Mail, MapPin, FileText, Users } from "lucide-react";
-import { approveMemberApplication, rejectMemberApplication } from "@/lib/actions/admin.actions";
+import { approveMemberApplication, rejectMemberApplication, removeApprovedMember } from "@/lib/actions/admin.actions";
 
 interface MemberApplication {
   id: string;
@@ -36,19 +36,33 @@ interface Props {
 export default function MemberApplicationsTable({ applications }: Props) {
   const [loading, setLoading] = useState<string | null>(null);
   const [selectedMember, setSelectedMember] = useState<MemberApplication | null>(null);
+  const [optimisticallyRemoved, setOptimisticallyRemoved] = useState<Set<string>>(new Set());
+  const [isPending, startTransition] = useTransition();
 
   const handleApprove = async (userId: string) => {
+    if (!confirm("Approve this member application?")) return;
     setLoading(userId);
     try {
       const result = await approveMemberApplication(userId);
-      if (result.success) {
-        // Refresh the page or update state
+      if (result?.success) {
         window.location.reload();
-      } else {
+      } else if (result?.message) {
         alert(result.message);
       }
-    } catch (error) {
+    } catch (e) {
       alert("Failed to approve member");
+    } finally {
+      setLoading(null);
+    }
+  };
+
+
+  const handleRemove = async (userId: string) => {
+    if (!confirm("Are you sure you want to remove this approved member? This action cannot be undone.")) return;
+    setLoading(userId);
+    try {
+      const result = await removeApprovedMember(userId);
+      // handle result if needed
     } finally {
       setLoading(null);
     }
@@ -336,7 +350,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {approvedMembers.map((member) => (
+                {approvedMembers.filter(m => !optimisticallyRemoved.has(m.id)).map((member) => (
                   <TableRow key={member.id}>
                     <TableCell className="font-medium">{member.name}</TableCell>
                     <TableCell>{member.email}</TableCell>
@@ -351,6 +365,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
                           variant="outline"
                           size="sm"
                           onClick={() => setSelectedMember(member)}
+                          title="View details"
                         >
                           <Eye className="h-4 w-4" />
                         </Button>
@@ -359,8 +374,37 @@ export default function MemberApplicationsTable({ applications }: Props) {
                           size="sm"
                           onClick={() => handlePrintPDF(member)}
                           className="text-blue-600 hover:text-blue-700"
+                          title="Print certificate"
                         >
                           <FileText className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          title="Remove approved member"
+                          disabled={isPending || loading === member.id}
+                          onClick={() => {
+                            if (!confirm("Remove this approved member? This cannot be undone.")) return;
+                            setOptimisticallyRemoved(prev => new Set(prev).add(member.id));
+                            setLoading(member.id);
+                            startTransition(async () => {
+                              try {
+                                await removeApprovedMember(member.id);
+                              } catch (e) {
+                                // Revert optimistic update on failure
+                                setOptimisticallyRemoved(prev => {
+                                  const next = new Set(prev);
+                                  next.delete(member.id);
+                                  return next;
+                                });
+                                alert("Failed to remove member");
+                              } finally {
+                                setLoading(null);
+                              }
+                            });
+                          }}
+                        >
+                          <XCircle className="h-4 w-4 mr-1" /> Remove
                         </Button>
                       </div>
                     </TableCell>
