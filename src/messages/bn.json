@@ -206,6 +206,8 @@
     "lastName": "নামের শেষ অংশ",
     "lastNamePlaceholder": "আপনার নামের শেষ অংশ লিখুন",
     "emailPlaceholder": "আপনার ইমেইল ঠিকানা লিখুন",
+    "phone": "ফোন নম্বর (ঐচ্ছিক)",
+    "phonePlaceholder": "+৮৮০১XXXXXXXXX",
     "subject": "বিষয়",
     "subjectPlaceholder": "এটি কী সম্পর্কে?",
     "message": "বার্তা",

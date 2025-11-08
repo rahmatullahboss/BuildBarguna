@@ -14,7 +14,8 @@ import {
   Settings,
   LogOut,
   ChevronRight,
-  Home
+  Home,
+  Mail
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DarkModeToggle from "@/components/DarkModeToggle";
@@ -58,6 +59,11 @@ export default function AdminSidebar({ locale }: AdminSidebarProps) {
       title: "Stories",
       href: `/${locale}/admin/stories`,
       icon: FileText
+    },
+    {
+      title: "Contacts",
+      href: `/${locale}/admin/contacts`,
+      icon: Mail
     },
     {
       title: "Settings",

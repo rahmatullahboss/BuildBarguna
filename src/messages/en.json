@@ -210,6 +210,8 @@
     "lastName": "Last Name",
     "lastNamePlaceholder": "Enter your last name",
     "emailPlaceholder": "Enter your email address",
+    "phone": "Phone Number (Optional)",
+    "phonePlaceholder": "+8801XXXXXXXXX",
     "subject": "Subject",
     "subjectPlaceholder": "What is this regarding?",
     "message": "Message",

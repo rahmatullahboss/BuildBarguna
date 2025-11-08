@@ -1,11 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ContactForm } from "@/components/forms/ContactForm";
 
-export default async function ContactPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations("ContactPage");
 
   return (
@@ -94,62 +93,7 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
               <CardTitle className="text-2xl">{t("sendMessage")}</CardTitle>
             </CardHeader>
             <CardContent className="p-8">
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      {t("firstName")}
-                    </label>
-                    <Input 
-                      placeholder={t("firstNamePlaceholder")}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      {t("lastName")}
-                    </label>
-                    <Input 
-                      placeholder={t("lastNamePlaceholder")}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    {t("email")}
-                  </label>
-                  <Input 
-                    type="email"
-                    placeholder={t("emailPlaceholder")}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    {t("subject")}
-                  </label>
-                  <Input 
-                    placeholder={t("subjectPlaceholder")}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    {t("message")}
-                  </label>
-                  <Textarea 
-                    rows={5}
-                    placeholder={t("messagePlaceholder")}
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  {t("sendButton")}
-                </Button>
-              </form>
+              <ContactForm />
             </CardContent>
           </Card>
         </div>
