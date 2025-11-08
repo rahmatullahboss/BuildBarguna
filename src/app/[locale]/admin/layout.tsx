@@ -28,7 +28,7 @@ export default async function AdminLayout({ children, params }: Props) {
   }
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-background">
       <AdminSidebar locale={locale} />
       <main className="flex-1 overflow-y-auto">
         <div className="p-8">

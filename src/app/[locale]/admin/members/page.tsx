@@ -31,7 +31,7 @@ export default async function AdminMembersPage() {
               Back to Dashboard
             </Button>
           </Link>
-          <h1 className="text-3xl font-bold">Member Management</h1>
+          <h1 className="text-3xl font-bold text-foreground">Member Management</h1>
         </div>
       </div>
 

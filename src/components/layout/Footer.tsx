@@ -12,8 +12,8 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-                <span className="text-black font-bold text-lg">BB</span>
+              <div className="w-10 h-10 bg-background rounded-xl flex items-center justify-center">
+                <span className="text-foreground font-bold text-lg">BB</span>
               </div>
               <span className="text-xl font-bold">Build Barguna</span>
             </div>
@@ -21,14 +21,14 @@ export default function Footer() {
               {t("description")}
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <Facebook className="h-5 w-5 text-gray-800" />
+              <a href="#" className="w-10 h-10 bg-background rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                <Facebook className="h-5 w-5 text-foreground" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <Twitter className="h-5 w-5 text-gray-800" />
+              <a href="#" className="w-10 h-10 bg-background rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                <Twitter className="h-5 w-5 text-foreground" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                <Instagram className="h-5 w-5 text-gray-800" />
+              <a href="#" className="w-10 h-10 bg-background rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                <Instagram className="h-5 w-5 text-foreground" />
               </a>
             </div>
           </div>

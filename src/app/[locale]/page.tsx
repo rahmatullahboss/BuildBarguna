@@ -148,14 +148,14 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
                     <TrendingUp className="h-8 w-8 text-accent-foreground" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">{t("pillar2Title")}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{t("pillar2Desc")}</p>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{t("pillar2Desc")}</p>
                   <ul className="space-y-2">
-                    <li className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="h-4 w-4 text-black mr-2 flex-shrink-0" />
+                    <li className="flex items-center text-sm text-muted-foreground">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                       {t("pillar2Feature1")}
                     </li>
-                    <li className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="h-4 w-4 text-black mr-2 flex-shrink-0" />
+                    <li className="flex items-center text-sm text-muted-foreground">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                       {t("pillar2Feature2")}
                     </li>
                   </ul>
@@ -164,20 +164,20 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
             </AnimatedDiv>
 
             <AnimatedDiv delay={0.6}>
-              <Card className="h-full bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <Card className="h-full bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-black rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Award className="h-8 w-8 text-white" />
+                  <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Award className="h-8 w-8 text-primary-foreground" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{t("pillar3Title")}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{t("pillar3Desc")}</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">{t("pillar3Title")}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{t("pillar3Desc")}</p>
                   <ul className="space-y-2">
-                    <li className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="h-4 w-4 text-black mr-2 flex-shrink-0" />
+                    <li className="flex items-center text-sm text-muted-foreground">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                       {t("pillar3Feature1")}
                     </li>
-                    <li className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="h-4 w-4 text-black mr-2 flex-shrink-0" />
+                    <li className="flex items-center text-sm text-muted-foreground">
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                       {t("pillar3Feature2")}
                     </li>
                   </ul>
@@ -189,12 +189,12 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-secondary dark:bg-accent">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedDiv>
-            <h2 className="text-4xl font-bold text-white mb-4">{t("ctaTitle")}</h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{t("ctaSubtitle")}</p>
-            <Button asChild size="lg" className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+            <h2 className="text-4xl font-bold text-foreground mb-4">{t("ctaTitle")}</h2>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">{t("ctaSubtitle")}</p>
+            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
               <Link href="/join-member" className="flex items-center">
                 {t("ctaButton")}
                 <ArrowRight className="ml-2 h-5 w-5" />

@@ -14,13 +14,13 @@ export default function BrandsPage() {
 
   return (
     <div className="container mx-auto py-16 px-4">
-      <h1 className="text-4xl font-bold text-stone-800 text-center">{t("title")}</h1>
-      <p className="mt-4 max-w-2xl mx-auto text-center text-stone-600">{t("subtitle")}</p>
+      <h1 className="text-4xl font-bold text-foreground text-center">{t("title")}</h1>
+      <p className="mt-4 max-w-2xl mx-auto text-center text-muted-foreground">{t("subtitle")}</p>
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {mockBrands.map((brand) => (
           <Link href={`/brands/${brand.slug}`} key={brand.slug}>
-            <div className="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold text-stone-700">{brand.name}</h3>
+            <div className="block bg-card p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border border-border">
+              <h3 className="text-xl font-semibold text-foreground">{brand.name}</h3>
             </div>
           </Link>
         ))}

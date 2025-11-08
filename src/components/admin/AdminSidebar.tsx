@@ -17,6 +17,7 @@ import {
   Home
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import DarkModeToggle from "@/components/DarkModeToggle";
 
 interface AdminSidebarProps {
   locale: string;
@@ -75,15 +76,18 @@ export default function AdminSidebar({ locale }: AdminSidebarProps) {
   return (
     <aside className="w-64 bg-background border-r border-border shadow-lg">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center">
-            <span className="text-white font-bold text-lg">BB</span>
+      <div className="p-6 border-b border-border">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">BB</span>
+            </div>
+            <div>
+              <h2 className="text-lg font-bold text-foreground">Admin Panel</h2>
+              <p className="text-xs text-muted-foreground">Management Dashboard</p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-lg font-bold text-foreground">Admin Panel</h2>
-            <p className="text-xs text-muted-foreground">Management Dashboard</p>
-          </div>
+          <DarkModeToggle />
         </div>
       </div>
 
@@ -104,9 +108,9 @@ export default function AdminSidebar({ locale }: AdminSidebarProps) {
                     : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                 }`}
               >
-                <Icon className={`h-5 w-5 ${active ? "text-white" : "text-gray-400 group-hover:text-gray-600"}`} />
+                <Icon className={`h-5 w-5 ${active ? "text-primary-foreground" : "text-muted-foreground group-hover:text-foreground"}`} />
                 <span className="flex-1">{item.title}</span>
-                {active && <ChevronRight className="h-4 w-4 text-white" />}
+                {active && <ChevronRight className="h-4 w-4 text-primary-foreground" />}
               </Link>
             );
           })}
@@ -114,19 +118,19 @@ export default function AdminSidebar({ locale }: AdminSidebarProps) {
       </nav>
 
       {/* Footer */}
-      <div className="p-4 border-t border-gray-200 space-y-2">
+      <div className="p-4 border-t border-border space-y-2">
         <Link
           href={`/${locale}/`}
-          className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+          className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
         >
-          <Home className="h-5 w-5 text-gray-400" />
+          <Home className="h-5 w-5 text-muted-foreground" />
           <span>Back to Site</span>
         </Link>
         
         <Button
           variant="ghost"
           onClick={() => signOut({ callbackUrl: `/${locale}/` })}
-          className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
+          className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/20"
         >
           <LogOut className="h-5 w-5 mr-3" />
           Sign Out

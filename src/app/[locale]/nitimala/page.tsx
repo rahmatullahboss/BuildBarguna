@@ -19,7 +19,7 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
   const t = await getTranslations("NitimalaPage");
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12">
@@ -47,18 +47,18 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
-              <a href="#purpose" className="hover:underline text-gray-700">{t("purpose.cardTitle")}</a>
-              <a href="#governance" className="hover:underline text-gray-700">{t("governance.cardTitle")}</a>
-              <a href="#membership" className="hover:underline text-gray-700">{t("membership.cardTitle")}</a>
-              <a href="#finance" className="hover:underline text-gray-700">{t("finance.cardTitle")}</a>
-              <a href="#ccp" className="hover:underline text-gray-700">{t("ccp.cardTitle")}</a>
-              <a href="#procurement" className="hover:underline text-gray-700">{t("procurement.cardTitle")}</a>
-              <a href="#brand" className="hover:underline text-gray-700">{t("brand.cardTitle")}</a>
-              <a href="#privacy" className="hover:underline text-gray-700">{t("privacy.cardTitle")}</a>
-              <a href="#safeguarding" className="hover:underline text-gray-700">{t("safeguarding.cardTitle")}</a>
-              <a href="#grievance" className="hover:underline text-gray-700">{t("grievance.cardTitle")}</a>
-              <a href="#others" className="hover:underline text-gray-700">{t("others.cardTitle")}</a>
-              <a href="#annexes" className="hover:underline text-gray-700">{t("annexes.cardTitle")}</a>
+              <a href="#purpose" className="hover:underline text-muted-foreground hover:text-foreground">{t("purpose.cardTitle")}</a>
+              <a href="#governance" className="hover:underline text-muted-foreground hover:text-foreground">{t("governance.cardTitle")}</a>
+              <a href="#membership" className="hover:underline text-muted-foreground hover:text-foreground">{t("membership.cardTitle")}</a>
+              <a href="#finance" className="hover:underline text-muted-foreground hover:text-foreground">{t("finance.cardTitle")}</a>
+              <a href="#ccp" className="hover:underline text-muted-foreground hover:text-foreground">{t("ccp.cardTitle")}</a>
+              <a href="#procurement" className="hover:underline text-muted-foreground hover:text-foreground">{t("procurement.cardTitle")}</a>
+              <a href="#brand" className="hover:underline text-muted-foreground hover:text-foreground">{t("brand.cardTitle")}</a>
+              <a href="#privacy" className="hover:underline text-muted-foreground hover:text-foreground">{t("privacy.cardTitle")}</a>
+              <a href="#safeguarding" className="hover:underline text-muted-foreground hover:text-foreground">{t("safeguarding.cardTitle")}</a>
+              <a href="#grievance" className="hover:underline text-muted-foreground hover:text-foreground">{t("grievance.cardTitle")}</a>
+              <a href="#others" className="hover:underline text-muted-foreground hover:text-foreground">{t("others.cardTitle")}</a>
+              <a href="#annexes" className="hover:underline text-muted-foreground hover:text-foreground">{t("annexes.cardTitle")}</a>
             </div>
           </CardContent>
         </Card>
@@ -91,24 +91,24 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="purpose" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <FileText className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <FileText className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("purpose.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("purpose.purposeTitle")}</h4>
-              <p className="text-gray-700">{t("purpose.purposeText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("purpose.purposeTitle")}</h4>
+              <p className="text-muted-foreground">{t("purpose.purposeText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("purpose.scopeTitle")}</h4>
-              <p className="text-gray-700">{t("purpose.scopeText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("purpose.scopeTitle")}</h4>
+              <p className="text-muted-foreground">{t("purpose.scopeText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("purpose.definitionsTitle")}</h4>
-              <ul className="space-y-2 text-gray-700">
+              <h4 className="font-semibold text-foreground mb-2">{t("purpose.definitionsTitle")}</h4>
+              <ul className="space-y-2 text-muted-foreground">
                 <li>{t.rich("purpose.definition1", { strong: (chunks) => <strong>{chunks}</strong> })}</li>
                 <li>{t.rich("purpose.definition2", { strong: (chunks) => <strong>{chunks}</strong> })}</li>
                 <li>{t.rich("purpose.definition3", { strong: (chunks) => <strong>{chunks}</strong> })}</li>
@@ -122,16 +122,16 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="governance" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <Users className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <Users className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("governance.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("governance.structureTitle")}</h4>
-              <ul className="space-y-1 text-gray-700 ml-4">
+              <h4 className="font-semibold text-foreground mb-2">{t("governance.structureTitle")}</h4>
+              <ul className="space-y-1 text-muted-foreground ml-4">
                 <li>• {t("governance.structure1")}</li>
                 <li>• {t("governance.structure2")}</li>
                 <li>• {t("governance.structure3")}</li>
@@ -140,30 +140,30 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("governance.meetingsTitle")}</h4>
-              <ul className="space-y-1 text-gray-700 ml-4">
+              <h4 className="font-semibold text-foreground mb-2">{t("governance.meetingsTitle")}</h4>
+              <ul className="space-y-1 text-muted-foreground ml-4">
                 <li>• {t("governance.meetings1")}</li>
                 <li>• {t("governance.meetings2")}</li>
                 <li>• {t("governance.meetings3")}</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("governance.electionTitle")}</h4>
-              <ul className="space-y-1 text-gray-700 ml-4">
+              <h4 className="font-semibold text-foreground mb-2">{t("governance.electionTitle")}</h4>
+              <ul className="space-y-1 text-muted-foreground ml-4">
                 <li>• {t("governance.election1")}</li>
                 <li>• {t("governance.election2")}</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("governance.coiTitle")}</h4>
-              <ul className="space-y-1 text-gray-700 ml-4">
+              <h4 className="font-semibold text-foreground mb-2">{t("governance.coiTitle")}</h4>
+              <ul className="space-y-1 text-muted-foreground ml-4">
                 <li>• {t("governance.coi1")}</li>
                 <li>• {t("governance.coi2")}</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("governance.amendTitle")}</h4>
-              <p className="text-gray-700">{t("governance.amendText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("governance.amendTitle")}</h4>
+              <p className="text-muted-foreground">{t("governance.amendText")}</p>
             </div>
           </CardContent>
         </Card>
@@ -172,36 +172,36 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="membership" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <Users className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <Users className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("membership.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("membership.classTitle")}</h4>
-              <p className="text-gray-700">{t("membership.classText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("membership.classTitle")}</h4>
+              <p className="text-muted-foreground">{t("membership.classText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("membership.eligibilityTitle")}</h4>
-              <p className="text-gray-700">{t("membership.eligibilityText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("membership.eligibilityTitle")}</h4>
+              <p className="text-muted-foreground">{t("membership.eligibilityText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("membership.processTitle")}</h4>
-              <p className="text-gray-700">{t("membership.processText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("membership.processTitle")}</h4>
+              <p className="text-muted-foreground">{t("membership.processText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("membership.feesTitle")}</h4>
-              <p className="text-gray-700">{t("membership.feesText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("membership.feesTitle")}</h4>
+              <p className="text-muted-foreground">{t("membership.feesText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("membership.rightsTitle")}</h4>
-              <p className="text-gray-700">{t("membership.rightsText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("membership.rightsTitle")}</h4>
+              <p className="text-muted-foreground">{t("membership.rightsText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("membership.suspensionTitle")}</h4>
-              <p className="text-gray-700">{t("membership.suspensionText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("membership.suspensionTitle")}</h4>
+              <p className="text-muted-foreground">{t("membership.suspensionText")}</p>
             </div>
           </CardContent>
         </Card>
@@ -210,31 +210,31 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="finance" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <DollarSign className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <DollarSign className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("finance.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("finance.bankingTitle")}</h4>
-              <ul className="space-y-1 text-gray-700 ml-4">
+              <h4 className="font-semibold text-foreground mb-2">{t("finance.bankingTitle")}</h4>
+              <ul className="space-y-1 text-muted-foreground ml-4">
                 <li>• {t("finance.banking1")}</li>
                 <li>• {t("finance.banking2")}</li>
                 <li>• {t("finance.banking3")}</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("finance.budgetTitle")}</h4>
-              <ul className="space-y-1 text-gray-700 ml-4">
+              <h4 className="font-semibold text-foreground mb-2">{t("finance.budgetTitle")}</h4>
+              <ul className="space-y-1 text-muted-foreground ml-4">
                 <li>• {t("finance.budget1")}</li>
                 <li>• {t("finance.budget2")}</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("finance.authorityTitle")}</h4>
-              <ul className="space-y-1 text-gray-700 ml-4">
+              <h4 className="font-semibold text-foreground mb-2">{t("finance.authorityTitle")}</h4>
+              <ul className="space-y-1 text-muted-foreground ml-4">
                 <li>• {t("finance.authority1")}</li>
                 <li>• {t("finance.authority2")}</li>
                 <li>• {t("finance.authority3")}</li>
@@ -242,16 +242,16 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("finance.pettyCashTitle")}</h4>
-              <p className="text-gray-700">{t("finance.pettyCashText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("finance.pettyCashTitle")}</h4>
+              <p className="text-muted-foreground">{t("finance.pettyCashText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("finance.grantsTitle")}</h4>
-              <p className="text-gray-700">{t("finance.grantsText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("finance.grantsTitle")}</h4>
+              <p className="text-muted-foreground">{t("finance.grantsText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("finance.transparencyTitle")}</h4>
-              <p className="text-gray-700">{t("finance.transparencyText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("finance.transparencyTitle")}</h4>
+              <p className="text-muted-foreground">{t("finance.transparencyText")}</p>
             </div>
           </CardContent>
         </Card>
@@ -260,48 +260,48 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="ccp" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <Building className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <Building className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("ccp.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("ccp.purposeTitle")}</h4>
-              <p className="text-gray-700">{t("ccp.purposeText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("ccp.purposeTitle")}</h4>
+              <p className="text-muted-foreground">{t("ccp.purposeText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("ccp.sourceTitle")}</h4>
-              <p className="text-gray-700">{t("ccp.sourceText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("ccp.sourceTitle")}</h4>
+              <p className="text-muted-foreground">{t("ccp.sourceText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("ccp.eligibilityTitle")}</h4>
-              <ul className="space-y-1 text-gray-700 ml-4">
+              <h4 className="font-semibold text-foreground mb-2">{t("ccp.eligibilityTitle")}</h4>
+              <ul className="space-y-1 text-muted-foreground ml-4">
                 <li>• {t("ccp.eligibility1")}</li>
                 <li>• {t("ccp.eligibility2")}</li>
                 <li>• {t("ccp.eligibility3")}</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("ccp.approvalTitle")}</h4>
-              <p className="text-gray-700">{t("ccp.approvalText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("ccp.approvalTitle")}</h4>
+              <p className="text-muted-foreground">{t("ccp.approvalText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("ccp.disbursementTitle")}</h4>
-              <p className="text-gray-700">{t("ccp.disbursementText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("ccp.disbursementTitle")}</h4>
+              <p className="text-muted-foreground">{t("ccp.disbursementText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("ccp.securityTitle")}</h4>
-              <p className="text-gray-700">{t("ccp.securityText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("ccp.securityTitle")}</h4>
+              <p className="text-muted-foreground">{t("ccp.securityText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("ccp.monitoringTitle")}</h4>
-              <p className="text-gray-700">{t("ccp.monitoringText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("ccp.monitoringTitle")}</h4>
+              <p className="text-muted-foreground">{t("ccp.monitoringText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("ccp.defaultTitle")}</h4>
-              <p className="text-gray-700">{t("ccp.defaultText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("ccp.defaultTitle")}</h4>
+              <p className="text-muted-foreground">{t("ccp.defaultText")}</p>
             </div>
           </CardContent>
         </Card>
@@ -310,20 +310,20 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="procurement" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <FileText className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <FileText className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("procurement.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("procurement.principlesTitle")}</h4>
-              <p className="text-gray-700">{t("procurement.principlesText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("procurement.principlesTitle")}</h4>
+              <p className="text-muted-foreground">{t("procurement.principlesText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("procurement.thresholdsTitle")}</h4>
-              <ul className="space-y-1 text-gray-700 ml-4">
+              <h4 className="font-semibold text-foreground mb-2">{t("procurement.thresholdsTitle")}</h4>
+              <ul className="space-y-1 text-muted-foreground ml-4">
                 <li>• {t("procurement.thresholds1")}</li>
                 <li>• {t("procurement.thresholds2")}</li>
                 <li>• {t("procurement.thresholds3")}</li>
@@ -331,16 +331,16 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("procurement.vendorTitle")}</h4>
-              <p className="text-gray-700">{t("procurement.vendorText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("procurement.vendorTitle")}</h4>
+              <p className="text-muted-foreground">{t("procurement.vendorText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("procurement.docsTitle")}</h4>
-              <p className="text-gray-700">{t("procurement.docsText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("procurement.docsTitle")}</h4>
+              <p className="text-muted-foreground">{t("procurement.docsText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("procurement.emergencyTitle")}</h4>
-              <p className="text-gray-700">{t("procurement.emergencyText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("procurement.emergencyTitle")}</h4>
+              <p className="text-muted-foreground">{t("procurement.emergencyText")}</p>
             </div>
           </CardContent>
         </Card>
@@ -349,28 +349,28 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="brand" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <Shield className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <Shield className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("brand.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("brand.ownershipTitle")}</h4>
-              <p className="text-gray-700">{t("brand.ownershipText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("brand.ownershipTitle")}</h4>
+              <p className="text-muted-foreground">{t("brand.ownershipText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("brand.qualityTitle")}</h4>
-              <p className="text-gray-700">{t("brand.qualityText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("brand.qualityTitle")}</h4>
+              <p className="text-muted-foreground">{t("brand.qualityText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("brand.commsTitle")}</h4>
-              <p className="text-gray-700">{t("brand.commsText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("brand.commsTitle")}</h4>
+              <p className="text-muted-foreground">{t("brand.commsText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("brand.contentRightsTitle")}</h4>
-              <p className="text-gray-700">{t("brand.contentRightsText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("brand.contentRightsTitle")}</h4>
+              <p className="text-muted-foreground">{t("brand.contentRightsText")}</p>
             </div>
           </CardContent>
         </Card>
@@ -379,32 +379,32 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="privacy" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <Eye className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <Eye className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("privacy.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("privacy.collectTitle")}</h4>
-              <p className="text-gray-700">{t("privacy.collectText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("privacy.collectTitle")}</h4>
+              <p className="text-muted-foreground">{t("privacy.collectText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("privacy.storeTitle")}</h4>
-              <p className="text-gray-700">{t("privacy.storeText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("privacy.storeTitle")}</h4>
+              <p className="text-muted-foreground">{t("privacy.storeText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("privacy.useTitle")}</h4>
-              <p className="text-gray-700">{t("privacy.useText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("privacy.useTitle")}</h4>
+              <p className="text-muted-foreground">{t("privacy.useText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("privacy.retentionTitle")}</h4>
-              <p className="text-gray-700">{t("privacy.retentionText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("privacy.retentionTitle")}</h4>
+              <p className="text-muted-foreground">{t("privacy.retentionText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("privacy.incidentTitle")}</h4>
-              <p className="text-gray-700">{t("privacy.incidentText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("privacy.incidentTitle")}</h4>
+              <p className="text-muted-foreground">{t("privacy.incidentText")}</p>
             </div>
           </CardContent>
         </Card>
@@ -413,28 +413,28 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="safeguarding" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <Shield className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <Shield className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("safeguarding.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("safeguarding.childTitle")}</h4>
-              <p className="text-gray-700">{t("safeguarding.childText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("safeguarding.childTitle")}</h4>
+              <p className="text-muted-foreground">{t("safeguarding.childText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("safeguarding.harassmentTitle")}</h4>
-              <p className="text-gray-700">{t("safeguarding.harassmentText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("safeguarding.harassmentTitle")}</h4>
+              <p className="text-muted-foreground">{t("safeguarding.harassmentText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("safeguarding.inclusionTitle")}</h4>
-              <p className="text-gray-700">{t("safeguarding.inclusionText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("safeguarding.inclusionTitle")}</h4>
+              <p className="text-muted-foreground">{t("safeguarding.inclusionText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("safeguarding.codeTitle")}</h4>
-              <p className="text-gray-700">{t("safeguarding.codeText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("safeguarding.codeTitle")}</h4>
+              <p className="text-muted-foreground">{t("safeguarding.codeText")}</p>
             </div>
           </CardContent>
         </Card>
@@ -443,28 +443,28 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="grievance" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <MessageSquare className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <MessageSquare className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("grievance.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("grievance.channelsTitle")}</h4>
-              <p className="text-gray-700">{t("grievance.channelsText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("grievance.channelsTitle")}</h4>
+              <p className="text-muted-foreground">{t("grievance.channelsText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("grievance.slaTitle")}</h4>
-              <p className="text-gray-700">{t("grievance.slaText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("grievance.slaTitle")}</h4>
+              <p className="text-muted-foreground">{t("grievance.slaText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("grievance.confidentialityTitle")}</h4>
-              <p className="text-gray-700">{t("grievance.confidentialityText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("grievance.confidentialityTitle")}</h4>
+              <p className="text-muted-foreground">{t("grievance.confidentialityText")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("grievance.appealTitle")}</h4>
-              <p className="text-gray-700">{t("grievance.appealText")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("grievance.appealTitle")}</h4>
+              <p className="text-muted-foreground">{t("grievance.appealText")}</p>
             </div>
           </CardContent>
         </Card>
@@ -473,52 +473,52 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="others" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <FileText className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <FileText className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("others.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p11Title")}</h4>
-              <p className="text-gray-700">{t("others.p11Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p11Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p11Text")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p12Title")}</h4>
-              <p className="text-gray-700">{t("others.p12Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p12Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p12Text")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p13Title")}</h4>
-              <p className="text-gray-700">{t("others.p13Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p13Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p13Text")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p14Title")}</h4>
-              <p className="text-gray-700">{t("others.p14Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p14Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p14Text")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p15Title")}</h4>
-              <p className="text-gray-700">{t("others.p15Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p15Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p15Text")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p16Title")}</h4>
-              <p className="text-gray-700">{t("others.p16Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p16Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p16Text")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p17Title")}</h4>
-              <p className="text-gray-700">{t("others.p17Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p17Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p17Text")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p18Title")}</h4>
-              <p className="text-gray-700">{t("others.p18Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p18Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p18Text")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p19Title")}</h4>
-              <p className="text-gray-700">{t("others.p19Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p19Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p19Text")}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">{t("others.p20Title")}</h4>
-              <p className="text-gray-700">{t("others.p20Text")}</p>
+              <h4 className="font-semibold text-foreground mb-2">{t("others.p20Title")}</h4>
+              <p className="text-muted-foreground">{t("others.p20Text")}</p>
             </div>
           </CardContent>
         </Card>
@@ -527,22 +527,22 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card id="annexes" className="mb-8 scroll-mt-24">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <div className="p-2 bg-black rounded-lg">
-                <FileText className="h-5 w-5 text-white" />
+              <div className="p-2 bg-primary rounded-lg">
+                <FileText className="h-5 w-5 text-primary-foreground" />
               </div>
               {t("annexes.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <ul className="space-y-2 text-sm text-gray-700">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>• {t("annexes.left1")}</li>
                 <li>• {t("annexes.left2")}</li>
                 <li>• {t("annexes.left3")}</li>
                 <li>• {t("annexes.left4")}</li>
                 <li>• {t("annexes.left5")}</li>
               </ul>
-              <ul className="space-y-2 text-sm text-gray-700">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>• {t("annexes.right1")}</li>
                 <li>• {t("annexes.right2")}</li>
                 <li>• {t("annexes.right3")}</li>
@@ -557,34 +557,34 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
         <Card className="mb-12">
           <CardHeader>
             <CardTitle className="flex items-center gap-3">
-              <FileText className="h-6 w-6 text-black" />
+              <FileText className="h-6 w-6 text-foreground" />
               {t("highlights.cardTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center p-4 bg-blue-50 rounded-lg">
-                <Users className="h-8 w-8 mx-auto mb-2 text-blue-600" />
-                <h4 className="font-semibold text-blue-900">{t("highlights.membershipTitle")}</h4>
-                <p className="text-sm text-blue-700">{t("highlights.membershipText")}</p>
+              <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                <Users className="h-8 w-8 mx-auto mb-2 text-blue-600 dark:text-blue-400" />
+                <h4 className="font-semibold text-blue-900 dark:text-blue-100">{t("highlights.membershipTitle")}</h4>
+                <p className="text-sm text-blue-700 dark:text-blue-200">{t("highlights.membershipText")}</p>
               </div>
               
-              <div className="text-center p-4 bg-green-50 rounded-lg">
-                <DollarSign className="h-8 w-8 mx-auto mb-2 text-green-600" />
-                <h4 className="font-semibold text-green-900">{t("highlights.financeTitle")}</h4>
-                <p className="text-sm text-green-700">{t("highlights.financeText")}</p>
+              <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                <DollarSign className="h-8 w-8 mx-auto mb-2 text-green-600 dark:text-green-400" />
+                <h4 className="font-semibold text-green-900 dark:text-green-100">{t("highlights.financeTitle")}</h4>
+                <p className="text-sm text-green-700 dark:text-green-200">{t("highlights.financeText")}</p>
               </div>
               
-              <div className="text-center p-4 bg-purple-50 rounded-lg">
-                <Shield className="h-8 w-8 mx-auto mb-2 text-purple-600" />
-                <h4 className="font-semibold text-purple-900">{t("highlights.riskTitle")}</h4>
-                <p className="text-sm text-purple-700">{t("highlights.riskText")}</p>
+              <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                <Shield className="h-8 w-8 mx-auto mb-2 text-purple-600 dark:text-purple-400" />
+                <h4 className="font-semibold text-purple-900 dark:text-purple-100">{t("highlights.riskTitle")}</h4>
+                <p className="text-sm text-purple-700 dark:text-purple-200">{t("highlights.riskText")}</p>
               </div>
               
-              <div className="text-center p-4 bg-orange-50 rounded-lg">
-                <Eye className="h-8 w-8 mx-auto mb-2 text-orange-600" />
-                <h4 className="font-semibold text-orange-900">{t("highlights.transparencyTitle")}</h4>
-                <p className="text-sm text-orange-700">{t("highlights.transparencyText")}</p>
+              <div className="text-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                <Eye className="h-8 w-8 mx-auto mb-2 text-orange-600 dark:text-orange-400" />
+                <h4 className="font-semibold text-orange-900 dark:text-orange-100">{t("highlights.transparencyTitle")}</h4>
+                <p className="text-sm text-orange-700 dark:text-orange-200">{t("highlights.transparencyText")}</p>
               </div>
             </div>
           </CardContent>
@@ -599,37 +599,37 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-lg">
+            <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 p-6 rounded-lg">
               <div className="flex items-start gap-4">
-                <AlertTriangle className="h-6 w-6 text-yellow-600 mt-1" />
+                <AlertTriangle className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">{t("status.current")}</h4>
-                  <p className="text-sm text-gray-700 leading-relaxed mb-4">
+                  <h4 className="font-semibold text-foreground mb-2">{t("status.current")}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                     {t("status.desc")}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    <Badge className="bg-yellow-100 text-yellow-800">{t("status.badge1")}</Badge>
-                    <Badge className="bg-blue-100 text-blue-800">{t("status.badge2")}</Badge>
-                    <Badge className="bg-green-100 text-green-800">{t("status.lastUpdatedPrefix")}: January 2024</Badge>
+                    <Badge className="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200">{t("status.badge1")}</Badge>
+                    <Badge className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">{t("status.badge2")}</Badge>
+                    <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">{t("status.lastUpdatedPrefix")}: January 2024</Badge>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-muted-foreground mb-4">
                 {t("cta.feedbackPrompt")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href={`/${locale}/contact`}
-                  className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                  className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
                 >
                   {t("cta.feedback")}
                 </a>
                 <a 
                   href={`/${locale}/join-member`}
-                  className="border border-black text-black px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  className="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors"
                 >
                   {t("cta.becomeMember")}
                 </a>
