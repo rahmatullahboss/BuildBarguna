@@ -1,4 +1,5 @@
 ﻿import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -15,7 +16,8 @@ import {
   Clock
 } from "lucide-react";
 
-export default async function NitimalaPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function NitimalaPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations("NitimalaPage");
 
   return (
@@ -627,12 +629,12 @@ export default async function NitimalaPage({ params: { locale } }: { params: { l
                 >
                   {t("cta.feedback")}
                 </a>
-                <a 
+                <Link 
                   href={`/${locale}/join-member`}
                   className="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors"
                 >
                   {t("cta.becomeMember")}
-                </a>
+                </Link>
               </div>
             </div>
           </CardContent>

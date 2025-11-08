@@ -22,9 +22,10 @@ async function getKpis() {
   }
 }
 
-export default async function Home({ params }: { params: { locale: string } }) {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const kpis = await getKpis();
-  return <HomeContent kpis={kpis} locale={params.locale} />;
+  return <HomeContent kpis={kpis} locale={locale} />;
 }
 
 function HomeContent({ kpis, locale }: { kpis: Array<{ id: string; metric: string; value: number; labelEn: string; labelBn: string }> , locale: string }) {

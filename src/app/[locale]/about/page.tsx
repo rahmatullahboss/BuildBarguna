@@ -2,6 +2,7 @@
 "use client";
 import { use } from "react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -169,18 +170,18 @@ export default function AboutPage({ params }: { params: Promise<{ locale: string
                 {t("ctaDescription")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
+                <Link 
                   href={`/${locale}/join-member`}
                   className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
                 >
                   {t("ctaBecomeMember")}
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href={`/${locale}/contact`}
                   className="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors"
                 >
                   {t("ctaLearnMore")}
-                </a>
+                </Link>
               </div>
             </CardContent>
           </Card>
