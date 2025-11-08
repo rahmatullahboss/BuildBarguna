@@ -12,8 +12,8 @@ export default async function JoinMemberPage() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-foreground mb-4">
-              Join Build Barguna Co-operative
+            <h1 className="text-4xl font-bold mb-4">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-fuchsia-500 dark:to-fuchsia-400">Join Build Barguna Co-operative</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Become a founding member of our transparent, community-driven co-operative. 
@@ -24,7 +24,7 @@ export default async function JoinMemberPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Benefits Section */}
             <div className="lg:col-span-1">
-              <Card className="h-fit">
+              <Card className="h-fit bg-card/90 border border-border/60 rounded-2xl shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Users className="h-5 w-5" />
@@ -67,7 +67,7 @@ export default async function JoinMemberPage() {
               </Card>
 
               {/* Requirements */}
-              <Card className="mt-6">
+              <Card className="mt-6 bg-card/90 border border-border/60 rounded-2xl shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Shield className="h-5 w-5" />
@@ -97,7 +97,7 @@ export default async function JoinMemberPage() {
 
             {/* Application Form */}
             <div className="lg:col-span-2">
-              <Card>
+              <Card className="bg-card/90 border border-border/60 rounded-2xl shadow-lg">
                 <CardHeader>
                   <CardTitle>Founding Member Application</CardTitle>
                   <p className="text-sm text-muted-foreground">
@@ -113,7 +113,7 @@ export default async function JoinMemberPage() {
           </div>
 
           {/* Process Timeline */}
-          <Card className="mt-12">
+          <Card className="mt-12 bg-card/90 border border-border/60 rounded-2xl shadow-lg">
             <CardHeader>
               <CardTitle className="text-center">Application Process</CardTitle>
             </CardHeader>

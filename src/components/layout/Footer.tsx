@@ -10,8 +10,8 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
+          <div className="lg:col-span-1 text-center md:text-left">
+            <div className="flex items-center space-x-2 mb-6 justify-center md:justify-start">
               <div className="w-10 h-10 bg-background rounded-xl flex items-center justify-center">
                 <span className="text-foreground font-bold text-lg">BB</span>
               </div>
@@ -20,7 +20,7 @@ export default function Footer() {
             <p className="text-gray-300 mb-6 leading-relaxed">
               {t("description")}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center md:justify-start">
               <a href="#" className="w-10 h-10 bg-background rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
                 <Facebook className="h-5 w-5 text-foreground" />
               </a>
@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-lg font-semibold mb-6">{t("quickLinks")}</h4>
             <ul className="space-y-3">
               <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors">{t("about")}</Link></li>
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-lg font-semibold mb-6">{t("services")}</h4>
             <ul className="space-y-3">
               <li><Link href="/members" className="text-gray-300 hover:text-white transition-colors">{t("membership")}</Link></li>
@@ -57,22 +57,22 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-lg font-semibold mb-6">{t("contactInfo")}</h4>
             <div className="space-y-4">
-              <div className="flex items-start space-x-3">
+              <div className="flex items-start space-x-3 justify-center md:justify-start">
                 <MapPin className="h-5 w-5 text-white mt-1 flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
                   {t("address")}
                 </span>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 justify-center md:justify-start">
                 <Phone className="h-5 w-5 text-white flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
                   {t("phone")}
                 </span>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 justify-center md:justify-start">
                 <Mail className="h-5 w-5 text-white flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
                   {t("email")}
@@ -84,9 +84,9 @@ export default function Footer() {
 
         {/* Legal Compliance Section */}
         <div className="mt-12 pt-8 border-t border-gray-700">
-          <div className="mb-8">
+          <div className="mb-8 text-center md:text-left">
             <h4 className="text-lg font-semibold mb-4 text-yellow-400">{t("legalTitle")}</h4>
-            <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-400">
+            <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-400 text-center md:text-left">
               <p className="leading-relaxed">
                 {t("legal1")}
               </p>

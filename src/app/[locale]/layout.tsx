@@ -38,7 +38,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </Script>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow pt-20 md:pt-24">{children}</main>
+        <main className="flex-grow pt-16 md:pt-20">{children}</main>
         <Footer />
         <SpeedInsights />
         <Analytics />

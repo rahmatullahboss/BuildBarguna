@@ -11,10 +11,12 @@ export default function BrandDetailPage({ params }: Props) {
 
   return (
     <div className="container mx-auto py-16 px-4">
-      <h1 className="text-4xl font-bold text-stone-800">Brand Details: {params.slug}</h1>
+      <h1 className="text-4xl font-bold">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-fuchsia-500 dark:to-fuchsia-400">Brand Details: {params.slug}</span>
+      </h1>
       <div className="mt-8">
         {/* Placeholder for brand gallery, description, etc. */}
-        <p>Details about the brand will be displayed here.</p>
+        <p className="text-muted-foreground">Details about the brand will be displayed here.</p>
       </div>
     </div>
   );

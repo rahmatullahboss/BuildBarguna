@@ -6,8 +6,8 @@ export default async function StoriesPage({ params: { locale } }: { params: { lo
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center text-foreground">
-          {t("title")}
+        <h1 className="text-4xl font-bold mb-8 text-center">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-fuchsia-500 dark:to-fuchsia-400">{t("title")}</span>
         </h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -73,7 +73,7 @@ export default async function StoriesPage({ params: { locale } }: { params: { lo
           <p className="text-muted-foreground mb-6">
             {t("shareDescription")}
           </p>
-          <button className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
+          <button className="bg-primary text-primary-foreground px-6 py-3 rounded-full shadow-lg hover:shadow-xl hover:bg-primary/90 transition-all duration-300">
             {t("submitStory")}
           </button>
         </div>

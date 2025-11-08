@@ -51,7 +51,17 @@
     "governance1": "Interim Executive Committee",
     "governance2": "Draft Constitution & Policy Dashboard (open for comments)",
     "governance3": "Audit & Risk Framework—Draft",
-    "governance4": "Community Forum/Open Meetings (to be scheduled monthly)"
+    "governance4": "Community Forum/Open Meetings (to be scheduled monthly)",
+    "visionTitle": "Vision",
+    "valuesTitle": "Values",
+    "governanceBadge1": "Leadership",
+    "governanceBadge2": "Policies",
+    "governanceBadge3": "Security",
+    "governanceBadge4": "Participation",
+    "ctaTitle": "Join Our Journey",
+    "ctaDescription": "Stay with us to build a transparent and fair co-operative. Become a founding member to be part of this new initiative.",
+    "ctaBecomeMember": "Become a Founding Member",
+    "ctaLearnMore": "Learn More"
   },
   "MembersPage": {
     "title": "Membership",
@@ -85,7 +95,20 @@
     "program5Title": "Climate Resilience & Emergency Support — [Framework-Draft]",
     "program5Desc": "Post-disaster response and livelihood-recovery planning policy—aligned with local authorities/partners.",
     "program6Title": "Financial Literacy & Compliance — [Pilot-Preparation]",
-    "program6Desc": "Budgeting, savings, risk, basic compliance—workshop series (partnership dependent)."
+    "program6Desc": "Budgeting, savings, risk, basic compliance—workshop series (partnership dependent).",
+    "statusPlanning": "Planning",
+    "statusDraft": "Draft Policy",
+    "statusBlueprint": "Blueprint",
+    "statusMapping": "Mapping-Ongoing",
+    "statusFramework": "Framework-Draft",
+    "statusPreparation": "Pilot-Preparation",
+    "statusProgressPlanning": "Planning",
+    "statusProgressPilot": "Pilot",
+    "statusProgressScale": "Scale",
+    "ctaTitle": "Interested? Get in Touch",
+    "ctaDescription": "Learn more about our programs or express interest in participating in pilot programs.",
+    "ctaBecomeMember": "Become a Member",
+    "ctaContact": "Contact Us"
   },
   "BrandsPage": {
     "title": "Our Brands",

@@ -22,12 +22,12 @@ async function getKpis() {
   }
 }
 
-export default async function Home() {
+export default async function Home({ params }: { params: { locale: string } }) {
   const kpis = await getKpis();
-  return <HomeContent kpis={kpis} />;
+  return <HomeContent kpis={kpis} locale={params.locale} />;
 }
 
-function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value: number; labelEn: string; labelBn: string }> }) {
+function HomeContent({ kpis, locale }: { kpis: Array<{ id: string; metric: string; value: number; labelEn: string; labelBn: string }> , locale: string }) {
   const t = useTranslations("HomePage");
 
   return (
@@ -41,11 +41,15 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
             backgroundSize: '40px 40px'
           }}></div>
         </div>
+        {/* Gradient Overlays */}
+        <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-fuchsia-500/20 dark:bg-fuchsia-400/20 blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/40 to-background" />
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <AnimatedDiv>
-            <div className="inline-flex items-center px-4 py-2 bg-secondary text-foreground rounded-full text-sm font-medium mb-8">
-              <Star className="w-4 h-4 mr-2" />
+            <div className="inline-flex items-center px-4 py-2 bg-secondary/90 text-foreground rounded-full text-sm font-medium mt-8 sm:mt-0 mb-8 shadow-sm ring-1 ring-primary/10">
+              <Star className="w-4 h-4 mr-2 text-primary" />
               {t("badge")}
             </div>
           </AnimatedDiv>
@@ -53,7 +57,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
           <AnimatedDiv delay={0.1}>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
               <span className="block">{t("heroTitle")}</span>
-              <span className="block text-foreground">
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary to-fuchsia-500 dark:to-fuchsia-400">
                 {t("heroHighlight")}
               </span>
             </h1>
@@ -69,14 +73,24 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
           </AnimatedDiv>
           
           <AnimatedDiv delay={0.3} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group">
-              <Link href="/join-member" className="flex items-center">
+            <Button asChild size="lg" className="relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <Link href={`/${locale}/join-member`} className="relative flex items-center overflow-hidden">
+                {/* Shine */}
+                <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="absolute -left-1/2 top-0 h-full w-1/2 bg-gradient-to-r from-white/0 via-white/20 to-white/0 skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-700" />
+                </span>
                 {t("ctaJoin")}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg rounded-full transition-all duration-300">
-              <Link href="/programs">{t("ctaPrograms")}</Link>
+            <Button asChild size="lg" variant="outline" className="relative overflow-hidden border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-4 text-lg rounded-full transition-all duration-300 group">
+              <Link href={`/${locale}/programs`} className="relative overflow-hidden">
+                {/* Shine */}
+                <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="absolute -left-1/2 top-0 h-full w-1/2 bg-gradient-to-r from-white/0 via-white/20 to-white/0 skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-700" />
+                </span>
+                {t("ctaPrograms")}
+              </Link>
             </Button>
           </AnimatedDiv>
 
@@ -111,7 +125,10 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
       </section>
 
       {/* Three Pillars Section */}
-      <section className="py-20 bg-background">
+      <section className="relative py-20 bg-background overflow-hidden">
+        {/* Soft background accents */}
+        <div className="pointer-events-none absolute -top-20 left-10 h-48 w-48 rounded-full bg-primary/10 blur-2xl" />
+        <div className="pointer-events-none absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-fuchsia-500/10 dark:bg-fuchsia-400/10 blur-2xl" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedDiv className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">{t("pillarsTitle")}</h2>
@@ -144,7 +161,7 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
             <AnimatedDiv delay={0.4}>
               <Card className="h-full bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-accent rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-16 h-16 bg-gradient-to-br from-accent to-accent/70 dark:to-accent/60 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <TrendingUp className="h-8 w-8 text-accent-foreground" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">{t("pillar2Title")}</h3>
@@ -189,13 +206,20 @@ function HomeContent({ kpis }: { kpis: Array<{ id: string; metric: string; value
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-secondary dark:bg-accent">
+      <section className="relative py-20 bg-secondary dark:bg-accent overflow-hidden">
+        {/* Decorative blobs */}
+        <div className="pointer-events-none absolute -top-16 left-1/3 h-56 w-56 rounded-full bg-primary/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 right-1/4 h-64 w-64 rounded-full bg-fuchsia-500/20 dark:bg-fuchsia-400/20 blur-3xl" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedDiv>
             <h2 className="text-4xl font-bold text-foreground mb-4">{t("ctaTitle")}</h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">{t("ctaSubtitle")}</p>
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-              <Link href="/join-member" className="flex items-center">
+            <Button asChild size="lg" className="relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <Link href={`/${locale}/join-member`} className="relative flex items-center overflow-hidden">
+                {/* Shine */}
+                <span className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="absolute -left-1/2 top-0 h-full w-1/2 bg-gradient-to-r from-white/0 via-white/20 to-white/0 skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-700" />
+                </span>
                 {t("ctaButton")}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

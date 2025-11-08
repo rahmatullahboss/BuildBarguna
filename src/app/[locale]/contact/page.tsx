@@ -13,8 +13,8 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
       <div className="container mx-auto px-4 py-16">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            {t("title")}
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-fuchsia-500 dark:to-fuchsia-400">{t("title")}</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {t("subtitle")}
@@ -89,7 +89,7 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
           </div>
 
           {/* Contact Form */}
-          <Card className="shadow-2xl bg-card border border-border">
+          <Card className="shadow-2xl bg-card/90 rounded-2xl border border-border/60">
             <CardHeader className="bg-primary text-primary-foreground rounded-t-lg">
               <CardTitle className="text-2xl">{t("sendMessage")}</CardTitle>
             </CardHeader>
@@ -156,7 +156,7 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
 
         {/* Map Section */}
         <div className="mt-16">
-          <Card className="shadow-2xl overflow-hidden border border-border">
+          <Card className="shadow-2xl overflow-hidden bg-card/90 rounded-2xl border border-border/60">
             <CardHeader className="bg-primary text-primary-foreground">
               <CardTitle className="text-2xl text-center">{t("findUs")}</CardTitle>
             </CardHeader>
