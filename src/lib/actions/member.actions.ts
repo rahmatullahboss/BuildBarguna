@@ -1,9 +1,10 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
+import { Resend } from "resend";
 import { joinMemberSchema } from "@/lib/schemas";
 
-const prisma = new PrismaClient();
+const resend = new Resend(process.env.RESEND_API_KEY || "");
 
 export type FormState = {
   success: boolean;
@@ -83,8 +84,39 @@ export async function joinMemberAction(
       },
     });
 
-    // In a real app, you would also trigger a confirmation email here
-    // await sendConfirmationEmail(email);
+    // Notify admin via email
+    try {
+      if (!process.env.RESEND_API_KEY) {
+        console.warn("RESEND_API_KEY is not set. Skipping membership email send.");
+      } else {
+        await resend.emails.send({
+          from: 'Build Barguna <onboarding@resend.dev>',
+          to: 'rahmatullahzisan@gmail.com',
+          subject: `New Membership Application: ${name}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+              <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">New Founding Membership Request</h2>
+              <div style="margin: 20px 0;">
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+                ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}
+                <p><strong>National ID:</strong> ${nationalId}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Policy Consent:</strong> ${policyConsent ? 'Yes' : 'No'}</p>
+              </div>
+              <div style="margin: 30px 0; padding: 15px; background-color: #e9ecef; border-radius: 5px;">
+                <p style="margin: 0; font-size: 14px; color: #666;">
+                  <strong>Quick Reply:</strong>
+                  <a href="mailto:${email}?subject=Your membership application&body=Hello ${name},%0D%0A%0D%0AThank you for applying for founding membership. Our team will review your application and get back to you within 3-7 working days.%0D%0A%0D%0A" style="color: #007bff; text-decoration: none;">Click here to reply</a>
+                </p>
+              </div>
+            </div>
+          `,
+        });
+      }
+    } catch (e) {
+      console.error("Failed to send membership notification email:", e);
+    }
 
     return { success: true, message: "Application submitted successfully! You will be contacted after review." };
   } catch (error) {

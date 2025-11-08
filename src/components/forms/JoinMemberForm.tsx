@@ -2,7 +2,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { useActionState } from "react";
+import { useActionState, startTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { joinMemberSchema } from "@/lib/schemas";
@@ -59,7 +59,9 @@ export function JoinMemberForm() {
     formData.append("email", data.email);
     formData.append("address", data.address);
     formData.append("policyConsent", data.policyConsent.toString());
-    formAction(formData);
+    startTransition(() => {
+      formAction(formData);
+    });
   };
 
   return (
