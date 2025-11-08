@@ -43,7 +43,7 @@ function HomeContent({ kpis, locale }: { kpis: Array<{ id: string; metric: strin
         </div>
         {/* Gradient Overlays */}
         <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-fuchsia-500/20 dark:bg-fuchsia-400/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/40 to-background" />
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -128,7 +128,7 @@ function HomeContent({ kpis, locale }: { kpis: Array<{ id: string; metric: strin
       <section className="relative py-20 bg-background overflow-hidden">
         {/* Soft background accents */}
         <div className="pointer-events-none absolute -top-20 left-10 h-48 w-48 rounded-full bg-primary/10 blur-2xl" />
-        <div className="pointer-events-none absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-fuchsia-500/10 dark:bg-fuchsia-400/10 blur-2xl" />
+        <div className="pointer-events-none absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-primary/10 blur-2xl" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedDiv className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">{t("pillarsTitle")}</h2>
@@ -209,7 +209,7 @@ function HomeContent({ kpis, locale }: { kpis: Array<{ id: string; metric: strin
       <section className="relative py-20 bg-secondary dark:bg-accent overflow-hidden">
         {/* Decorative blobs */}
         <div className="pointer-events-none absolute -top-16 left-1/3 h-56 w-56 rounded-full bg-primary/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 right-1/4 h-64 w-64 rounded-full bg-fuchsia-500/20 dark:bg-fuchsia-400/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 right-1/4 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedDiv>
             <h2 className="text-4xl font-bold text-foreground mb-4">{t("ctaTitle")}</h2>

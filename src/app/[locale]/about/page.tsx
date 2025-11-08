@@ -1,5 +1,6 @@
 // src/app/[locale]/about/page.tsx
 "use client";
+import { use } from "react";
 import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -14,14 +15,15 @@ import {
   MessageCircle 
 } from "lucide-react";
 
-export default function AboutPage({ params }: { params: { locale: string } }) {
+export default function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = use(params);
   const t = useTranslations("AboutPage");
 
   return (
     <div className="relative min-h-screen bg-background py-12 overflow-hidden">
       {/* Background accents */}
       <div className="pointer-events-none absolute -top-20 left-10 h-48 w-48 rounded-full bg-primary/10 blur-2xl" />
-      <div className="pointer-events-none absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-fuchsia-500/10 dark:bg-fuchsia-400/10 blur-2xl" />
+      <div className="pointer-events-none absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-primary/10 blur-2xl" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -168,13 +170,13 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
-                  href={`/${params.locale}/join-member`}
+                  href={`/${locale}/join-member`}
                   className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
                 >
                   {t("ctaBecomeMember")}
                 </a>
                 <a 
-                  href={`/${params.locale}/contact`}
+                  href={`/${locale}/contact`}
                   className="border border-primary text-primary px-6 py-3 rounded-lg font-medium hover:bg-secondary transition-colors"
                 >
                   {t("ctaLearnMore")}

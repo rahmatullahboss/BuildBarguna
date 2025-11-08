@@ -79,7 +79,7 @@ export default async function ProgramsPage({ params: { locale } }: { params: { l
     <div className="relative min-h-screen bg-background py-12 overflow-hidden">
       {/* Background accents */}
       <div className="pointer-events-none absolute -top-20 left-10 h-48 w-48 rounded-full bg-primary/10 blur-2xl" />
-      <div className="pointer-events-none absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-fuchsia-500/10 dark:bg-fuchsia-400/10 blur-2xl" />
+      <div className="pointer-events-none absolute -bottom-24 right-10 h-56 w-56 rounded-full bg-primary/10 blur-2xl" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">

@@ -112,6 +112,7 @@
   },
   "BrandsPage": {
     "title": "Our Brands",
+    "subtitle": "Discover the co-operative brands we're building together with transparency, quality, and fair pricing principles.",
     "currentStatus": "Current Status: We are new—no official brands launched yet.",
     "whatWeDoing": "What We're Doing:",
     "feature1": "Branding Blueprint: Quality, traceability, fair pricing principles",
@@ -121,6 +122,7 @@
   },
   "PartnersPage": {
     "title": "Partners",
+    "subtitle": "Join us in building a transparent, community-driven co-operative through strategic partnerships.",
     "weAreLooking": "We are looking for: Training/Technical, Market/Logistics, Research/Monitoring—partners who will walk with us in small pilots.",
     "howToJoin": "How to Join: Partnership Interest Form → Meeting → Coordination → Pilot-MOU.",
     "formTitle": "Partnership Interest Form"

@@ -1,7 +1,8 @@
 // src/components/forms/PartnerInquiryForm.tsx
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { partnerInquirySchema } from "@/lib/schemas";
@@ -36,7 +37,7 @@ function SubmitButton() {
 }
 
 export function PartnerInquiryForm() {
-  const [state, formAction] = useFormState(partnerInquiryAction, initialState);
+  const [state, formAction] = useActionState(partnerInquiryAction, initialState);
 
   const form = useForm<z.infer<typeof partnerInquirySchema>>({
     resolver: zodResolver(partnerInquirySchema),
