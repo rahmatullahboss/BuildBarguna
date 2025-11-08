@@ -51,7 +51,7 @@ export async function rejectMemberApplication(userId: string) {
     // For now, let's delete the application
     await prisma.user.delete({
       where: { id: userId }
-    });
+      });
     
     revalidatePath("/admin");
     return { success: true, message: "Member application rejected and removed." };
@@ -74,7 +74,7 @@ export async function removeApprovedMember(userId: string): Promise<void> {
     try {
       const { headers } = await import("next/headers");
       const { redirect } = await import("next/navigation");
-      const referer = headers().get("referer");
+      const referer = (await headers()).get("referer");
       if (referer) {
         redirect(referer);
       }
