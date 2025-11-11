@@ -5,20 +5,25 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_FILE_TYPES = ["application/pdf", "image/jpeg", "image/png"];
 
 // Schema for the "Join as Member" form (KYC)
-export const joinMemberSchema = z.object({
-  name: z.string().min(3, { message: "Name must be at least 3 characters long." }),
-  nationalId: z.string().min(10, { message: "National ID or Passport must be at least 10 characters long." }),
-  phone: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid Bangladeshi phone number." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  address: z.string().min(10, { message: "Address must be at least 10 characters long." }),
-  nomineeName: z.string().min(3, { message: "Nominee name must be at least 3 characters long." }),
-  nomineePhone: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid Bangladeshi phone number for nominee." }),
-  nomineeNationalId: z.string().min(10, { message: "Nominee National ID must be at least 10 characters long." }),
-  nomineeRelation: z.string().min(2, { message: "Please specify relation with the nominee." }),
-  policyConsent: z.boolean().refine((val) => val === true, {
-    message: "You must agree to the terms and conditions.",
-  }),
-});
+export const joinMemberSchema = z
+  .object({
+    name: z.string().min(3, { message: "Name must be at least 3 characters long." }),
+    nationalId: z.string().min(10, { message: "National ID or Passport must be at least 10 characters long." }),
+    phone: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid Bangladeshi phone number." }),
+    email: z.string().email({ message: "Please enter a valid email address." }),
+    address: z.string().min(10, { message: "Address must be at least 10 characters long." }),
+    nomineeName: z.string().min(3, { message: "Nominee name must be at least 3 characters long." }),
+    nomineePhone: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid Bangladeshi phone number for nominee." }),
+    nomineeNationalId: z.string().min(10, { message: "Nominee National ID must be at least 10 characters long." }),
+    nomineeRelation: z.string().min(2, { message: "Please specify relation with the nominee." }),
+    policyConsent: z.boolean().refine((val) => val === true, {
+      message: "You must agree to the terms and conditions.",
+    }),
+  })
+  .refine((data) => data.phone !== data.nomineePhone, {
+    message: "Nominee phone cannot be the same as member phone.",
+    path: ["nomineePhone"],
+  });
 
 // Schema for the "Apply for Training" form
 export const applyForTrainingSchema = z.object({
