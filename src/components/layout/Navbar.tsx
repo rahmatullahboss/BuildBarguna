@@ -152,7 +152,10 @@ export default function Navbar() {
               </Link>
             ))}
             
-            {/* Admin Link removed per request (mobile) */}
+            {/* Language toggle for mobile */}
+            <div className="pt-2">
+              <LanguageToggle />
+            </div>
             
             {/* Debug info for mobile */}
             {process.env.NODE_ENV === "development" && session && (

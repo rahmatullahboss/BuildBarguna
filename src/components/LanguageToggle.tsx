@@ -46,7 +46,15 @@ export default function LanguageToggle() {
           className={`cursor-pointer hover:bg-secondary ${currentLocale === 'en' ? 'bg-primary text-primary-foreground' : ''}`}
         >
           <span className="flex items-center space-x-2">
-            <span className="text-lg">🇺🇸</span>
+            {/* US Flag Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5">
+              <mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask>
+              <g mask="url(#a)">
+                <path fill="#eee" d="M0 0h512v512H0z"/>
+                <path fill="#d80027" d="M0 0h512v256H0z"/>
+                <path fill="#0052b4" d="M192 192h128v128H192z"/>
+              </g>
+            </svg>
             <span>English</span>
           </span>
         </DropdownMenuItem>
@@ -55,7 +63,14 @@ export default function LanguageToggle() {
           className={`cursor-pointer hover:bg-secondary ${currentLocale === 'bn' ? 'bg-primary text-primary-foreground' : ''}`}
         >
           <span className="flex items-center space-x-2">
-            <span className="text-lg">🇧🇩</span>
+            {/* Bangladesh Flag Icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5">
+              <mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask>
+              <g mask="url(#a)">
+                <path fill="#496e2d" d="M0 0h512v512H0z"/>
+                <circle cx="224" cy="256" r="96" fill="#d80027"/>
+              </g>
+            </svg>
             <span>বাংলা</span>
           </span>
         </DropdownMenuItem>
