@@ -98,15 +98,7 @@ export default function Navbar() {
 
           {/* Right side - Admin Link + Language Toggle + Mobile Menu */}
           <div className="flex items-center space-x-4">
-            {/* Admin Link - Desktop */}
-            <Link
-              href={`/${currentLocale}/admin`}
-              className="hidden lg:flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-secondary text-foreground hover:text-foreground"
-              title="Admin Panel"
-            >
-              <Settings className="h-4 w-4" />
-              <span>Admin</span>
-            </Link>
+            {/* Admin Link removed per request */}
             
             {/* Debug info - Remove in production */}
             {process.env.NODE_ENV === "development" && session && (
@@ -160,15 +152,7 @@ export default function Navbar() {
               </Link>
             ))}
             
-            {/* Admin Link - Mobile */}
-            <Link
-              href={`/${currentLocale}/admin`}
-              onClick={() => setIsOpen(false)}
-              className="flex items-center space-x-2 px-4 py-3 rounded-lg text-base font-medium transition-colors text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-t border-gray-200 mt-2 pt-4"
-            >
-              <Settings className="h-5 w-5" />
-              <span>Admin Panel</span>
-            </Link>
+            {/* Admin Link removed per request (mobile) */}
             
             {/* Debug info for mobile */}
             {process.env.NODE_ENV === "development" && session && (

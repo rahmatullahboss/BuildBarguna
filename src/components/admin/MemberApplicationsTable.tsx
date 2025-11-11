@@ -112,7 +112,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
         <style>
           @page {
             size: A4;
-            margin: 18mm;
+            margin: 0;
           }
 
           :root {
@@ -129,18 +129,18 @@ export default function MemberApplicationsTable({ applications }: Props) {
             print-color-adjust: exact;
             color: var(--ink);
             font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-            background: #f8f7f3;
-            display: grid;
-            place-items: center;
+            background: #ffffff;
+            display: block;
             margin: 0;
           }
 
           .page {
-            width: 100%;
-            max-width: 850px;
+            width: 210mm;
+            min-height: 297mm;
             background: white;
             position: relative;
-            padding: 36px 44px 40px 44px;
+            margin: 0 auto;
+            padding: 20mm 15mm;
             border: 6px double var(--gold);
             box-shadow: 0 0 0 10px rgba(191,161,88,0.15) inset;
           }
@@ -299,7 +299,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
 
           @media print {
             .no-print { display: none !important; }
-            body { background: transparent; }
+            html, body { height: auto; margin: 0; background: #ffffff !important; }
           }
         </style>
       </head>
@@ -356,7 +356,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
             </div>
           </div>
 
-          <div class="seal"><span>Official Seal</span></div>
+          <div class=\"seal\" aria-label=\"Seal placeholder\"></div>
 
           <div class="footer">
             <p><strong>Certificate Issue Date:</strong> ${currentDate}</p>
@@ -581,7 +581,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
                   </div>
                   <div>
                     <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Email Address</label>
-                    <p className="text-gray-900">{selectedMember.email}</p>
+                    <p className="text-gray-900 dark:text-gray-100 break-words">{selectedMember.email}</p>
                   </div>
                   <div>
                     <label className="text-sm font-medium text-gray-600 dark:text-gray-300">National ID</label>
@@ -615,8 +615,8 @@ export default function MemberApplicationsTable({ applications }: Props) {
                   <div className="flex items-center gap-3">
                     <Mail className="h-4 w-4 text-gray-500 dark:text-gray-400" />
                     <div>
-                      <label className="text-sm font-medium text-gray-600">Email</label>
-                      <p className="text-gray-900">{selectedMember.email}</p>
+                      <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Email</label>
+                      <p className="text-gray-900 dark:text-gray-100 break-words">{selectedMember.email}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -700,7 +700,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
                     {!selectedMember.memberProfile?.isApproved && (
                       <>
                         <Button
-                          className="flex-1 bg-black hover:bg-gray-800"
+                          className="flex-1 bg-green-600 hover:bg-green-700 text-white dark:bg-green-600 dark:hover:bg-green-500"
                           onClick={() => {
                             handleApprove(selectedMember.id);
                             setSelectedMember(null);
