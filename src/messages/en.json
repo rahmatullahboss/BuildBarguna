@@ -540,5 +540,8 @@
       "becomeMember": "Become a Member",
       "feedbackPrompt": "For comments and suggestions, contact us"
     }
+  },
+  "Validation": {
+    "nomineePhoneNotSame": "Nominee phone cannot be the same as member phone."
   }
 }

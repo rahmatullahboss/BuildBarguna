@@ -110,158 +110,263 @@ export default function MemberApplicationsTable({ applications }: Props) {
       <head>
         <title>Member Certificate - ${member.name}</title>
         <style>
-          body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            background: white;
-            color: black;
+          @page {
+            size: A4;
+            margin: 18mm;
           }
+
+          :root {
+            --ink: #1b1b1b;
+            --muted: #6b7280;
+            --gold: #bfa158;
+            --gold-dark: #9f8645;
+            --border: #e5e7eb;
+          }
+
+          html, body { height: 100%; }
+          body {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            color: var(--ink);
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+            background: #f8f7f3;
+            display: grid;
+            place-items: center;
+            margin: 0;
+          }
+
+          .page {
+            width: 100%;
+            max-width: 850px;
+            background: white;
+            position: relative;
+            padding: 36px 44px 40px 44px;
+            border: 6px double var(--gold);
+            box-shadow: 0 0 0 10px rgba(191,161,88,0.15) inset;
+          }
+
+          /* Corner ornaments */
+          .page:before, .page:after {
+            content: "";
+            position: absolute;
+            inset: 16px;
+            border: 1px solid var(--gold);
+            pointer-events: none;
+          }
+
           .header {
             text-align: center;
-            border-bottom: 3px solid #000;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding-bottom: 18px;
+            margin-bottom: 22px;
+            border-bottom: 2px solid var(--border);
           }
-          .logo {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
+          .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
           }
-          .certificate-title {
-            font-size: 28px;
-            font-weight: bold;
-            margin: 20px 0;
+          .emblem {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff, #f7f3e7 60%, #efe6cb 100%);
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 0 3px rgba(191,161,88,0.25) inset;
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            color: var(--gold-dark);
+          }
+          .subtitle {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 13px;
+          }
+
+          .title {
+            text-align: center;
             text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 800;
+            font-size: 26px;
+            color: var(--ink);
+            margin: 14px 0 6px 0;
           }
-          .member-info {
-            margin: 30px 0;
-            line-height: 1.8;
+          .ribbon {
+            text-align: center;
+            color: var(--gold-dark);
+            font-size: 12px;
+            letter-spacing: 0.18em;
           }
-          .info-row {
-            display: flex;
-            margin-bottom: 10px;
-            border-bottom: 1px dotted #ccc;
-            padding-bottom: 8px;
+
+          .declaration {
+            text-align: center;
+            margin: 14px 0 22px 0;
+            color: #374151;
           }
-          .info-label {
-            font-weight: bold;
-            width: 180px;
-            flex-shrink: 0;
+
+          .section {
+            margin: 10px 0 18px 0;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, #ffffff, #faf9f6);
+            border-radius: 8px;
+            overflow: hidden;
           }
-          .info-value {
-            flex-grow: 1;
+          .rows { padding: 8px 12px; }
+          .row {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 12px;
+            padding: 10px 6px;
+            border-bottom: 1px dashed #e6e2d9;
           }
+          .row:last-child { border-bottom: 0; }
+          .label {
+            font-variant-caps: all-small-caps;
+            letter-spacing: 0.06em;
+            color: #6b6151;
+            font-weight: 700;
+          }
+          .value { color: #1f2937; }
+
+          .status {
+            display: inline-block;
+            padding: 6px 10px;
+            background: #ecfdf5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            font-size: 12px;
+          }
+
+          .signatures {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 36px;
+          }
+          .sig {
+            text-align: center;
+            padding-top: 48px;
+            position: relative;
+          }
+          .sig:before {
+            content: "";
+            position: absolute;
+            left: 10%; right: 10%; bottom: 36px;
+            border-top: 1px solid #111827;
+            opacity: 0.8;
+          }
+          .sig small { color: var(--muted); letter-spacing: 0.06em; }
+
           .footer {
-            margin-top: 50px;
-            border-top: 2px solid #000;
-            padding-top: 20px;
+            margin-top: 28px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+          }
+
+          .seal {
+            position: absolute;
+            right: 36px;
+            bottom: 120px;
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            color: var(--gold-dark);
+            display: grid; place-items: center;
+            transform: rotate(-8deg);
+            box-shadow: 0 0 0 6px rgba(191,161,88,0.2) inset;
+          }
+          .seal span {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.18em;
             text-align: center;
           }
-          .signature-section {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 60px;
+
+          .actions { text-align: center; margin-top: 18px; }
+          .btn {
+            background: #111827; color: #fff;
+            border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;
           }
-          .signature-box {
-            text-align: center;
-            width: 200px;
-          }
-          .signature-line {
-            border-top: 1px solid #000;
-            margin-top: 50px;
-            padding-top: 10px;
-          }
+          .btn.muted { background: #6b7280; margin-left: 8px; }
+
           @media print {
-            body { padding: 20px; }
-            .no-print { display: none; }
+            .no-print { display: none !important; }
+            body { background: transparent; }
           }
         </style>
       </head>
       <body>
-        <div class="header">
-          <div class="logo">BUILD BARGUNA CO-OPERATIVE</div>
-          <p>স্বচ্ছ ভিত্তি গঠন | একসাথে মূলধন, একসাথে উন্নয়ন</p>
-        </div>
+        <div class="page">
+          <div class="header">
+            <div class="brand">
+              <div class="emblem">BB</div>
+              <div>
+                <div>BUILD BARGUNA CO-OPERATIVE</div>
+                <div class="subtitle">স্বচ্ছ ভিত্তি গঠন • একসাথে মূলধন, একসাথে উন্নয়ন</div>
+              </div>
+            </div>
+          </div>
 
-        <div class="certificate-title">FOUNDING MEMBER CERTIFICATE</div>
+          <div class="title">Founding Member Certificate</div>
+          <div class="ribbon">Community • Co-operation • Transparency</div>
+          <div class="declaration">This is to certify that the following member has been formally approved.</div>
 
-        <div style="text-align: center; margin: 20px 0;">
-          <p>This is to certify that</p>
-        </div>
+          <div class="section">
+            <div class="rows">
+              <div class="row"><div class="label">Member Name</div><div class="value">${member.name || 'N/A'}</div></div>
+              <div class="row"><div class="label">Email Address</div><div class="value">${member.email}</div></div>
+              <div class="row"><div class="label">National ID</div><div class="value">${member.memberProfile?.nationalId || 'N/A'}</div></div>
+              <div class="row"><div class="label">Phone Number</div><div class="value">${member.memberProfile?.phone || 'N/A'}</div></div>
+              <div class="row"><div class="label">Address</div><div class="value">${member.memberProfile?.address || 'N/A'}</div></div>
+            </div>
+          </div>
 
-        <div class="member-info">
-          <div class="info-row">
-            <span class="info-label">Member Name:</span>
-            <span class="info-value">${member.name || 'N/A'}</span>
+          <div class="section">
+            <div class="rows">
+              <div class="row"><div class="label">Nominee Name</div><div class="value">${member.memberProfile?.nomineeName || 'N/A'}</div></div>
+              <div class="row"><div class="label">Nominee Relation</div><div class="value">${member.memberProfile?.nomineeRelation || 'N/A'}</div></div>
+              <div class="row"><div class="label">Nominee Phone</div><div class="value">${member.memberProfile?.nomineePhone || 'N/A'}</div></div>
+              <div class="row"><div class="label">Nominee National ID</div><div class="value">${member.memberProfile?.nomineeNationalId || 'N/A'}</div></div>
+            </div>
           </div>
-          <div class="info-row">
-            <span class="info-label">Email Address:</span>
-            <span class="info-value">${member.email}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">National ID:</span>
-            <span class="info-value">${member.memberProfile?.nationalId || 'N/A'}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Phone Number:</span>
-            <span class="info-value">${member.memberProfile?.phone || 'N/A'}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Address:</span>
-            <span class="info-value">${member.memberProfile?.address || 'N/A'}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Nominee Name:</span>
-            <span class="info-value">${member.memberProfile?.nomineeName || 'N/A'}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Nominee Relation:</span>
-            <span class="info-value">${member.memberProfile?.nomineeRelation || 'N/A'}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Nominee Phone:</span>
-            <span class="info-value">${member.memberProfile?.nomineePhone || 'N/A'}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Nominee National ID:</span>
-            <span class="info-value">${member.memberProfile?.nomineeNationalId || 'N/A'}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Member Since:</span>
-            <span class="info-value">${memberSince}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Status:</span>
-            <span class="info-value">APPROVED FOUNDING MEMBER</span>
-          </div>
-        </div>
 
-        <div style="text-align: center; margin: 30px 0;">
-          <p>has been accepted as a <strong>Founding Member</strong> of Build Barguna Co-operative Society and is entitled to all rights and privileges as outlined in our constitution.</p>
-        </div>
-
-        <div class="signature-section">
-          <div class="signature-box">
-            <div class="signature-line">Chairman</div>
+          <div class="section">
+            <div class="rows">
+              <div class="row"><div class="label">Member Since</div><div class="value">${memberSince}</div></div>
+              <div class="row"><div class="label">Status</div><div class="value"><span class="status">APPROVED • FOUNDING MEMBER</span></div></div>
+            </div>
           </div>
-          <div class="signature-box">
-            <div class="signature-line">Secretary</div>
+
+          <div class="signatures">
+            <div class="sig">
+              <strong>Chairman</strong><br />
+              <small>Build Barguna Co-operative</small>
+            </div>
+            <div class="sig">
+              <strong>Secretary</strong><br />
+              <small>Build Barguna Co-operative</small>
+            </div>
           </div>
-        </div>
 
-        <div class="footer">
-          <p><strong>Certificate Issue Date:</strong> ${currentDate}</p>
-          <p style="font-size: 12px; margin-top: 20px;">
-            This certificate is issued by Build Barguna Co-operative Society<br>
-            For verification, contact: info@buildbarguna.coop
-          </p>
-        </div>
+          <div class="seal"><span>Official Seal</span></div>
 
-        <div class="no-print" style="text-align: center; margin-top: 30px;">
-          <button onclick="window.print()" style="background: #000; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Print Certificate</button>
-          <button onclick="window.close()" style="background: #666; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-left: 10px;">Close</button>
+          <div class="footer">
+            <p><strong>Certificate Issue Date:</strong> ${currentDate}</p>
+            <p>This certificate is issued by Build Barguna Co-operative Society • info@buildbarguna.coop</p>
+          </div>
+
+          <div class="actions no-print">
+            <button class="btn" onclick="window.print()">Print Certificate</button>
+            <button class="btn muted" onclick="window.close()">Close</button>
+          </div>
         </div>
       </body>
       </html>
@@ -448,13 +553,13 @@ export default function MemberApplicationsTable({ applications }: Props) {
           {/* Modal Content */}
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
             <div className="pointer-events-auto w-full max-w-2xl max-h-[90vh] overflow-hidden">
-              <Card className="bg-white shadow-2xl">
-                <CardHeader className="border-b bg-gray-50">
+              <Card className="bg-white dark:bg-gray-900 shadow-2xl text-gray-900 dark:text-gray-100">
+                <CardHeader className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
                   <CardTitle className="flex items-center justify-between text-lg">
                     <span>Member Application Details</span>
                     <button 
                       onClick={() => setSelectedMember(null)}
-                      className="text-gray-500 hover:text-gray-700 hover:bg-gray-200 rounded-full p-1 transition-colors"
+                      className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full p-1 transition-colors"
                       type="button"
                     >
                       <XCircle className="h-5 w-5" />
@@ -464,27 +569,27 @@ export default function MemberApplicationsTable({ applications }: Props) {
                 <div className="max-h-[70vh] overflow-y-auto">
             <CardContent className="space-y-6">
               {/* Personal Information */}
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
                   <Users className="h-5 w-5 mr-2" />
                   Personal Information
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Full Name</label>
-                    <p className="text-gray-900 font-medium">{selectedMember.name || 'Not provided'}</p>
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Full Name</label>
+                    <p className="text-gray-900 dark:text-gray-100 font-medium">{selectedMember.name || 'Not provided'}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Email Address</label>
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Email Address</label>
                     <p className="text-gray-900">{selectedMember.email}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">National ID</label>
-                    <p className="text-gray-900 font-mono">{selectedMember.memberProfile?.nationalId || 'Not provided'}</p>
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">National ID</label>
+                    <p className="text-gray-900 dark:text-gray-100 font-mono">{selectedMember.memberProfile?.nationalId || 'Not provided'}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Application Date</label>
-                    <p className="text-gray-900">{new Date(selectedMember.createdAt).toLocaleDateString('en-BD', { 
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Application Date</label>
+                    <p className="text-gray-900 dark:text-gray-100">{new Date(selectedMember.createdAt).toLocaleDateString('en-BD', { 
                       year: 'numeric', 
                       month: 'long', 
                       day: 'numeric' 
@@ -494,94 +599,94 @@ export default function MemberApplicationsTable({ applications }: Props) {
               </div>
               
               {/* Contact Information */}
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+              <div className="bg-blue-50 dark:bg-gray-800 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
                   <Phone className="h-5 w-5 mr-2" />
                   Contact Information
                 </h4>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <Phone className="h-4 w-4 text-gray-500" />
+                    <Phone className="h-4 w-4 text-gray-500 dark:text-gray-400" />
                     <div>
                       <label className="text-sm font-medium text-gray-600">Phone Number</label>
-                      <p className="text-gray-900">{selectedMember.memberProfile?.phone || 'Not provided'}</p>
+                      <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.phone || 'Not provided'}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Mail className="h-4 w-4 text-gray-500" />
+                    <Mail className="h-4 w-4 text-gray-500 dark:text-gray-400" />
                     <div>
                       <label className="text-sm font-medium text-gray-600">Email</label>
                       <p className="text-gray-900">{selectedMember.email}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <MapPin className="h-4 w-4 text-gray-500 mt-1" />
+                    <MapPin className="h-4 w-4 text-gray-500 dark:text-gray-400 mt-1" />
                     <div>
                       <label className="text-sm font-medium text-gray-600">Address</label>
-                      <p className="text-gray-900">{selectedMember.memberProfile?.address || 'Not provided'}</p>
+                      <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.address || 'Not provided'}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Nominee Information */}
-              <div className="bg-purple-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+              <div className="bg-purple-50 dark:bg-gray-800 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
                   Nominee Information
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Nominee Name</label>
-                    <p className="text-gray-900">{selectedMember.memberProfile?.nomineeName || 'Not provided'}</p>
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Nominee Name</label>
+                    <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.nomineeName || 'Not provided'}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Nominee Relation</label>
-                    <p className="text-gray-900">{selectedMember.memberProfile?.nomineeRelation || 'Not provided'}</p>
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Nominee Relation</label>
+                    <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.nomineeRelation || 'Not provided'}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Nominee Phone</label>
-                    <p className="text-gray-900">{selectedMember.memberProfile?.nomineePhone || 'Not provided'}</p>
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Nominee Phone</label>
+                    <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.nomineePhone || 'Not provided'}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Nominee National ID</label>
-                    <p className="text-gray-900">{selectedMember.memberProfile?.nomineeNationalId || 'Not provided'}</p>
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Nominee National ID</label>
+                    <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.nomineeNationalId || 'Not provided'}</p>
                   </div>
                 </div>
               </div>
 
               {/* Application Status */}
-              <div className="bg-green-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+              <div className="bg-green-50 dark:bg-gray-800 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
                   <CheckCircle className="h-5 w-5 mr-2" />
                   Application Status
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Current Status</label>
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Current Status</label>
                     <div className="mt-1">
-                      <Badge className={selectedMember.memberProfile?.isApproved ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}>
+                      <Badge className={selectedMember.memberProfile?.isApproved ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300" : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300"}>
                         {selectedMember.memberProfile?.isApproved ? "✅ Approved" : "⏳ Pending Review"}
                       </Badge>
                     </div>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600">Policy Consent</label>
-                    <p className={`font-medium ${selectedMember.memberProfile?.policyConsent ? 'text-green-600' : 'text-red-600'}`}>
+                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Policy Consent</label>
+                    <p className={`font-medium ${selectedMember.memberProfile?.policyConsent ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                       {selectedMember.memberProfile?.policyConsent ? "✅ Agreed to Terms" : "❌ Not Agreed"}
                     </p>
                   </div>
                 </div>
                 
                 {selectedMember.memberProfile?.isApproved && (
-                  <div className="mt-4 p-3 bg-green-100 rounded-md">
-                    <p className="text-green-800 text-sm">
+                  <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-md">
+                    <p className="text-green-800 dark:text-green-300 text-sm">
                       <strong>🎉 This member has been approved!</strong> They can now access all founding member benefits and participate in co-operative activities.
                     </p>
                   </div>
                 )}
               </div>
 
-                  <div className="flex gap-3 pt-6 border-t bg-gray-50 m-[-1.5rem] mt-6 p-6">
+                  <div className="flex gap-3 pt-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 m-[-1.5rem] mt-6 p-6">
                     {selectedMember.memberProfile?.isApproved && (
                       <Button
                         variant="outline"

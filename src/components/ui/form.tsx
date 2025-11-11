@@ -135,9 +135,14 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
   )
 }
 
+import {useTranslations} from "next-intl";
+
 function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
+  const t = useTranslations();
   const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message ?? "") : props.children
+  const raw = error ? String(error?.message ?? "") : props.children
+  const isI18nKey = typeof raw === 'string' && raw.startsWith('Validation.')
+  const body = isI18nKey ? (() => { try { return t(raw as any) } catch { return raw } })() : raw
 
   if (!body) {
     return null

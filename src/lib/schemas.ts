@@ -21,7 +21,7 @@ export const joinMemberSchema = z
     }),
   })
   .refine((data) => data.phone !== data.nomineePhone, {
-    message: "Nominee phone cannot be the same as member phone.",
+    message: "Validation.nomineePhoneNotSame",
     path: ["nomineePhone"],
   });
 
