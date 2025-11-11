@@ -47,6 +47,10 @@ export function JoinMemberForm() {
       phone: "",
       email: "",
       address: "",
+      nomineeName: "",
+      nomineePhone: "",
+      nomineeNationalId: "",
+      nomineeRelation: "",
       policyConsent: false,
     },
   });
@@ -58,6 +62,10 @@ export function JoinMemberForm() {
     formData.append("phone", data.phone);
     formData.append("email", data.email);
     formData.append("address", data.address);
+    formData.append("nomineeName", data.nomineeName);
+    formData.append("nomineePhone", data.nomineePhone);
+    formData.append("nomineeNationalId", data.nomineeNationalId);
+    formData.append("nomineeRelation", data.nomineeRelation);
     formData.append("policyConsent", data.policyConsent.toString());
     startTransition(() => {
       formAction(formData);
@@ -135,6 +143,62 @@ export function JoinMemberForm() {
             </FormItem>
           )}
         />
+
+        {/* Nominee Information */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="nomineeName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nominee Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Full name of your nominee" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="nomineePhone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nominee Phone Number</FormLabel>
+                <FormControl>
+                  <Input placeholder="01xxxxxxxxx" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="nomineeNationalId"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nominee National ID</FormLabel>
+                <FormControl>
+                  <Input placeholder="Nominee's NID or Passport number" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="nomineeRelation"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Relation with Nominee</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g., Spouse, Father, Mother, Brother" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <FormField
           control={form.control}
           name="policyConsent"

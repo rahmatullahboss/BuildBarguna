@@ -11,6 +11,10 @@ export const joinMemberSchema = z.object({
   phone: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid Bangladeshi phone number." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
   address: z.string().min(10, { message: "Address must be at least 10 characters long." }),
+  nomineeName: z.string().min(3, { message: "Nominee name must be at least 3 characters long." }),
+  nomineePhone: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid Bangladeshi phone number for nominee." }),
+  nomineeNationalId: z.string().min(10, { message: "Nominee National ID must be at least 10 characters long." }),
+  nomineeRelation: z.string().min(2, { message: "Please specify relation with the nominee." }),
   policyConsent: z.boolean().refine((val) => val === true, {
     message: "You must agree to the terms and conditions.",
   }),

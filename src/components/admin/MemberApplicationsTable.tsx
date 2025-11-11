@@ -24,6 +24,10 @@ interface MemberApplication {
     nationalId: string;
     phone: string;
     address: string;
+    nomineeName?: string | null;
+    nomineePhone?: string | null;
+    nomineeNationalId?: string | null;
+    nomineeRelation?: string | null;
     isApproved: boolean;
     policyConsent: boolean;
   } | null;
@@ -207,6 +211,22 @@ export default function MemberApplicationsTable({ applications }: Props) {
           <div class="info-row">
             <span class="info-label">Address:</span>
             <span class="info-value">${member.memberProfile?.address || 'N/A'}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Nominee Name:</span>
+            <span class="info-value">${member.memberProfile?.nomineeName || 'N/A'}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Nominee Relation:</span>
+            <span class="info-value">${member.memberProfile?.nomineeRelation || 'N/A'}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Nominee Phone:</span>
+            <span class="info-value">${member.memberProfile?.nomineePhone || 'N/A'}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Nominee National ID:</span>
+            <span class="info-value">${member.memberProfile?.nomineeNationalId || 'N/A'}</span>
           </div>
           <div class="info-row">
             <span class="info-label">Member Since:</span>
@@ -500,6 +520,31 @@ export default function MemberApplicationsTable({ applications }: Props) {
                       <label className="text-sm font-medium text-gray-600">Address</label>
                       <p className="text-gray-900">{selectedMember.memberProfile?.address || 'Not provided'}</p>
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Nominee Information */}
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                  Nominee Information
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-gray-600">Nominee Name</label>
+                    <p className="text-gray-900">{selectedMember.memberProfile?.nomineeName || 'Not provided'}</p>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-gray-600">Nominee Relation</label>
+                    <p className="text-gray-900">{selectedMember.memberProfile?.nomineeRelation || 'Not provided'}</p>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-gray-600">Nominee Phone</label>
+                    <p className="text-gray-900">{selectedMember.memberProfile?.nomineePhone || 'Not provided'}</p>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-gray-600">Nominee National ID</label>
+                    <p className="text-gray-900">{selectedMember.memberProfile?.nomineeNationalId || 'Not provided'}</p>
                   </div>
                 </div>
               </div>

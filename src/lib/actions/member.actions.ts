@@ -28,6 +28,10 @@ export async function joinMemberAction(
     phone: formData.get("phone"),
     email: formData.get("email"),
     address: formData.get("address"),
+    nomineeName: formData.get("nomineeName"),
+    nomineePhone: formData.get("nomineePhone"),
+    nomineeNationalId: formData.get("nomineeNationalId"),
+    nomineeRelation: formData.get("nomineeRelation"),
     policyConsent: formData.get("policyConsent"),
   });
 
@@ -37,6 +41,10 @@ export async function joinMemberAction(
     phone: formData.get("phone"),
     email: formData.get("email"),
     address: formData.get("address"),
+    nomineeName: formData.get("nomineeName"),
+    nomineePhone: formData.get("nomineePhone"),
+    nomineeNationalId: formData.get("nomineeNationalId"),
+    nomineeRelation: formData.get("nomineeRelation"),
     policyConsent: formData.get("policyConsent") === "on" || formData.get("policyConsent") === "true",
   });
 
@@ -49,7 +57,7 @@ export async function joinMemberAction(
     };
   }
 
-  const { name, email, nationalId, phone, address, policyConsent } = validatedFields.data;
+  const { name, email, nationalId, phone, address, nomineeName, nomineePhone, nomineeNationalId, nomineeRelation, policyConsent } = validatedFields.data;
 
   try {
     // Check if a user with this email or NID already exists
@@ -77,6 +85,10 @@ export async function joinMemberAction(
             nationalId,
             phone,
             address,
+            nomineeName,
+            nomineePhone,
+            nomineeNationalId,
+            nomineeRelation,
             policyConsent,
             isApproved: false, // Members require admin approval
           },
@@ -102,6 +114,9 @@ export async function joinMemberAction(
                 ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}
                 <p><strong>National ID:</strong> ${nationalId}</p>
                 <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Nominee:</strong> ${nomineeName} (${nomineeRelation})</p>
+                <p><strong>Nominee Phone:</strong> ${nomineePhone}</p>
+                <p><strong>Nominee NID:</strong> ${nomineeNationalId}</p>
                 <p><strong>Policy Consent:</strong> ${policyConsent ? 'Yes' : 'No'}</p>
               </div>
               <div style="margin: 30px 0; padding: 15px; background-color: #e9ecef; border-radius: 5px;">
