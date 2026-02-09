@@ -62,10 +62,10 @@ export function JoinMemberForm() {
     formData.append("phone", data.phone);
     formData.append("email", data.email);
     formData.append("address", data.address);
-    formData.append("nomineeName", data.nomineeName);
-    formData.append("nomineePhone", data.nomineePhone);
-    formData.append("nomineeNationalId", data.nomineeNationalId);
-    formData.append("nomineeRelation", data.nomineeRelation);
+    formData.append("nomineeName", data.nomineeName || "");
+    formData.append("nomineePhone", data.nomineePhone || "");
+    formData.append("nomineeNationalId", data.nomineeNationalId || "");
+    formData.append("nomineeRelation", data.nomineeRelation || "");
     formData.append("policyConsent", data.policyConsent.toString());
     startTransition(() => {
       formAction(formData);
