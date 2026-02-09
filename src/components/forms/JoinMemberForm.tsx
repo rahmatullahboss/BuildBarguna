@@ -145,7 +145,9 @@ export function JoinMemberForm() {
         />
 
         {/* Nominee Information */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Nominee Information (Optional)</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="nomineeName"
@@ -198,6 +200,7 @@ export function JoinMemberForm() {
               </FormItem>
             )}
           />
+          </div>
         </div>
         <FormField
           control={form.control}
