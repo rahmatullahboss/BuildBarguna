@@ -12,18 +12,40 @@ export const joinMemberSchema = z
     phone: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid Bangladeshi phone number." }),
     email: z.string().email({ message: "Please enter a valid email address." }),
     address: z.string().min(10, { message: "Address must be at least 10 characters long." }),
-    nomineeName: z.string().min(3, { message: "Nominee name must be at least 3 characters long." }),
-    nomineePhone: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid Bangladeshi phone number for nominee." }),
-    nomineeNationalId: z.string().min(10, { message: "Nominee National ID must be at least 10 characters long." }),
-    nomineeRelation: z.string().min(2, { message: "Please specify relation with the nominee." }),
+    nomineeName: z.string().optional(),
+    nomineePhone: z.string().optional(),
+    nomineeNationalId: z.string().optional(),
+    nomineeRelation: z.string().optional(),
     policyConsent: z.boolean().refine((val) => val === true, {
       message: "You must agree to the terms and conditions.",
     }),
   })
-  .refine((data) => data.phone !== data.nomineePhone, {
-    message: "Validation.nomineePhoneNotSame",
-    path: ["nomineePhone"],
-  });
+  .refine(
+    (data: { nomineePhone?: string }) => {
+      // If nomineePhone is provided, it must be a valid BD phone number
+      if (data.nomineePhone && data.nomineePhone.length > 0) {
+        return /^01[3-9]\d{8}$/.test(data.nomineePhone);
+      }
+      return true;
+    },
+    {
+      message: "Please enter a valid Bangladeshi phone number for nominee.",
+      path: ["nomineePhone"],
+    }
+  )
+  .refine(
+    (data: { nomineePhone?: string; phone: string }) => {
+      // If nomineePhone is provided, it must be different from member's phone
+      if (data.nomineePhone && data.nomineePhone.length > 0 && data.phone) {
+        return data.phone !== data.nomineePhone;
+      }
+      return true;
+    },
+    {
+      message: "Nominee phone number cannot be the same as member phone number.",
+      path: ["nomineePhone"],
+    }
+  );
 
 // Schema for the "Apply for Training" form
 export const applyForTrainingSchema = z.object({

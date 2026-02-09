@@ -85,10 +85,10 @@ export async function joinMemberAction(
             nationalId,
             phone,
             address,
-            nomineeName,
-            nomineePhone,
-            nomineeNationalId,
-            nomineeRelation,
+            nomineeName: nomineeName || null,
+            nomineePhone: nomineePhone || null,
+            nomineeNationalId: nomineeNationalId || null,
+            nomineeRelation: nomineeRelation || null,
             policyConsent,
             isApproved: false, // Members require admin approval
           },
@@ -114,9 +114,11 @@ export async function joinMemberAction(
                 ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}
                 <p><strong>National ID:</strong> ${nationalId}</p>
                 <p><strong>Address:</strong> ${address}</p>
-                <p><strong>Nominee:</strong> ${nomineeName} (${nomineeRelation})</p>
-                <p><strong>Nominee Phone:</strong> ${nomineePhone}</p>
-                <p><strong>Nominee NID:</strong> ${nomineeNationalId}</p>
+                ${nomineeName ? `
+                  <p><strong>Nominee:</strong> ${nomineeName} ${nomineeRelation ? `(${nomineeRelation})` : ''}</p>
+                  ${nomineePhone ? `<p><strong>Nominee Phone:</strong> ${nomineePhone}</p>` : ''}
+                  ${nomineeNationalId ? `<p><strong>Nominee NID:</strong> ${nomineeNationalId}</p>` : ''}
+                ` : ''}
                 <p><strong>Policy Consent:</strong> ${policyConsent ? 'Yes' : 'No'}</p>
               </div>
               <div style="margin: 30px 0; padding: 15px; background-color: #e9ecef; border-radius: 5px;">

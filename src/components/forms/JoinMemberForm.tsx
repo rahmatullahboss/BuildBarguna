@@ -151,7 +151,7 @@ export function JoinMemberForm() {
             name="nomineeName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nominee Name</FormLabel>
+                <FormLabel>Nominee Name (Optional)</FormLabel>
                 <FormControl>
                   <Input placeholder="Full name of your nominee" {...field} />
                 </FormControl>
@@ -164,7 +164,7 @@ export function JoinMemberForm() {
             name="nomineePhone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nominee Phone Number</FormLabel>
+                <FormLabel>Nominee Phone Number (Optional)</FormLabel>
                 <FormControl>
                   <Input placeholder="01xxxxxxxxx" {...field} />
                 </FormControl>
@@ -177,7 +177,7 @@ export function JoinMemberForm() {
             name="nomineeNationalId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nominee National ID</FormLabel>
+                <FormLabel>Nominee National ID (Optional)</FormLabel>
                 <FormControl>
                   <Input placeholder="Nominee's NID or Passport number" {...field} />
                 </FormControl>
@@ -190,7 +190,7 @@ export function JoinMemberForm() {
             name="nomineeRelation"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Relation with Nominee</FormLabel>
+                <FormLabel>Relation with Nominee (Optional)</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g., Spouse, Father, Mother, Brother" {...field} />
                 </FormControl>
