@@ -22,7 +22,7 @@ export async function joinMemberAction(
   }
 
   // Debug the form data
-  console.log("Form data received:", {
+    console.log("Form data received:", {
     name: formData.get("name"),
     nationalId: formData.get("nationalId"),
     phone: formData.get("phone"),
@@ -32,6 +32,8 @@ export async function joinMemberAction(
     nomineePhone: formData.get("nomineePhone"),
     nomineeNationalId: formData.get("nomineeNationalId"),
     nomineeRelation: formData.get("nomineeRelation"),
+    bkashNumber: formData.get("bkashNumber"),
+    transactionId: formData.get("transactionId"),
     policyConsent: formData.get("policyConsent"),
   });
 
@@ -45,6 +47,8 @@ export async function joinMemberAction(
     nomineePhone: formData.get("nomineePhone"),
     nomineeNationalId: formData.get("nomineeNationalId"),
     nomineeRelation: formData.get("nomineeRelation"),
+    bkashNumber: formData.get("bkashNumber"),
+    transactionId: formData.get("transactionId"),
     policyConsent: formData.get("policyConsent") === "on" || formData.get("policyConsent") === "true",
   });
 
@@ -57,7 +61,7 @@ export async function joinMemberAction(
     };
   }
 
-  const { name, email, nationalId, phone, address, nomineeName, nomineePhone, nomineeNationalId, nomineeRelation, policyConsent } = validatedFields.data;
+  const { name, email, nationalId, phone, address, nomineeName, nomineePhone, nomineeNationalId, nomineeRelation, bkashNumber, transactionId, policyConsent } = validatedFields.data;
 
   try {
     // Check if a user with this email or NID already exists
@@ -89,6 +93,8 @@ export async function joinMemberAction(
             nomineePhone: nomineePhone || null,
             nomineeNationalId: nomineeNationalId || null,
             nomineeRelation: nomineeRelation || null,
+            bkashNumber,
+            transactionId,
             policyConsent,
             isApproved: false, // Members require admin approval
           },
@@ -114,6 +120,11 @@ export async function joinMemberAction(
                 ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}
                 <p><strong>National ID:</strong> ${nationalId}</p>
                 <p><strong>Address:</strong> ${address}</p>
+                <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                  <h3 style="margin-top: 0; color: #007bff;">Payment Details</h3>
+                  <p><strong>bKash Number:</strong> ${bkashNumber}</p>
+                  <p><strong>Transaction ID:</strong> ${transactionId}</p>
+                </div>
                 ${nomineeName ? `
                   <p><strong>Nominee:</strong> ${nomineeName} ${nomineeRelation ? `(${nomineeRelation})` : ''}</p>
                   ${nomineePhone ? `<p><strong>Nominee Phone:</strong> ${nomineePhone}</p>` : ''}
@@ -124,7 +135,7 @@ export async function joinMemberAction(
               <div style="margin: 30px 0; padding: 15px; background-color: #e9ecef; border-radius: 5px;">
                 <p style="margin: 0; font-size: 14px; color: #666;">
                   <strong>Quick Reply:</strong>
-                  <a href="mailto:${email}?subject=Your membership application&body=Hello ${name},%0D%0A%0D%0AThank you for applying for founding membership. Our team will review your application and get back to you within 3-7 working days.%0D%0A%0D%0A" style="color: #007bff; text-decoration: none;">Click here to reply</a>
+                  <a href="mailto:${email}?subject=Your membership application&body=Hello ${name},%0D%0A%0D%0AThank you for applying for founding membership. We have received your payment details (TrxID: ${transactionId}). Our team will review your application and get back to you within 3-7 working days.%0D%0A%0D%0A" style="color: #007bff; text-decoration: none;">Click here to reply</a>
                 </p>
               </div>
             </div>

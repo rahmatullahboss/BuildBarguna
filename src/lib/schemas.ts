@@ -16,7 +16,9 @@ export const joinMemberSchema = z
     nomineePhone: z.string().optional(),
     nomineeNationalId: z.string().optional(),
     nomineeRelation: z.string().optional(),
-    policyConsent: z.boolean().refine((val) => val === true, {
+    bkashNumber: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid bKash number." }),
+    transactionId: z.string().min(8, { message: "Transaction ID must be at least 8 characters long." }),
+    policyConsent: z.boolean().refine((val: boolean) => val === true, {
       message: "You must agree to the terms and conditions.",
     }),
   })
@@ -65,9 +67,11 @@ export const proposeVentureSchema = z.object({
   leanCanvas: z
     .any()
     .optional()
-    .refine((file) => !file || file?.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .refine((file: any) => !file || file?.size <= MAX_FILE_SIZE, `Max file size is 5MB.`)
     .refine(
-      (file) => !file || ACCEPTED_FILE_TYPES.includes(file?.type),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (file: any) => !file || ACCEPTED_FILE_TYPES.includes(file?.type),
       ".pdf, .jpg, and .png files are accepted."
     ),
 });

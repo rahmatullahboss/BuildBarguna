@@ -51,6 +51,8 @@ export function JoinMemberForm() {
       nomineePhone: "",
       nomineeNationalId: "",
       nomineeRelation: "",
+      bkashNumber: "",
+      transactionId: "",
       policyConsent: false,
     },
   });
@@ -66,6 +68,8 @@ export function JoinMemberForm() {
     formData.append("nomineePhone", data.nomineePhone || "");
     formData.append("nomineeNationalId", data.nomineeNationalId || "");
     formData.append("nomineeRelation", data.nomineeRelation || "");
+    formData.append("bkashNumber", data.bkashNumber);
+    formData.append("transactionId", data.transactionId);
     formData.append("policyConsent", data.policyConsent.toString());
     startTransition(() => {
       formAction(formData);
@@ -200,6 +204,49 @@ export function JoinMemberForm() {
               </FormItem>
             )}
           />
+          </div>
+        </div>
+
+        {/* Payment Information */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-medium">Registration Fee</h3>
+          <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-4">
+            <p className="text-sm text-blue-800 mb-2">
+              Please pay the registration fee to the following bKash Personal number:
+            </p>
+            <p className="text-lg font-bold text-blue-900">01739416661</p>
+            <p className="text-xs text-blue-700 mt-1">
+              (Select &quot;Send Money&quot; option in your bKash app)
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
+              name="bkashNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Your bKash Number</FormLabel>
+                  <FormControl>
+                    <Input placeholder="01xxxxxxxxx" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="transactionId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Transaction ID (TrxID)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g. 9G7..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
         </div>
         <FormField

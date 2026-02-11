@@ -36,6 +36,10 @@ model MemberProfile {
   nomineePhone       String?
   nomineeNationalId  String?
   nomineeRelation    String?
+  // Payment Information
+  bkashNumber        String?
+  transactionId      String?
+  paymentAmount      Float?
   isApproved         Boolean  @default(false)
   policyConsent      Boolean  @default(false)
   createdAt          DateTime @default(now())
