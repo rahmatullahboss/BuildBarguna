@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Prisma } from "@prisma/client";
 
-const prisma = new PrismaClient();
-
-async function getStories() {
+// eslint-disable-next-line
+async function getStories(): Promise<Prisma.StoryGetPayload<{}>[]> {
   return prisma.story.findMany({ orderBy: { createdAt: "desc" } });
 }
 
@@ -49,9 +49,7 @@ export default async function AdminStoriesPage() {
                       <div className="flex gap-2">
                         <Button
                           variant="outline"
-                          onClick={async () => {
-                            'use server'
-                          }}
+                          disabled
                         >Edit</Button>
                         <form action={`/api/admin/stories/${s.id}`} method="post">
                           <input type="hidden" name="_method" value="DELETE" />

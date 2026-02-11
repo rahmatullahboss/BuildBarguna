@@ -13,11 +13,10 @@ export default async function JoinMemberPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-fuchsia-500 dark:to-fuchsia-400">Join Build Barguna Co-operative</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-fuchsia-500 dark:to-fuchsia-400">{t('joinTitle')}</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Become a founding member of our transparent, community-driven co-operative. 
-              Help us build a stronger future together.
+              {t('joinDescription')}
             </p>
           </div>
 
@@ -28,39 +27,39 @@ export default async function JoinMemberPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Users className="h-5 w-5" />
-                    Founding Member Benefits
+                    {t('foundingBenefitsTitle')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-medium text-foreground">Co-design Participation</h4>
-                      <p className="text-sm text-muted-foreground">Join sessions to shape our policies and programs</p>
+                      <h4 className="font-medium text-foreground">{t('benefit1Title')}</h4>
+                      <p className="text-sm text-muted-foreground">{t('benefit1Desc')}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-medium text-foreground">Priority Access</h4>
-                      <p className="text-sm text-muted-foreground">First access to training and pilot programs</p>
+                      <h4 className="font-medium text-foreground">{t('benefit2Title')}</h4>
+                      <p className="text-sm text-muted-foreground">{t('benefit2Desc')}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-medium text-foreground">Governance Rights</h4>
-                      <p className="text-sm text-muted-foreground">Vote on policies and organizational decisions</p>
+                      <h4 className="font-medium text-foreground">{t('benefit3Title')}</h4>
+                      <p className="text-sm text-muted-foreground">{t('benefit3Desc')}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-medium text-foreground">Transparent Updates</h4>
-                      <p className="text-sm text-muted-foreground">Regular reports on our progress and finances</p>
+                      <h4 className="font-medium text-foreground">{t('benefit4Title')}</h4>
+                      <p className="text-sm text-muted-foreground">{t('benefit4Desc')}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -71,25 +70,25 @@ export default async function JoinMemberPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Shield className="h-5 w-5" />
-                    Requirements
+                    {t('requirementsTitle')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-center gap-2">
                     <FileText className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm text-foreground">18+ years old</span>
+                    <span className="text-sm text-foreground">{t('req1')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <FileText className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm text-foreground">Valid National ID or Passport</span>
+                    <span className="text-sm text-foreground">{t('req2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <FileText className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm text-foreground">Local resident</span>
+                    <span className="text-sm text-foreground">{t('req3')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <FileText className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm text-foreground">Agree to co-operative constitution</span>
+                    <span className="text-sm text-foreground">{t('req4')}</span>
                   </div>
                 </CardContent>
               </Card>
@@ -99,10 +98,9 @@ export default async function JoinMemberPage() {
             <div className="lg:col-span-2">
               <Card className="bg-card/90 border border-border/60 rounded-2xl shadow-lg">
                 <CardHeader>
-                  <CardTitle>Founding Member Application</CardTitle>
+                  <CardTitle>{t('applicationTitle')}</CardTitle>
                   <p className="text-sm text-muted-foreground">
-                    Fill out this form to apply for founding membership. 
-                    Your application will be reviewed within 3-7 working days.
+                    {t('applicationDesc')}
                   </p>
                 </CardHeader>
                 <CardContent>
@@ -115,38 +113,38 @@ export default async function JoinMemberPage() {
           {/* Process Timeline */}
           <Card className="mt-12 bg-card/90 border border-border/60 rounded-2xl shadow-lg">
             <CardHeader>
-              <CardTitle className="text-center">Application Process</CardTitle>
+              <CardTitle className="text-center">{t('processTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold mb-2">1</div>
-                  <h4 className="font-medium text-foreground">Submit Application</h4>
-                  <p className="text-sm text-muted-foreground">Complete and submit the form</p>
+                  <h4 className="font-medium text-foreground">{t('step1Title')}</h4>
+                  <p className="text-sm text-muted-foreground">{t('step1Desc')}</p>
                 </div>
                 
                 <div className="hidden md:block w-16 h-0.5 bg-border"></div>
                 
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold mb-2">2</div>
-                  <h4 className="font-medium text-foreground">Review & Verification</h4>
-                  <p className="text-sm text-muted-foreground">We verify your information</p>
+                  <h4 className="font-medium text-foreground">{t('step2Title')}</h4>
+                  <p className="text-sm text-muted-foreground">{t('step2Desc')}</p>
                 </div>
                 
                 <div className="hidden md:block w-16 h-0.5 bg-border"></div>
                 
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold mb-2">3</div>
-                  <h4 className="font-medium text-foreground">Orientation</h4>
-                  <p className="text-sm text-muted-foreground">Attend member orientation</p>
+                  <h4 className="font-medium text-foreground">{t('step3Title')}</h4>
+                  <p className="text-sm text-muted-foreground">{t('step3Desc')}</p>
                 </div>
                 
                 <div className="hidden md:block w-16 h-0.5 bg-border"></div>
                 
                 <div className="flex flex-col items-center text-center">
                   <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold mb-2">4</div>
-                  <h4 className="font-medium text-foreground">Welcome!</h4>
-                  <p className="text-sm text-muted-foreground">Receive interim member ID</p>
+                  <h4 className="font-medium text-foreground">{t('step4Title')}</h4>
+                  <p className="text-sm text-muted-foreground">{t('step4Desc')}</p>
                 </div>
               </div>
             </CardContent>

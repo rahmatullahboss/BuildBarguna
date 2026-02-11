@@ -1,10 +1,10 @@
+import { prisma } from "@/lib/prisma";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+export const dynamic = "force-dynamic";
 
 export default async function AdminSettingsPage() {
   const kpis = await prisma.kPI.findMany({ orderBy: { updatedAt: "desc" } });
@@ -45,7 +45,7 @@ export default async function AdminSettingsPage() {
         <CardContent>
           <div className="space-y-4">
             {kpis.length === 0 && <p className="text-sm text-gray-500">No KPIs yet</p>}
-            {kpis.map((kpi: any) => (
+            {kpis.map((kpi) => (
               <form
                 key={kpi.id}
                 action={`/api/admin/kpis/${encodeURIComponent(kpi.metric)}`}

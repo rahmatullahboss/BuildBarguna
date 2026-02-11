@@ -129,7 +129,7 @@ export default function ContactsList({ contacts }: { contacts: ContactItem[] }) 
               </div>
               <div className="mt-4 flex gap-2">
                 <Button variant="outline" asChild>
-                  <a href={`mailto:${contact.email}?subject=Re: ${contact.subject}&body=Hello ${contact.firstName},%0D%0A%0D%0AThank you for contacting Build Barguna Co-operative.%0D%0A%0D%0A`}>
+                  <a href={`mailto:${contact.email}?subject=Re: ${contact.subject}&body=Hello ${contact.firstName},%0D%0A%0D%0AThank you for contacting Build Barguna Initiative.%0D%0A%0D%0A`}>
                     Reply via Email
                   </a>
                 </Button>

@@ -71,7 +71,7 @@ export default async function AdminMembersPage() {
           <CardContent>
             <div className="text-2xl font-bold text-green-600">{approvedCount}</div>
             <p className="text-xs text-muted-foreground">
-              Active co-operative members
+              Active initiative members
             </p>
           </CardContent>
         </Card>

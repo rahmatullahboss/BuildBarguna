@@ -1,6 +1,6 @@
-# Build Barguna Co-operative - AI Agent Guidelines
+# Build Barguna Initiative - AI Agent Guidelines
 
-> **Project Context**: Build Barguna is a modern, bilingual (English ↔ Bengali) co-operative platform built with Next.js 16, React 19, Prisma 6, and NextAuth v5. It manages member onboarding, training courses, venture proposals, brands, and community stories.
+> **Project Context**: Build Barguna is a modern, bilingual (English ↔ Bengali) community initiative platform built with Next.js 16, React 19, Prisma 6, and NextAuth v5. It manages member onboarding, training courses, venture proposals, brands, and community stories.
 
 ---
 
@@ -26,7 +26,7 @@
 ## Project Overview
 
 ### Mission
-Build transparent foundations for co-operative-based fair economy through community participation and pilot-first approach.
+Build transparent foundations for community-based fair economy through community participation and pilot-first approach.
 
 **Tagline**: Together Capital, Together Development
 
@@ -35,7 +35,7 @@ Build transparent foundations for co-operative-based fair economy through commun
 1. **Member Management**: KYC with nominee information, approval workflow
 2. **Training Programs**: Course catalog with scholarship options, application system
 3. **Venture Proposals**: Members can propose business ideas with lean canvas uploads
-4. **Brand Showcase**: Co-operative brands with galleries and bilingual content
+4. **Brand Showcase**: Community brands with galleries and bilingual content
 5. **Success Stories**: Community impact stories (published/draft system)
 6. **Contact & Partner Inquiry**: Multi-purpose contact forms
 7. **Admin Dashboard**: Full CRUD operations, approval workflows, KPI tracking

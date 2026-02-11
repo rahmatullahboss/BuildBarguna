@@ -17,7 +17,7 @@ const staticRoutes = [
 ];
 
 const locales = ['en', 'bn'];
-const siteUrl = 'https://www.buildbarguna.coop'; // Replace with the actual domain
+const siteUrl = 'https://www.buildbarguna.org'; // Replace with the actual domain
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = staticRoutes.flatMap((route) => {

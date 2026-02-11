@@ -73,7 +73,7 @@ export function ContactForm() {
 
       <div>
         <label className="block text-sm font-medium text-foreground mb-2">
-          {t("phone")}
+          {t("formPhone")}
         </label>
         <Input 
           name="phone"

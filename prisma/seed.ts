@@ -22,7 +22,7 @@ async function main() {
   // 1. Seed Users
   const adminUser = await prisma.user.create({
     data: {
-      email: "admin@buildbarguna.coop",
+      email: "admin@buildbarguna.org",
       name: "Admin User",
       role: UserRole.ADMIN,
     },
@@ -30,7 +30,7 @@ async function main() {
 
   const editorUser = await prisma.user.create({
     data: {
-      email: "editor@buildbarguna.coop",
+      email: "editor@buildbarguna.org",
       name: "Editor User",
       role: UserRole.EDITOR,
     },
@@ -38,7 +38,7 @@ async function main() {
 
   const memberUser = await prisma.user.create({
     data: {
-      email: "member@buildbarguna.coop",
+      email: "member@buildbarguna.org",
       name: "Member User",
       role: UserRole.MEMBER,
       memberProfile: {
@@ -106,10 +106,10 @@ async function main() {
         endDate: new Date("2026-04-05"),
       },
       {
-        titleEn: "Co-operative Management & Governance",
-        titleBn: "সমবায় ব্যবস্থাপনা ও সুশাসন",
-        descriptionEn: "Learn the principles of running a successful and transparent co-operative.",
-        descriptionBn: "একটি সফল এবং স্বচ্ছ সমবায় পরিচালনার নীতি শিখুন।",
+        titleEn: "Community Management & Governance",
+        titleBn: "কমিউনিটি ব্যবস্থাপনা ও সুশাসন",
+        descriptionEn: "Learn the principles of running a successful and transparent community initiative.",
+        descriptionBn: "একটি সফল এবং স্বচ্ছ কমিউনিটি ইনিশিয়েটিভ পরিচালনার নীতি শিখুন।",
         fee: 1000,
         startDate: new Date("2026-04-01"),
         endDate: new Date("2026-04-15"),
@@ -196,7 +196,7 @@ async function main() {
     data: [
       {
         slug: "our-journey-begins",
-        titleEn: "Our Journey Begins: The Founding of Build Barguna Co-op",
+        titleEn: "Our Journey Begins: The Founding of Build Barguna Initiative",
         titleBn: "আমাদের যাত্রা শুরু: বিল্ড বরগুনা কো-অপারেটিভের প্রতিষ্ঠা",
         bodyEn: "## Our Vision\n\nThis is the story of how a group of young individuals decided to take matters into their own hands...",
         bodyBn: "## আমাদের লক্ষ্য\n\nএটি একদল তরুণের নিজেদের হাতে বিষয়গুলি তুলে নেওয়ার গল্প...",
@@ -214,10 +214,10 @@ async function main() {
         publishedAt: new Date(),
       },
        {
-        slug: "why-cooperatives-matter",
-        titleEn: "Why Co-operatives Matter for Youth Employment",
+        slug: "why-community-initiatives-matter",
+        titleEn: "Why Community Initiatives Matter for Youth Employment",
         titleBn: "যুব কর্মসংস্থানে সমবায়ের গুরুত্ব",
-        bodyEn: "An opinion piece on the power of the co-operative model.",
+        bodyEn: "An opinion piece on the power of the community initiative model.",
         bodyBn: "সমবায় মডেলের শক্তি নিয়ে একটি মতামত।",
         authorId: adminUser.id,
         publishedAt: new Date(),
@@ -235,7 +235,7 @@ async function main() {
         slug: "member-spotlight-rahim",
         titleEn: "Member Spotlight: The Story of Rahim",
         titleBn: "সদস্য পরিচিতি: রহিমের গল্প",
-        bodyEn: "Meet Rahim, a young entrepreneur who joined our co-operative with a dream.",
+        bodyEn: "Meet Rahim, a young entrepreneur who joined our initiative with a dream.",
         bodyBn: "দেখা করুন রহিমের সাথে, একজন তরুণ উদ্যোক্তা যিনি স্বপ্ন নিয়ে আমাদের সমবায়ে যোগ দিয়েছেন।",
         authorId: editorUser.id,
         publishedAt: new Date(),
@@ -274,7 +274,7 @@ async function main() {
   // 6. Seed Governance Docs (6)
   await prisma.document.createMany({
     data: [
-      { titleEn: "Co-operative By-Laws (Amended 2025)", titleBn: "সমবায় উপ-আইন (সংশোধিত ২০২৫)", fileUrl: "/docs/by-laws-2025.pdf", category: "by-laws", publishedAt: new Date("2025-01-01") },
+      { titleEn: "Initiative By-Laws (Amended 2025)", titleBn: "ইনিশিয়েটিভ উপ-আইন (সংশোধিত ২০২৫)", fileUrl: "/docs/by-laws-2025.pdf", category: "by-laws", publishedAt: new Date("2025-01-01") },
       { titleEn: "Conflict of Interest Policy", titleBn: "স্বার্থের সংঘাত নীতি", fileUrl: "/docs/coi-policy.pdf", category: "policy", publishedAt: new Date("2025-01-01") },
       { titleEn: "AGM Minutes - Dec 2024", titleBn: "বার্ষিক সাধারণ সভার কার্যবিবরণী - ডিসেম্বর ২০২৪", fileUrl: "/docs/agm-minutes-2024.pdf", category: "minutes", publishedAt: new Date("2024-12-20") },
       { titleEn: "Procurement Guidelines", titleBn: "ক্রয় নির্দেশিকা", fileUrl: "/docs/procurement-guidelines.pdf", category: "policy", publishedAt: new Date("2025-02-01") },
@@ -296,7 +296,7 @@ async function main() {
         roleBn: "প্রশিক্ষণার্থী ও কারিগর",
       },
       {
-        quoteEn: "Being a member of this co-operative gives me a sense of ownership and hope for the future.",
+        quoteEn: "Being a member of this initiative gives me a sense of ownership and hope for the future.",
         quoteBn: "এই সমবায়ের সদস্য হওয়া আমাকে মালিকানার অনুভূতি এবং ভবিষ্যতের জন্য আশা দেয়।",
         authorEn: "Rahim Islam",
         authorBn: "রহিম ইসলাম",

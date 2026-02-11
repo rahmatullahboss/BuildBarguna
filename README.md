@@ -1,6 +1,6 @@
-# Build Barguna Co-operative Website
+# Build Barguna Initiative Website
 
-This is the official website for **Build Barguna**, a primary, non-credit co-operative. Our mission is to build transparent foundations for co-operative-based fair economy through community participation and pilot-first approach.
+This is the official website for **Build Barguna**, a primary, non-credit community initiative. Our mission is to build transparent foundations for community-based fair economy through community participation and pilot-first approach.
 
 **Tagline:** Together Capital, Together Development
 

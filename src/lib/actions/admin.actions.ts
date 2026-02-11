@@ -2,9 +2,23 @@
 
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { Prisma } from "@prisma/client";
+
+// Types
+export type MemberApplicationWithProfile = Prisma.UserGetPayload<{
+  include: { memberProfile: true }
+}>;
+
+export type VentureWithProposer = Prisma.VentureGetPayload<{
+  include: { proposer: true }
+}>;
+
+export type CourseApplicationWithRelations = Prisma.CourseApplicationGetPayload<{
+  include: { user: true, course: true }
+}>;
 
 // Get all member applications
-export async function getMemberApplications() {
+export async function getMemberApplications(): Promise<MemberApplicationWithProfile[]> {
   try {
     const applications = await prisma.user.findMany({
       where: {
@@ -134,7 +148,7 @@ export async function getDashboardStats() {
 }
 
 // Get all course applications
-export async function getCourseApplications() {
+export async function getCourseApplications(): Promise<CourseApplicationWithRelations[]> {
   try {
     const applications = await prisma.courseApplication.findMany({
       include: {
@@ -154,7 +168,7 @@ export async function getCourseApplications() {
 }
 
 // Get all venture proposals
-export async function getVentureProposals() {
+export async function getVentureProposals(): Promise<VentureWithProposer[]> {
   try {
     const ventures = await prisma.venture.findMany({
       include: {

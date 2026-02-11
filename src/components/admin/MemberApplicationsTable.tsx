@@ -316,7 +316,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
           </div>
 
           <div class="title">Founding Member Certificate</div>
-          <div class="ribbon">Community • Co-operation • Transparency</div>
+          <div class="ribbon">Community • Cooperation • Transparency</div>
           <div class="declaration">This is to certify that the following member has been formally approved.</div>
 
           <div class="section">
@@ -348,11 +348,11 @@ export default function MemberApplicationsTable({ applications }: Props) {
           <div class="signatures">
             <div class="sig">
               <strong>Chairman</strong><br />
-              <small>Build Barguna Co-operative</small>
+              <small>Build Barguna Initiative</small>
             </div>
             <div class="sig">
               <strong>Secretary</strong><br />
-              <small>Build Barguna Co-operative</small>
+              <small>Build Barguna Initiative</small>
             </div>
           </div>
 
@@ -360,7 +360,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
 
           <div class="footer">
             <p><strong>Certificate Issue Date:</strong> ${currentDate}</p>
-            <p>This certificate is issued by Build Barguna Co-operative Society • info@buildbarguna.coop</p>
+            <p>This certificate is issued by Build Barguna Initiative • info@buildbarguna.org</p>
           </div>
 
           <div class="actions no-print">
@@ -680,7 +680,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
                 {selectedMember.memberProfile?.isApproved && (
                   <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/30 rounded-md">
                     <p className="text-green-800 dark:text-green-300 text-sm">
-                      <strong>🎉 This member has been approved!</strong> They can now access all founding member benefits and participate in co-operative activities.
+                      <strong>🎉 This member has been approved!</strong> They can now access all founding member benefits and participate in initiative activities.
                     </p>
                   </div>
                 )}

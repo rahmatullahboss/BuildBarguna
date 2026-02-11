@@ -144,14 +144,14 @@ async function sendEmailNotification({
           <div style="margin: 30px 0; padding: 15px; background-color: #e9ecef; border-radius: 5px;">
             <p style="margin: 0; font-size: 14px; color: #666;">
               <strong>Quick Reply:</strong> 
-              <a href="mailto:${email}?subject=Re: ${encodeURIComponent(subject)}&body=Hello ${firstName},%0D%0A%0D%0AThank you for contacting Build Barguna Co-operative.%0D%0A%0D%0A" 
+              <a href="mailto:${email}?subject=Re: ${encodeURIComponent(subject)}&body=Hello ${firstName},%0D%0A%0D%0AThank you for contacting Build Barguna Initiative.%0D%0A%0D%0A" 
                  style="color: #007bff; text-decoration: none;">Click here to reply directly</a>
             </p>
           </div>
           
           <hr style="margin: 20px 0; border: none; border-top: 1px solid #ddd;">
           <p style="font-size: 12px; color: #888; text-align: center;">
-            Sent from Build Barguna Co-operative Contact Form<br>
+            Sent from Build Barguna Initiative Contact Form<br>
             <em>Received at ${new Date().toLocaleString()}</em>
           </p>
         </div>

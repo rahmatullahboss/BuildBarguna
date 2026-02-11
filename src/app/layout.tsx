@@ -15,21 +15,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://www.buildbarguna.coop";
+const siteUrl = "https://www.buildbarguna.org";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Build Barguna Co-op: Train. Co-invest. Build Barguna.",
-    template: `%s | Build Barguna Co-op`,
+    default: "Build Barguna Initiative: Train. Co-invest. Build Barguna.",
+    template: `%s | Build Barguna Initiative`,
   },
   description: "Uniting Barguna’s youth to create self-employment via skills training and member-pooled Joint Investment Projects (JIPs).",
-  keywords: ["co-operative", "Barguna", "youth employment", "skills training", "investment", "Bangladesh"],
+  keywords: ["community initiative", "Barguna", "youth employment", "skills training", "investment", "Bangladesh"],
   openGraph: {
-    title: "Build Barguna Co-op",
-    description: "Uniting Barguna’s youth for self-employment and investment.",
+    title: "Build Barguna Initiative",
+    description: "Uniting Barguna's youth for self-employment and investment.",
     url: siteUrl,
-    siteName: "Build Barguna Co-op",
+    siteName: "Build Barguna Initiative",
     images: [
       {
         url: `${siteUrl}/og-image.png`, // Must be an absolute URL
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Build Barguna Co-op",
+    title: "Build Barguna Initiative",
     description: "Uniting Barguna’s youth for self-employment and investment.",
     images: [`${siteUrl}/og-image.png`],
   },

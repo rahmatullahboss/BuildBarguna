@@ -1,7 +1,7 @@
 {
   "$schema": "https://context7.com/schema/context7.json",
   "projectTitle": "Build Barguna",
-  "description": "Co-operative Website Platform",
+  "description": "Community Initiative Website Platform",
   "folders": ["src", "prisma", "public"],
   "excludeFolders": ["node_modules", ".next", ".git", "tmp"],
   "excludeFiles": ["package-lock.json"],
