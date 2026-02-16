@@ -50,19 +50,19 @@ export function Navbar({ locale }: { locale: string }) {
     <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm border-gray-200" : "bg-transparent"
+        isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm border-gray-200 dark:bg-black/80 dark:border-gray-800" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition-transform duration-300">
+            <div className="w-10 h-10 bg-black dark:bg-white rounded-lg flex items-center justify-center text-white dark:text-black font-bold text-xl group-hover:scale-105 transition-transform duration-300">
               B
             </div>
             <span className={cn(
               "font-bold text-xl tracking-tight transition-colors duration-300",
-              isScrolled ? "text-gray-900" : "text-gray-900"
+              isScrolled ? "text-gray-900 dark:text-white" : "text-gray-900 dark:text-white"
             )}>
               Build Barguna
             </span>
@@ -75,19 +75,19 @@ export function Navbar({ locale }: { locale: string }) {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium transition-all duration-200 hover:text-black relative group",
-                  isActive(link.href) ? "text-black" : "text-gray-600"
+                  "text-sm font-medium transition-all duration-200 hover:text-black dark:hover:text-white relative group",
+                  isActive(link.href) ? "text-black dark:text-white" : "text-gray-600 dark:text-gray-300"
                 )}
               >
                 {link.label}
                 <span className={cn(
-                  "absolute -bottom-1 left-0 w-full h-0.5 bg-black transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100",
+                  "absolute -bottom-1 left-0 w-full h-0.5 bg-black dark:bg-white transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100",
                   isActive(link.href) && "scale-x-100"
                 )} />
               </Link>
             ))}
 
-            <div className="flex items-center gap-4 pl-4 border-l border-gray-200">
+            <div className="flex items-center gap-4 pl-4 border-l border-gray-200 dark:border-gray-700">
               <DarkModeToggle />
               
               {session ? (
@@ -125,12 +125,12 @@ export function Navbar({ locale }: { locale: string }) {
               ) : (
                 <>
                   <Link href={`/${locale}/auth/signin`}>
-                    <Button variant="ghost" size="sm" className="hidden lg:inline-flex">
+                    <Button variant="ghost" size="sm" className="hidden lg:inline-flex dark:text-white">
                       Log In
                     </Button>
                   </Link>
                   <Link href={`/${locale}/members`}>
-                    <Button size="sm" className="bg-black hover:bg-gray-800 text-white rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                    <Button size="sm" className="bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                       Sign Up
                     </Button>
                   </Link>
@@ -147,9 +147,9 @@ export function Navbar({ locale }: { locale: string }) {
               className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-gray-900" />
+                <X className="w-6 h-6 text-gray-900 dark:text-white" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-900" />
+                <Menu className="w-6 h-6 text-gray-900 dark:text-white" />
               )}
             </button>
           </div>
@@ -158,7 +158,7 @@ export function Navbar({ locale }: { locale: string }) {
 
       {/* Mobile Menu */}
       <div className={cn(
-        "md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-lg transition-all duration-300 origin-top overflow-hidden",
+        "md:hidden absolute top-20 left-0 w-full bg-white dark:bg-black border-b border-gray-100 dark:border-gray-800 shadow-lg transition-all duration-300 origin-top overflow-hidden",
         mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
       )}>
         <div className="px-4 py-6 space-y-4">
@@ -168,8 +168,8 @@ export function Navbar({ locale }: { locale: string }) {
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               className={cn(
-                "block text-lg font-medium transition-colors hover:text-black",
-                isActive(link.href) ? "text-black" : "text-gray-600"
+                "block text-lg font-medium transition-colors hover:text-black dark:hover:text-white",
+                isActive(link.href) ? "text-black dark:text-white" : "text-gray-600 dark:text-gray-300"
               )}
             >
               {link.label}
@@ -210,12 +210,12 @@ export function Navbar({ locale }: { locale: string }) {
             ) : (
               <>
                  <Link href={`/${locale}/auth/signin`} onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start">
+                  <Button variant="ghost" className="w-full justify-start dark:text-white">
                     Log In
                   </Button>
                 </Link>
                 <Link href={`/${locale}/members`} onClick={() => setMobileMenuOpen(false)}>
-                  <Button className="w-full bg-black hover:bg-gray-800 text-white rounded-full">
+                  <Button className="w-full bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white rounded-full">
                     Sign Up
                   </Button>
                 </Link>
