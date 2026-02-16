@@ -21,7 +21,7 @@ interface MemberApplication {
   email: string;
   createdAt: Date;
   memberProfile: {
-    nationalId: string;
+    nationalId: string | null;
     phone: string;
     address: string;
     nomineeName?: string | null;

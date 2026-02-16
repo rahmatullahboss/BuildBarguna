@@ -8,7 +8,7 @@ const ACCEPTED_FILE_TYPES = ["application/pdf", "image/jpeg", "image/png"];
 export const joinMemberSchema = z
   .object({
     name: z.string().min(3, { message: "Name must be at least 3 characters long." }),
-    nationalId: z.string().min(10, { message: "National ID or Passport must be at least 10 characters long." }),
+    nationalId: z.string().optional().or(z.literal("")),
     phone: z.string().regex(/^01[3-9]\d{8}$/, { message: "Please enter a valid Bangladeshi phone number." }),
     email: z.string().email({ message: "Please enter a valid email address." }),
     address: z.string().min(10, { message: "Address must be at least 10 characters long." }),

@@ -28,7 +28,7 @@ model User {
 model MemberProfile {
   id                 String   @id @default(cuid())
   userId             String   @unique
-  nationalId         String   @unique
+  nationalId         String?  @unique
   phone              String
   address            String
   // Nominee information for benefits and payouts

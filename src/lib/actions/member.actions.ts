@@ -72,7 +72,7 @@ export async function joinMemberAction(
       where: {
         OR: [
           { email },
-          { memberProfile: { nationalId } },
+          ...(nationalId ? [{ memberProfile: { nationalId } }] : []),
         ],
       },
     });
@@ -93,7 +93,7 @@ export async function joinMemberAction(
         role: "MEMBER",
         memberProfile: {
           create: {
-            nationalId,
+            nationalId: nationalId || null,
             phone,
             address,
             nomineeName: nomineeName || null,

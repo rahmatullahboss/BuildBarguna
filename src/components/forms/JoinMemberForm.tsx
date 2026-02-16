@@ -70,7 +70,7 @@ export function JoinMemberForm() {
   const onSubmit = (data: z.infer<typeof joinMemberSchema>) => {
     const formData = new FormData();
     formData.append("name", data.name);
-    formData.append("nationalId", data.nationalId);
+    formData.append("nationalId", data.nationalId || "");
     formData.append("phone", data.phone);
     formData.append("email", data.email);
     formData.append("address", data.address);
@@ -120,7 +120,7 @@ export function JoinMemberForm() {
                     name="nationalId"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>{t("nidLabel")}</FormLabel>
+                        <FormLabel>{t("nidLabel")} <span className="text-muted-foreground font-normal text-xs">(Optional)</span></FormLabel>
                         <FormControl>
                           <Input placeholder={t("nidPlaceholder")} {...field} />
                         </FormControl>
