@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { locales } from "@/i18n";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import Navbar from "@/components/layout/Navbar";
+import { Navbar } from "@/components/layout/Navbar";
 import Script from "next/script";
 import Footer from "@/components/layout/Footer";
 import SessionProvider from "@/components/providers/SessionProvider";
@@ -37,7 +37,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         `}
       </Script>
       <div className="flex flex-col min-h-screen">
-        <Navbar />
+        <Navbar locale={locale} />
         <main className="flex-grow pt-16 md:pt-20">{children}</main>
         <Footer />
         <SpeedInsights />

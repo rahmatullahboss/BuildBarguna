@@ -309,14 +309,14 @@ export default function MemberApplicationsTable({ applications }: Props) {
             <div class="brand">
               <div class="emblem">BB</div>
               <div>
-                <div>BUILD BARGUNA CO-OPERATIVE</div>
+                <div>BUILD BARGUNA INITIATIVE</div>
                 <div class="subtitle">স্বচ্ছ ভিত্তি গঠন • একসাথে মূলধন, একসাথে উন্নয়ন</div>
               </div>
             </div>
           </div>
 
           <div class="title">Founding Member Certificate</div>
-          <div class="ribbon">Community • Cooperation • Transparency</div>
+          <div class="ribbon">Community • Initiative • Transparency</div>
           <div class="declaration">This is to certify that the following member has been formally approved.</div>
 
           <div class="section">
