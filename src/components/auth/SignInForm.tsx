@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, getSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { User, Lock, ArrowRight, Loader2 } from "lucide-react";
@@ -33,8 +33,13 @@ export function SignInForm() {
       } else if (result?.ok) {
         setMessage(t("signInSuccess"));
         // Wait a moment for session to be established
+        const session = await getSession();
         setTimeout(() => {
-          window.location.href = "/admin";
+          if (session?.user?.role === "ADMIN") {
+            window.location.href = "/admin";
+          } else {
+            window.location.href = "/dashboard";
+          }
         }, 500);
       }
     } catch (error) {

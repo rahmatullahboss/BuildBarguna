@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma";
 import { Resend } from "resend";
 import { joinMemberSchema } from "@/lib/schemas";
+import bcrypt from "bcryptjs";
 
 const resend = new Resend(process.env.RESEND_API_KEY || "");
 
@@ -50,6 +51,8 @@ export async function joinMemberAction(
     bkashNumber: formData.get("bkashNumber"),
     transactionId: formData.get("transactionId"),
     policyConsent: formData.get("policyConsent") === "on" || formData.get("policyConsent") === "true",
+    password: formData.get("password"),
+    confirmPassword: formData.get("confirmPassword"),
   });
 
   if (!validatedFields.success) {
@@ -61,7 +64,7 @@ export async function joinMemberAction(
     };
   }
 
-  const { name, email, nationalId, phone, address, nomineeName, nomineePhone, nomineeNationalId, nomineeRelation, bkashNumber, transactionId, policyConsent } = validatedFields.data;
+  const { name, email, nationalId, phone, address, nomineeName, nomineePhone, nomineeNationalId, nomineeRelation, bkashNumber, transactionId, policyConsent, password } = validatedFields.data;
 
   try {
     // Check if a user with this email or NID already exists
@@ -78,11 +81,15 @@ export async function joinMemberAction(
       return { success: false, message: "A user with this email or National ID already exists." };
     }
 
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     // Create the new user and member profile in a transaction
     await prisma.user.create({
       data: {
         name,
         email,
+        password: hashedPassword,
         role: "MEMBER",
         memberProfile: {
           create: {

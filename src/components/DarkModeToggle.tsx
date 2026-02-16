@@ -8,6 +8,7 @@ export default function DarkModeToggle() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line
     setMounted(true);
     // Initialize from localStorage or system preference
     const stored = localStorage.getItem("theme");

@@ -62,6 +62,8 @@ export function JoinMemberForm() {
       bkashNumber: "",
       transactionId: "",
       policyConsent: false,
+      password: "",
+      confirmPassword: "",
     },
   });
 
@@ -79,6 +81,8 @@ export function JoinMemberForm() {
     formData.append("bkashNumber", data.bkashNumber);
     formData.append("transactionId", data.transactionId);
     formData.append("policyConsent", data.policyConsent.toString());
+    formData.append("password", data.password);
+    formData.append("confirmPassword", data.confirmPassword);
     startTransition(() => {
       formAction(formData);
     });
@@ -314,6 +318,39 @@ export function JoinMemberForm() {
                   </div>
                 </CardContent>
               </Card>
+
+              {/* Security Information */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">{t("securityInfo")}</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t("passwordLabel")}</FormLabel>
+                        <FormControl>
+                          <Input type="password" placeholder={t("passwordPlaceholder")} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="confirmPassword"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t("confirmPasswordLabel")}</FormLabel>
+                        <FormControl>
+                          <Input type="password" placeholder={t("confirmPasswordPlaceholder")} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              </div>
 
               <FormField
                 control={form.control}

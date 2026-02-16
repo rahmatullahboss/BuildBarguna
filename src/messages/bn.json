@@ -596,6 +596,11 @@
     "trxIdLabel": "ট্রানজেকশন আইডি (TrxID)",
     "trxIdPlaceholder": "যেমন 9G7...",
     "trxIdDescription": "বিকাশ কনফার্মেশন থেকে TrxID কপি করুন",
+    "securityInfo": "নিরাপত্তা তথ্য",
+    "passwordLabel": "পাসওয়ার্ড",
+    "passwordPlaceholder": "আপনার পাসওয়ার্ড (ন্যূনতম ৬ অক্ষর)",
+    "confirmPasswordLabel": "পাসওয়ার্ড নিশ্চিত করুন",
+    "confirmPasswordPlaceholder": "পাসওয়ার্ডটি পুনরায় লিখুন",
     "policyConsent": "আমি শর্তাবলী মেনে চলছি",
     "policyDescription": "আপনি ইনিশিয়েটিভের গঠনতন্ত্র/নীতিমালা মেনে চলতে সম্মত।",
     "submitButton": "আবেদন জমা দিন",
@@ -604,5 +609,25 @@
   },
   "Validation": {
     "nomineePhoneNotSame": "সদস্যের ফোন নম্বর এবং মনোনীত ব্যক্তির ফোন নম্বর এক হতে পারবে না।"
+  },
+  "Dashboard": {
+    "welcome": "স্বাগতম",
+    "memberSince": "সদস্য হওয়ার তারিখ:",
+    "statusApproved": "অনুমোদিত",
+    "statusPending": "অপেক্ষমান",
+    "pendingMessage": "আপনার আবেদনটি বর্তমানে পর্যালোচনাধীন রয়েছে। অনুমোদনের পর আপনি পূর্ণ সদস্য হিসেবে সুবিধা পাবেন।",
+    "personalInfo": "ব্যক্তিগত তথ্য",
+    "address": "ঠিকানা",
+    "phone": "ফোন নম্বর",
+    "nationalId": "জাতীয় পরিচয়পত্র / জন্ম নিবন্ধন",
+    "paymentInfo": "পেমেন্ট তথ্য",
+    "paymentMethod": "পেমেন্ট মেথড",
+    "bkashNumber": "বিকাশ নম্বর",
+    "transactionId": "ট্রানজেকশন আইডি",
+    "nomineeInfo": "নমিনি তথ্য",
+    "nomineeName": "নমিনি নাম",
+    "relation": "সম্পর্ক",
+    "nomineePhone": "নমিনি ফোন",
+    "nomineeNid": "নমিনি জাতীয় পরিচয়পত্র"
   }
 }

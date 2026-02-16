@@ -1,44 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Settings } from "lucide-react";
-import { Button } from "../ui/button";
-import LanguageToggle from "../LanguageToggle";
-import DarkModeToggle from "@/components/DarkModeToggle";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { Menu, X, User } from "lucide-react";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import DarkModeToggle from "@/components/DarkModeToggle";
+import { useSession, signOut } from "next-auth/react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-export default function Navbar() {
+export function Navbar({ locale }: { locale: string }) {
   const t = useTranslations("Navbar");
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { data: session } = useSession();
-  
-  // Get current locale
-  const currentLocale = pathname.split('/')[1] || 'en';
-  
-  // Debug session in development
-  useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
-      console.log("Navbar session:", session);
-      console.log("User role:", session?.user?.role);
-    }
-  }, [session]);
-
-  const navItems = [
-    { key: "home", href: `/${currentLocale}` },
-    { key: "about", href: `/${currentLocale}/about` },
-    { key: "programs", href: `/${currentLocale}/programs` },
-    { key: "brands", href: `/${currentLocale}/brands` },
-    { key: "members", href: `/${currentLocale}/join-member` },
-    { key: "governance", href: `/${currentLocale}/nitimala` },
-    { key: "stories", href: `/${currentLocale}/stories` },
-    { key: "partners", href: `/${currentLocale}/partners` },
-    { key: "contact", href: `/${currentLocale}/contact` }
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,124 +33,197 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/" || pathname === "/en" || pathname === "/bn";
-    }
-    return pathname.includes(href);
-  };
+  const navLinks = [
+    { href: `/${locale}`, label: t("home") },
+    { href: `/${locale}/about`, label: t("about") },
+    { href: `/${locale}/programs`, label: t("programs") },
+    { href: `/${locale}/brands`, label: t("brands") },
+    { href: `/${locale}/governance`, label: t("governance") },
+    { href: `/${locale}/stories`, label: t("stories") },
+    { href: `/${locale}/partners`, label: t("partners") },
+    { href: `/${locale}/contact`, label: t("contact") },
+  ];
+
+  const isActive = (path: string) => pathname === path;
 
   return (
-    <header 
-      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-background/95 backdrop-blur-lg shadow-lg border-b border-border" 
-          : "bg-background/80 backdrop-blur-md"
-      }`}
+    <nav
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
+        isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm border-gray-200" : "bg-transparent"
+      )}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link 
-            href={`/${pathname.split('/')[1] || 'en'}`}
-            className="flex items-center space-x-2 group"
-            onClick={() => setIsOpen(false)}
-          >
-            <div className="w-10 h-10 bg-black-primary rounded-xl flex items-center justify-center transform group-hover:scale-105 transition-transform">
-              <span className="text-white font-bold text-lg">BB</span>
+          <Link href={`/${locale}`} className="flex items-center gap-2 group">
+            <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition-transform duration-300">
+              B
             </div>
-            <span className="text-xl font-bold text-foreground">
+            <span className={cn(
+              "font-bold text-xl tracking-tight transition-colors duration-300",
+              isScrolled ? "text-gray-900" : "text-gray-900"
+            )}>
               Build Barguna
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {navItems.map((item) => (
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
               <Link
-                key={item.key}
-                href={item.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-secondary hover:text-foreground ${
-                  isActive(item.href)
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "text-muted-foreground"
-                }`}
-              >
-                {t(item.key)}
-              </Link>
-            ))}
-          </div>
-
-          {/* Right side - Admin Link + Language Toggle + Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            {/* Admin Link removed per request */}
-            
-            {/* Debug info - Remove in production */}
-            {process.env.NODE_ENV === "development" && session && (
-              <div className="hidden lg:block text-xs text-red-500">
-                {session.user?.email}:{session.user?.role}
-              </div>
-            )}
-            
-            <DarkModeToggle />
-            <LanguageToggle />
-            
-            {/* Mobile menu button */}
-            <div className="lg:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2"
-              >
-                {isOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "text-sm font-medium transition-all duration-200 hover:text-black relative group",
+                  isActive(link.href) ? "text-black" : "text-gray-600"
                 )}
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div 
-          className={`lg:hidden absolute top-full left-0 right-0 bg-background border-t border-border shadow-lg transition-all duration-300 ease-in-out z-50 ${
-            isOpen 
-              ? "max-h-screen opacity-100" 
-              : "max-h-0 opacity-0 overflow-hidden"
-          }`}
-        >
-          <div className="container mx-auto px-4 py-4 space-y-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.key}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
-                  isActive(item.href)
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-secondary hover:text-foreground"
-                }`}
               >
-                {t(item.key)}
+                {link.label}
+                <span className={cn(
+                  "absolute -bottom-1 left-0 w-full h-0.5 bg-black transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100",
+                  isActive(link.href) && "scale-x-100"
+                )} />
               </Link>
             ))}
-            
-            {/* Language toggle for mobile */}
-            <div className="pt-2">
-              <LanguageToggle />
+
+            <div className="flex items-center gap-4 pl-4 border-l border-gray-200">
+              <DarkModeToggle />
+              
+              {session ? (
+                 <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="relative h-10 w-10 rounded-full hover:bg-gray-100">
+                      <User className="h-5 w-5" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56" align="end" forceMount>
+                    <DropdownMenuLabel className="font-normal">
+                      <div className="flex flex-col space-y-1">
+                        <p className="text-sm font-medium leading-none">{session.user?.name}</p>
+                        <p className="text-xs leading-none text-muted-foreground">{session.user?.email}</p>
+                      </div>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link href={`/${locale}/dashboard`}>Dashboard</Link>
+                    </DropdownMenuItem>
+                    {session.user?.role === "ADMIN" && (
+                      <DropdownMenuItem asChild>
+                        <Link href="/admin">Admin Panel</Link>
+                      </DropdownMenuItem>
+                    )}
+                     <DropdownMenuSeparator />
+                    <DropdownMenuItem 
+                      className="text-red-600 cursor-pointer"
+                      onClick={() => signOut()}
+                    >
+                      Log out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <>
+                  <Link href={`/${locale}/auth/signin`}>
+                    <Button variant="ghost" size="sm" className="hidden lg:inline-flex">
+                      Log In
+                    </Button>
+                  </Link>
+                  <Link href={`/${locale}/members`}>
+                    <Button size="sm" className="bg-black hover:bg-gray-800 text-white rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
-            
-            {/* Debug info for mobile */}
-            {process.env.NODE_ENV === "development" && session && (
-              <div className="px-4 py-2 text-xs text-red-500">
-                Session: {session.user?.email}:{session.user?.role}
-              </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center gap-4">
+            <DarkModeToggle />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6 text-gray-900" />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-900" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div className={cn(
+        "md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 shadow-lg transition-all duration-300 origin-top overflow-hidden",
+        mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+      )}>
+        <div className="px-4 py-6 space-y-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className={cn(
+                "block text-lg font-medium transition-colors hover:text-black",
+                isActive(link.href) ? "text-black" : "text-gray-600"
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className="pt-4 border-t border-gray-100 flex flex-col gap-3">
+             {session ? (
+              <>
+                <div className="flex items-center gap-3 px-2 py-2">
+                  <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                    <User className="w-5 h-5 text-gray-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">{session.user?.name}</p>
+                    <p className="text-sm text-gray-500">{session.user?.email}</p>
+                  </div>
+                </div>
+                <Link href={`/${locale}/dashboard`} onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full justify-start">
+                    Dashboard
+                  </Button>
+                </Link>
+                {session.user?.role === "ADMIN" && (
+                  <Link href="/admin" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="outline" className="w-full justify-start">
+                      Admin Panel
+                    </Button>
+                  </Link>
+                )}
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
+                  onClick={() => signOut()}
+                >
+                  Log out
+                </Button>
+              </>
+            ) : (
+              <>
+                 <Link href={`/${locale}/auth/signin`} onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Log In
+                  </Button>
+                </Link>
+                <Link href={`/${locale}/members`} onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="w-full bg-black hover:bg-gray-800 text-white rounded-full">
+                    Sign Up
+                  </Button>
+                </Link>
+              </>
             )}
           </div>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 }

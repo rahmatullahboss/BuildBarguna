@@ -607,6 +607,11 @@
     "trxIdLabel": "Transaction ID (TrxID)",
     "trxIdPlaceholder": "e.g. 9G7...",
     "trxIdDescription": "Copy TrxID from bKash confirmation",
+    "securityInfo": "Security Information",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Your password (min 6 chars)",
+    "confirmPasswordLabel": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
     "policyConsent": "I agree to the terms and conditions",
     "policyDescription": "You agree to abide by the initiative's constitution/policies.",
     "submitButton": "Submit Application",
@@ -615,5 +620,25 @@
   },
   "Validation": {
     "nomineePhoneNotSame": "Nominee phone cannot be the same as member phone."
+  },
+  "Dashboard": {
+    "welcome": "Welcome",
+    "memberSince": "Member since:",
+    "statusApproved": "Approved",
+    "statusPending": "Pending",
+    "pendingMessage": "Your application is currently under review. Once approved, you will have full access to member benefits.",
+    "personalInfo": "Personal Information",
+    "address": "Address",
+    "phone": "Phone",
+    "nationalId": "National ID / Passport",
+    "paymentInfo": "Payment Information",
+    "paymentMethod": "Payment Method",
+    "bkashNumber": "bKash Number",
+    "transactionId": "Transaction ID",
+    "nomineeInfo": "Nominee Information",
+    "nomineeName": "Nominee Name",
+    "relation": "Relation",
+    "nomineePhone": "Nominee Phone",
+    "nomineeNid": "Nominee NID"
   }
 }
