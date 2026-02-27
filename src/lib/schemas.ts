@@ -90,3 +90,45 @@ export const partnerInquirySchema = z.object({
     phone: z.string().optional(),
     message: z.string().min(20, { message: "Message must be at least 20 characters long." }),
 });
+
+// ─── Share Market Schemas ──────────────────────────────────────────────────
+
+export const createProjectSchema = z.object({
+  titleEn: z.string().min(3, { message: "English title must be at least 3 characters." }),
+  titleBn: z.string().min(3, { message: "Bengali title must be at least 3 characters." }),
+  descriptionEn: z.string().min(10, { message: "English description must be at least 10 characters." }),
+  descriptionBn: z.string().min(10, { message: "Bengali description must be at least 10 characters." }),
+  totalCapital: z.coerce.number().positive({ message: "Total capital must be positive." }),
+  totalShares: z.coerce.number().int().positive({ message: "Total shares must be a positive integer." }),
+  imageUrl: z.string().url({ message: "Invalid image URL." }).optional().or(z.literal("")),
+  status: z.enum(["ACTIVE", "CLOSED", "PAUSED"]).default("ACTIVE"),
+});
+
+export const buyShareSchema = z.object({
+  projectId: z.string().min(1, { message: "Project ID is required." }),
+  quantity: z.coerce.number().int().positive({ message: "Quantity must be a positive integer." }),
+  paymentMethod: z.enum(["BKASH", "NAGAD", "ONLINE_GATEWAY"], { message: "Please select a payment method." }),
+  paymentRef: z.string().optional(),
+});
+
+// ─── Dividend Schema ───────────────────────────────────────────────────────
+
+export const createDividendSchema = z.object({
+  projectId: z.string().min(1, { message: "Project is required." }),
+  month: z.coerce.number().int().min(1).max(12),
+  year: z.coerce.number().int().min(2024),
+  percentage: z.coerce.number().positive({ message: "Percentage must be positive." }),
+  totalAmount: z.coerce.number().positive({ message: "Total amount must be positive." }),
+  note: z.string().optional(),
+});
+
+// ─── Daily Task Schemas ────────────────────────────────────────────────────
+
+export const createTaskSchema = z.object({
+  titleEn: z.string().min(3, { message: "English title must be at least 3 characters." }),
+  titleBn: z.string().min(3, { message: "Bengali title must be at least 3 characters." }),
+  platform: z.string().min(1, { message: "Platform is required." }),
+  url: z.string().url({ message: "Please enter a valid URL." }),
+  pointReward: z.coerce.number().int().positive({ message: "Point reward must be positive." }).default(10),
+  isActive: z.boolean().default(true),
+});

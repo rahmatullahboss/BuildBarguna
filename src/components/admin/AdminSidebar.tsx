@@ -15,7 +15,11 @@ import {
   LogOut,
   ChevronRight,
   Home,
-  Mail
+  Mail,
+  Briefcase,
+  ShoppingCart,
+  Coins,
+  CheckSquare
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DarkModeToggle from "@/components/DarkModeToggle";
@@ -64,6 +68,26 @@ export default function AdminSidebar({ locale }: AdminSidebarProps) {
       title: "Contacts",
       href: `/${locale}/admin/contacts`,
       icon: Mail
+    },
+    {
+      title: "Live Projects",
+      href: `/${locale}/admin/projects`,
+      icon: Briefcase
+    },
+    {
+      title: "Share Orders",
+      href: `/${locale}/admin/share-orders`,
+      icon: ShoppingCart
+    },
+    {
+      title: "Dividends",
+      href: `/${locale}/admin/dividends`,
+      icon: Coins
+    },
+    {
+      title: "Daily Tasks",
+      href: `/${locale}/admin/tasks`,
+      icon: CheckSquare
     },
     {
       title: "Settings",

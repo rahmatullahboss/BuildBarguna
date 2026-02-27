@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { Menu, X, User } from "lucide-react";
+import { Menu, X, User, TrendingUp, Wallet, CheckSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import DarkModeToggle from "@/components/DarkModeToggle";
@@ -108,6 +108,24 @@ export function Navbar({ locale }: { locale: string }) {
                     <DropdownMenuItem asChild>
                       <Link href={`/${locale}/dashboard`}>Dashboard</Link>
                     </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href={`/${locale}/projects`} className="flex items-center gap-2">
+                        <TrendingUp className="h-4 w-4" />
+                        {t("projects")}
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href={`/${locale}/wallet`} className="flex items-center gap-2">
+                        <Wallet className="h-4 w-4" />
+                        {t("wallet")}
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href={`/${locale}/daily-tasks`} className="flex items-center gap-2">
+                        <CheckSquare className="h-4 w-4" />
+                        {t("dailyTasks")}
+                      </Link>
+                    </DropdownMenuItem>
                     {session.user?.role === "ADMIN" && (
                       <DropdownMenuItem asChild>
                         <Link href="/admin">Admin Panel</Link>
@@ -190,6 +208,24 @@ export function Navbar({ locale }: { locale: string }) {
                 <Link href={`/${locale}/dashboard`} onClick={() => setMobileMenuOpen(false)}>
                   <Button variant="outline" className="w-full justify-start">
                     Dashboard
+                  </Button>
+                </Link>
+                <Link href={`/${locale}/projects`} onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full justify-start gap-2">
+                    <TrendingUp className="h-4 w-4" />
+                    {t("projects")}
+                  </Button>
+                </Link>
+                <Link href={`/${locale}/wallet`} onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full justify-start gap-2">
+                    <Wallet className="h-4 w-4" />
+                    {t("wallet")}
+                  </Button>
+                </Link>
+                <Link href={`/${locale}/daily-tasks`} onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full justify-start gap-2">
+                    <CheckSquare className="h-4 w-4" />
+                    {t("dailyTasks")}
                   </Button>
                 </Link>
                 {session.user?.role === "ADMIN" && (

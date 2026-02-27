@@ -8,28 +8,23 @@ export interface ToastOptions {
   variant?: ToastVariant;
 }
 
-export function useToast() {
-  function toast({ title, description, variant }: ToastOptions = {}) {
-    if (typeof window === "undefined") return;
-    const prefix = variant === "destructive" ? "[Error] " : "[Info] ";
-    const msg = [title, description].filter(Boolean).join(" — ");
-    if (variant === "destructive") {
-      // eslint-disable-next-line no-console
-      console.error(prefix + msg);
-      try {
-        // Non-blocking notification fallback
-        // eslint-disable-next-line no-alert
-        setTimeout(() => alert(msg || "An error occurred"), 0);
-      } catch {}
-    } else {
-      // eslint-disable-next-line no-console
-      console.log(prefix + msg);
-      try {
-        // eslint-disable-next-line no-alert
-        setTimeout(() => alert(msg || "Done"), 0);
-      } catch {}
-    }
+function _toast({ title, description, variant }: ToastOptions = {}) {
+  if (typeof window === "undefined") return;
+  const msg = [title, description].filter(Boolean).join(" — ");
+  if (variant === "destructive") {
+    // eslint-disable-next-line no-console
+    console.error("[Error] " + msg);
+    try { setTimeout(() => alert(msg || "An error occurred"), 0); } catch {}
+  } else {
+    // eslint-disable-next-line no-console
+    console.log("[Info] " + msg);
+    try { setTimeout(() => alert(msg || "Done"), 0); } catch {}
   }
+}
 
-  return { toast };
+// Named export for direct usage: import { toast } from "@/components/ui/use-toast"
+export const toast = _toast;
+
+export function useToast() {
+  return { toast: _toast };
 }

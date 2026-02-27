@@ -22,21 +22,6 @@ export async function joinMemberAction(
     return { success: false, message: "Spam detected." };
   }
 
-  // Debug the form data
-    console.log("Form data received:", {
-    name: formData.get("name"),
-    nationalId: formData.get("nationalId"),
-    phone: formData.get("phone"),
-    email: formData.get("email"),
-    address: formData.get("address"),
-    nomineeName: formData.get("nomineeName"),
-    nomineePhone: formData.get("nomineePhone"),
-    nomineeNationalId: formData.get("nomineeNationalId"),
-    nomineeRelation: formData.get("nomineeRelation"),
-    bkashNumber: formData.get("bkashNumber"),
-    transactionId: formData.get("transactionId"),
-    policyConsent: formData.get("policyConsent"),
-  });
 
   const validatedFields = joinMemberSchema.safeParse({
     name: formData.get("name"),
@@ -56,7 +41,6 @@ export async function joinMemberAction(
   });
 
   if (!validatedFields.success) {
-    console.log("Validation errors:", validatedFields.error.flatten().fieldErrors);
     return {
       success: false,
       message: "Validation failed. Please check your input.",

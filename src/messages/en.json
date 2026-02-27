@@ -12,7 +12,10 @@
     "donate": "Donate",
     "transparency": "Transparency",
     "impact": "Impact",
-    "careers": "Careers"
+    "careers": "Careers",
+    "projects": "Live Projects",
+    "wallet": "My Wallet",
+    "dailyTasks": "Daily Tasks"
   },
   "HomePage": {
     "badge": "New Journey with Collective Strength",
@@ -322,6 +325,10 @@
     "ventures": "Ventures",
     "brands": "Brands",
     "stories": "Stories",
+    "projects": "Live Projects",
+    "shareOrders": "Share Orders",
+    "dividends": "Dividends",
+    "tasks": "Daily Tasks",
     "settings": "Settings",
     "backToSite": "Back to Site",
     "signOut": "Sign Out"
@@ -621,6 +628,64 @@
   "Validation": {
     "nomineePhoneNotSame": "Nominee phone cannot be the same as member phone."
   },
+  "ProjectsPage": {
+    "title": "Live Business Projects",
+    "subtitle": "Browse active community projects and purchase shares to become a co-owner.",
+    "pendingNotice": "Your membership is pending approval. You can view projects but cannot purchase shares yet.",
+    "noProjects": "No active projects at the moment. Check back soon!",
+    "pricePerShare": "Price/Share",
+    "availableShares": "Available Shares",
+    "totalCapital": "Total Capital",
+    "sold": "Sold",
+    "shares": "Shares",
+    "buyShares": "Buy Shares",
+    "soldOut": "Sold Out",
+    "notEligible": "Membership Pending",
+    "projectClosed": "Project Closed",
+    "status_ACTIVE": "Active",
+    "status_CLOSED": "Closed",
+    "status_PAUSED": "Paused",
+    "backToProjects": "Back to Projects",
+    "myOrders": "My Orders",
+    "totalApprovedShares": "Total Approved Shares",
+    "quantity": "Number of Shares",
+    "totalAmount": "Total Amount",
+    "paymentMethod": "Payment Method",
+    "onlineGateway": "Online Gateway",
+    "paymentInstructions": "Payment Instructions",
+    "amount": "Amount",
+    "enterRefBelow": "Enter the transaction ID below.",
+    "paymentRef": "Transaction ID / Reference",
+    "paymentRefPlaceholder": "e.g. 8AB12345...",
+    "optional": "(Optional)",
+    "submitting": "Submitting...",
+    "confirmOrder": "Confirm Order"
+  },
+  "WalletPage": {
+    "title": "My Wallet",
+    "balance": "Dividend Balance",
+    "balanceDesc": "Earnings from share dividends",
+    "points": "Points",
+    "pointsDesc": "Earned from daily tasks",
+    "transactions": "Transaction History",
+    "noTransactions": "No transactions yet. Complete daily tasks or earn dividends to get started.",
+    "typeDividend": "Dividend",
+    "typeTaskReward": "Task Reward",
+    "typeWithdrawal": "Withdrawal",
+    "typeSharePurchase": "Share Purchase"
+  },
+  "DailyTasksPage": {
+    "title": "Daily Tasks",
+    "subtitle": "Complete daily social media tasks to earn points. Tasks reset every day.",
+    "todayProgress": "Today's Progress",
+    "totalPoints": "Total Points",
+    "pendingNotice": "Your membership is pending approval. You can view tasks but cannot complete them yet.",
+    "noTasks": "No active tasks at the moment.",
+    "openLink": "Open Link",
+    "done": "Done",
+    "complete": "Complete",
+    "completing": "Completing..."
+  },
   "Dashboard": {
     "welcome": "Welcome",
     "memberSince": "Member since:",
@@ -639,6 +704,15 @@
     "nomineeName": "Nominee Name",
     "relation": "Relation",
     "nomineePhone": "Nominee Phone",
-    "nomineeNid": "Nominee NID"
+    "nomineeNid": "Nominee NID",
+    "walletBalance": "Wallet Balance",
+    "points": "Points",
+    "myShares": "My Share Portfolio",
+    "noShares": "You don't own any shares yet.",
+    "buyShares": "Browse Projects",
+    "goToWallet": "My Wallet",
+    "dailyTasks": "Daily Tasks",
+    "totalInvested": "Total Invested",
+    "quickLinks": "Quick Links"
   }
 }
