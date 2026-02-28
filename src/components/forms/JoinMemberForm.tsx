@@ -10,10 +10,6 @@ import { joinMemberAction, FormState } from "@/lib/actions/member.actions";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 
-import Lottie from "lottie-react";
-import infoAnimation from "../../lotties/info.json";
-import phoneAnimation from "../../lotties/phone.json";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -51,16 +47,8 @@ export function JoinMemberForm() {
     resolver: zodResolver(joinMemberSchema),
     defaultValues: {
       name: "",
-      nationalId: "",
       phone: "",
-      email: "",
-      address: "",
-      nomineeName: "",
-      nomineePhone: "",
-      nomineeNationalId: "",
-      nomineeRelation: "",
-      bkashNumber: "",
-      transactionId: "",
+      referralCode: "",
       policyConsent: false,
       password: "",
       confirmPassword: "",
@@ -70,16 +58,8 @@ export function JoinMemberForm() {
   const onSubmit = (data: z.infer<typeof joinMemberSchema>) => {
     const formData = new FormData();
     formData.append("name", data.name);
-    formData.append("nationalId", data.nationalId || "");
     formData.append("phone", data.phone);
-    formData.append("email", data.email);
-    formData.append("address", data.address);
-    formData.append("nomineeName", data.nomineeName || "");
-    formData.append("nomineePhone", data.nomineePhone || "");
-    formData.append("nomineeNationalId", data.nomineeNationalId || "");
-    formData.append("nomineeRelation", data.nomineeRelation || "");
-    formData.append("bkashNumber", data.bkashNumber);
-    formData.append("transactionId", data.transactionId);
+    formData.append("referralCode", data.referralCode || "");
     formData.append("policyConsent", data.policyConsent.toString());
     formData.append("password", data.password);
     formData.append("confirmPassword", data.confirmPassword);
@@ -117,19 +97,6 @@ export function JoinMemberForm() {
                   />
                   <FormField
                     control={form.control}
-                    name="nationalId"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t("nidLabel")} <span className="text-muted-foreground font-normal text-xs">(Optional)</span></FormLabel>
-                        <FormControl>
-                          <Input placeholder={t("nidPlaceholder")} {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
@@ -141,183 +108,24 @@ export function JoinMemberForm() {
                       </FormItem>
                     )}
                   />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t("emailLabel")}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t("emailPlaceholder")} {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                <FormField
-                  control={form.control}
-                  name="address"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{t("addressLabel")}</FormLabel>
-                      <FormControl>
-                        <Input placeholder={t("addressPlaceholder")} {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              {/* Nominee Information */}
-              <div className="space-y-4 p-4 bg-muted/50 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6">
-                    <Lottie animationData={infoAnimation} loop={true} />
-                  </div>
-                  <h3 className="text-lg font-semibold">{t("nomineeSectionTitle")}</h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="nomineeName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t("nomineeNameLabel")}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t("nomineeNamePlaceholder")} {...field} value={field.value || ''} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="nomineePhone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t("nomineePhoneLabel")}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t("nomineePhonePlaceholder")} {...field} value={field.value || ''} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="nomineeNationalId"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t("nomineeNidLabel")}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t("nomineeNidPlaceholder")} {...field} value={field.value || ''} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="nomineeRelation"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>{t("nomineeRelationLabel")}</FormLabel>
-                        <FormControl>
-                          <Input placeholder={t("nomineeRelationPlaceholder")} {...field} value={field.value || ''} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
                 </div>
               </div>
 
-              {/* Payment Information */}
-              <Card className="border-pink-200 dark:border-pink-900 bg-pink-50/50 dark:bg-pink-950/20">
-                <CardHeader className="pb-3">
-                  <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-full bg-pink-100 dark:bg-pink-900/50">
-                      <div className="w-8 h-8">
-                        <Lottie animationData={phoneAnimation} loop={true} />
-                      </div>
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl text-pink-700 dark:text-pink-400">
-                        {t("paymentTitle")}
-                      </CardTitle>
-                      <CardDescription className="text-pink-600/80 dark:text-pink-400/80">
-                        {t("paymentDescription")}
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="grid gap-6">
-                  <div className="bg-white p-4 rounded-lg border border-pink-100 shadow-sm">
-                    <div className="flex items-start gap-3">
-                      <div className="bg-pink-100 p-2 rounded-full mt-1">
-                        <div className="w-4 h-4">
-                          <Lottie animationData={infoAnimation} loop={true} />
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <p className="text-sm text-gray-700 font-medium">{t("howToPay")}</p>
-                        <ol className="text-sm text-gray-600 list-decimal list-inside space-y-1 ml-1">
-                          <li>{t("step1")}</li>
-                          <li>{t("step2")}</li>
-                          <li>{t("step3")} <span className="font-bold text-gray-900 select-all">{t("step3Value")}</span> {t("step3Type")}</li>
-                          <li>{t("step4")} <span className="font-bold text-gray-900">{t("step4Value")}</span></li>
-                          <li>{t("step5")} <span className="italic text-gray-500">{t("step5Value")}</span></li>
-                        </ol>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="bkashNumber"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t("bkashNumberLabel")}</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder={t("bkashNumberPlaceholder")}
-                              {...field}
-                              className="focus-visible:ring-pink-500"
-                            />
-                          </FormControl>
-                          <FormDescription>
-                            {t("bkashNumberDescription")}
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="transactionId"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t("trxIdLabel")}</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder={t("trxIdPlaceholder")}
-                              {...field}
-                              className="focus-visible:ring-pink-500 uppercase placeholder:normal-case"
-                            />
-                          </FormControl>
-                          <FormDescription>
-                            {t("trxIdDescription")}
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Referral Code */}
+              <FormField
+                control={form.control}
+                name="referralCode"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("referralCodeLabel")} <span className="text-muted-foreground font-normal text-xs">(Optional)</span></FormLabel>
+                    <FormControl>
+                      <Input placeholder={t("referralCodePlaceholder")} {...field} />
+                    </FormControl>
+                    <FormDescription>{t("referralCodeDescription")}</FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
               {/* Security Information */}
               <div className="space-y-4">

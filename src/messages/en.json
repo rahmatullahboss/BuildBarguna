@@ -270,7 +270,7 @@
     "legalTitle": "Legal Compliance Notice",
     "legal1": "Build Barguna is a Primary, non-credit community initiative. We do not accept public deposits or provide microcredit. All venture investments are member-only and governed by approved by-laws and term sheets.",
     "legal2": "Domestic donations are voluntary, non-refundable, and create no financial return or membership rights. Foreign donations are not accepted by the Initiative.",
-    "techPartner": "Tech Partner:",
+    "techPartner": "Created by:",
     "digitalcare": "DigitalCare",
     "copyright": "Build Barguna. All Rights Reserved."
   },
@@ -623,6 +623,9 @@
     "policyDescription": "You agree to abide by the initiative's constitution/policies.",
     "submitButton": "Submit Application",
     "submitting": "Submitting...",
+    "referralCodeLabel": "Referral Code",
+    "referralCodePlaceholder": "Enter referral code (if any)",
+    "referralCodeDescription": "If someone referred you, enter their code here.",
     "errorFix": "Please fix the following errors:"
   },
   "Validation": {

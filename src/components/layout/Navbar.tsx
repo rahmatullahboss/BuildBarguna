@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, User, TrendingUp, Wallet, CheckSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import DarkModeToggle from "@/components/DarkModeToggle";
 import { useSession, signOut } from "next-auth/react";
 import {
   DropdownMenu,
@@ -87,8 +86,7 @@ export function Navbar({ locale }: { locale: string }) {
               </Link>
             ))}
 
-            <div className="flex items-center gap-4 pl-4 border-l border-gray-200 dark:border-gray-700">
-              <DarkModeToggle />
+            <div className="flex items-center gap-4 pl-4 border-l border-gray-200">
               
               {session ? (
                  <DropdownMenu>
@@ -159,7 +157,6 @@ export function Navbar({ locale }: { locale: string }) {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
-            <DarkModeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"

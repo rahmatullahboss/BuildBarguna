@@ -25,16 +25,8 @@ export async function joinMemberAction(
 
   const validatedFields = joinMemberSchema.safeParse({
     name: formData.get("name"),
-    nationalId: formData.get("nationalId"),
     phone: formData.get("phone"),
-    email: formData.get("email"),
-    address: formData.get("address"),
-    nomineeName: formData.get("nomineeName"),
-    nomineePhone: formData.get("nomineePhone"),
-    nomineeNationalId: formData.get("nomineeNationalId"),
-    nomineeRelation: formData.get("nomineeRelation"),
-    bkashNumber: formData.get("bkashNumber"),
-    transactionId: formData.get("transactionId"),
+    referralCode: formData.get("referralCode"),
     policyConsent: formData.get("policyConsent") === "on" || formData.get("policyConsent") === "true",
     password: formData.get("password"),
     confirmPassword: formData.get("confirmPassword"),
@@ -48,46 +40,37 @@ export async function joinMemberAction(
     };
   }
 
-  const { name, email, nationalId, phone, address, nomineeName, nomineePhone, nomineeNationalId, nomineeRelation, bkashNumber, transactionId, policyConsent, password } = validatedFields.data;
+  const { name, phone, referralCode, policyConsent, password } = validatedFields.data;
 
   try {
-    // Check if a user with this email or NID already exists
+    // Generate a unique email from phone number
+    const userEmail = `${phone}@member.buildbarguna.org`;
+
+    // Check if a user with this phone already exists
     const existingUser = await prisma.user.findFirst({
-      where: {
-        OR: [
-          { email },
-          ...(nationalId ? [{ memberProfile: { nationalId } }] : []),
-        ],
-      },
+      where: { email: userEmail },
     });
 
     if (existingUser) {
-      return { success: false, message: "A user with this email or National ID already exists." };
+      return { success: false, message: "A user with this phone number already exists." };
     }
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create the new user and member profile in a transaction
+    // Create the new user and member profile
     await prisma.user.create({
       data: {
         name,
-        email,
+        email: userEmail,
         password: hashedPassword,
         role: "MEMBER",
         memberProfile: {
           create: {
-            nationalId: nationalId || null,
             phone,
-            address,
-            nomineeName: nomineeName || null,
-            nomineePhone: nomineePhone || null,
-            nomineeNationalId: nomineeNationalId || null,
-            nomineeRelation: nomineeRelation || null,
-            bkashNumber,
-            transactionId,
+            referralCode: referralCode || null,
             policyConsent,
-            isApproved: false, // Members require admin approval
+            isApproved: false,
           },
         },
       },
@@ -107,27 +90,8 @@ export async function joinMemberAction(
               <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">New Founding Membership Request</h2>
               <div style="margin: 20px 0;">
                 <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-                ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}
-                <p><strong>National ID:</strong> ${nationalId}</p>
-                <p><strong>Address:</strong> ${address}</p>
-                <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; margin: 10px 0;">
-                  <h3 style="margin-top: 0; color: #007bff;">Payment Details</h3>
-                  <p><strong>bKash Number:</strong> ${bkashNumber}</p>
-                  <p><strong>Transaction ID:</strong> ${transactionId}</p>
-                </div>
-                ${nomineeName ? `
-                  <p><strong>Nominee:</strong> ${nomineeName} ${nomineeRelation ? `(${nomineeRelation})` : ''}</p>
-                  ${nomineePhone ? `<p><strong>Nominee Phone:</strong> ${nomineePhone}</p>` : ''}
-                  ${nomineeNationalId ? `<p><strong>Nominee NID:</strong> ${nomineeNationalId}</p>` : ''}
-                ` : ''}
+                <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
                 <p><strong>Policy Consent:</strong> ${policyConsent ? 'Yes' : 'No'}</p>
-              </div>
-              <div style="margin: 30px 0; padding: 15px; background-color: #e9ecef; border-radius: 5px;">
-                <p style="margin: 0; font-size: 14px; color: #666;">
-                  <strong>Quick Reply:</strong>
-                  <a href="mailto:${email}?subject=Your membership application&body=Hello ${name},%0D%0A%0D%0AThank you for applying for founding membership. We have received your payment details (TrxID: ${transactionId}). Our team will review your application and get back to you within 3-7 working days.%0D%0A%0D%0A" style="color: #007bff; text-decoration: none;">Click here to reply</a>
-                </p>
               </div>
             </div>
           `,

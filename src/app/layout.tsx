@@ -55,7 +55,7 @@ export default async function RootLayout({
 }) {
   // The root layout doesn't have locale params - that's handled by [locale]/layout.tsx
   // We'll use a default locale for the HTML lang attribute
-  const locale = 'en';
+  const locale = 'bn';
   
   // Providing all messages to the client
   const messages = await getMessages();

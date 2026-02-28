@@ -43,9 +43,7 @@ async function main() {
       role: UserRole.MEMBER,
       memberProfile: {
         create: {
-          nationalId: "1234567890",
           phone: "01700000000",
-          address: "Barguna, Bangladesh",
           isApproved: true,
           policyConsent: true,
         }

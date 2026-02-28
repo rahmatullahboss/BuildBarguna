@@ -12,7 +12,7 @@ import {
   TableHeader, 
   TableRow 
 } from "@/components/ui/table";
-import { CheckCircle, XCircle, Eye, Phone, Mail, MapPin, FileText, Users } from "lucide-react";
+import { CheckCircle, XCircle, Eye, Phone, FileText, Users } from "lucide-react";
 import { approveMemberApplication, rejectMemberApplication, removeApprovedMember } from "@/lib/actions/admin.actions";
 
 interface MemberApplication {
@@ -21,13 +21,7 @@ interface MemberApplication {
   email: string;
   createdAt: Date;
   memberProfile: {
-    nationalId: string | null;
     phone: string;
-    address: string;
-    nomineeName?: string | null;
-    nomineePhone?: string | null;
-    nomineeNationalId?: string | null;
-    nomineeRelation?: string | null;
     isApproved: boolean;
     policyConsent: boolean;
   } | null;
@@ -322,19 +316,7 @@ export default function MemberApplicationsTable({ applications }: Props) {
           <div class="section">
             <div class="rows">
               <div class="row"><div class="label">Member Name</div><div class="value">${member.name || 'N/A'}</div></div>
-              <div class="row"><div class="label">Email Address</div><div class="value">${member.email}</div></div>
-              <div class="row"><div class="label">National ID</div><div class="value">${member.memberProfile?.nationalId || 'N/A'}</div></div>
               <div class="row"><div class="label">Phone Number</div><div class="value">${member.memberProfile?.phone || 'N/A'}</div></div>
-              <div class="row"><div class="label">Address</div><div class="value">${member.memberProfile?.address || 'N/A'}</div></div>
-            </div>
-          </div>
-
-          <div class="section">
-            <div class="rows">
-              <div class="row"><div class="label">Nominee Name</div><div class="value">${member.memberProfile?.nomineeName || 'N/A'}</div></div>
-              <div class="row"><div class="label">Nominee Relation</div><div class="value">${member.memberProfile?.nomineeRelation || 'N/A'}</div></div>
-              <div class="row"><div class="label">Nominee Phone</div><div class="value">${member.memberProfile?.nomineePhone || 'N/A'}</div></div>
-              <div class="row"><div class="label">Nominee National ID</div><div class="value">${member.memberProfile?.nomineeNationalId || 'N/A'}</div></div>
             </div>
           </div>
 
@@ -580,76 +562,23 @@ export default function MemberApplicationsTable({ applications }: Props) {
                     <p className="text-gray-900 dark:text-gray-100 font-medium">{selectedMember.name || 'Not provided'}</p>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Email Address</label>
-                    <p className="text-gray-900 dark:text-gray-100 break-words">{selectedMember.email}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">National ID</label>
-                    <p className="text-gray-900 dark:text-gray-100 font-mono">{selectedMember.memberProfile?.nationalId || 'Not provided'}</p>
-                  </div>
-                  <div>
                     <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Application Date</label>
-                    <p className="text-gray-900 dark:text-gray-100">{new Date(selectedMember.createdAt).toLocaleDateString('en-BD', { 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    })}</p>
+                    <p className="text-gray-900 dark:text-gray-100">{new Date(selectedMember.createdAt).toLocaleDateString('en-BD', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                   </div>
                 </div>
               </div>
-              
+
               {/* Contact Information */}
               <div className="bg-blue-50 dark:bg-gray-800 p-4 rounded-lg">
                 <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
                   <Phone className="h-5 w-5 mr-2" />
                   Contact Information
                 </h4>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <Phone className="h-4 w-4 text-gray-500 dark:text-gray-400" />
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">Phone Number</label>
-                      <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.phone || 'Not provided'}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Mail className="h-4 w-4 text-gray-500 dark:text-gray-400" />
-                    <div>
-                      <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Email</label>
-                      <p className="text-gray-900 dark:text-gray-100 break-words">{selectedMember.email}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <MapPin className="h-4 w-4 text-gray-500 dark:text-gray-400 mt-1" />
-                    <div>
-                      <label className="text-sm font-medium text-gray-600">Address</label>
-                      <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.address || 'Not provided'}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Nominee Information */}
-              <div className="bg-purple-50 dark:bg-gray-800 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center">
-                  Nominee Information
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-center gap-3">
+                  <Phone className="h-4 w-4 text-gray-500 dark:text-gray-400" />
                   <div>
-                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Nominee Name</label>
-                    <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.nomineeName || 'Not provided'}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Nominee Relation</label>
-                    <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.nomineeRelation || 'Not provided'}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Nominee Phone</label>
-                    <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.nomineePhone || 'Not provided'}</p>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-gray-600 dark:text-gray-300">Nominee National ID</label>
-                    <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.nomineeNationalId || 'Not provided'}</p>
+                    <label className="text-sm font-medium text-gray-600">Phone Number</label>
+                    <p className="text-gray-900 dark:text-gray-100">{selectedMember.memberProfile?.phone || 'Not provided'}</p>
                   </div>
                 </div>
               </div>

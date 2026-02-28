@@ -26,15 +26,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <SessionProvider>
       {/* Initialize theme before hydration */}
       <Script id="theme-init" strategy="beforeInteractive">
-        {`
-          try {
-            const stored = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const useDark = stored ? stored === 'dark' : prefersDark;
-            if (useDark) document.documentElement.classList.add('dark');
-            else document.documentElement.classList.remove('dark');
-          } catch (e) {}
-        `}
+        {`document.documentElement.classList.remove('dark');`}
       </Script>
       <div className="flex flex-col min-h-screen">
         <Navbar locale={locale} />
