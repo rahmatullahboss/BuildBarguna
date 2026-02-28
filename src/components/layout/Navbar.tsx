@@ -38,7 +38,7 @@ export function Navbar({ locale }: { locale: string }) {
     { href: `/${locale}/about`, label: t("about") },
     { href: `/${locale}/programs`, label: t("programs") },
     { href: `/${locale}/brands`, label: t("brands") },
-    { href: `/${locale}/governance`, label: t("governance") },
+    { href: `/${locale}/nitimala`, label: t("governance") },
     { href: `/${locale}/stories`, label: t("stories") },
     { href: `/${locale}/partners`, label: t("partners") },
     { href: `/${locale}/contact`, label: t("contact") },
@@ -147,7 +147,7 @@ export function Navbar({ locale }: { locale: string }) {
                       Log In
                     </Button>
                   </Link>
-                  <Link href={`/${locale}/members`}>
+                  <Link href={`/${locale}/join-member`}>
                     <Button size="sm" className="bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                       Sign Up
                     </Button>
@@ -250,7 +250,7 @@ export function Navbar({ locale }: { locale: string }) {
                     Log In
                   </Button>
                 </Link>
-                <Link href={`/${locale}/members`} onClick={() => setMobileMenuOpen(false)}>
+                <Link href={`/${locale}/join-member`} onClick={() => setMobileMenuOpen(false)}>
                   <Button className="w-full bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 dark:text-black text-white rounded-full">
                     Sign Up
                   </Button>
